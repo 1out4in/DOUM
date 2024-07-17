@@ -76,6 +76,8 @@ FROM
 
 
 
+select *
+    from TBL_ORGANIZATION;
 
 
 

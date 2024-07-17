@@ -3,7 +3,6 @@ package com.example.doum.controller.won;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 
@@ -11,6 +10,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/Won")
 @RequiredArgsConstructor
 public class WonController {
+
+//    @GetMapping("/orgJoin")
+//    public String orgJoin( Model model) {
+//        return "/won/orgJoin";
+//    }
+
 
 
 }

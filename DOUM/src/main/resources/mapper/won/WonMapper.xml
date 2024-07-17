@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.doum.mapper.won.WonMapper.">
+
+<!--회원가입 정보
+모집중인 자원봉사
+봉사내용
+모집인원
+모집기간
+봉사시간 조회
+익명게시판
+review 작성자-->
+
+    <select id="won" resultType="WonJoinOrg">
+        select *
+        from TBL_ORGANIZATION
+    </select>
+
+<!--    회원가입 작성 쿼리문 -->
+    <insert id="orgJoin">
+        INSERT INTO TBL_ORGANIZATION (
+            ORGANIZATION_ID,
+            LOCATION_ID,
+            EMAIL,
+            PASSWORD,
+            NAME,
+            PHONE_NUMBER,
+            REGISTER_DATE,
+            EMAIL_APPROVE,
+            PHONE_APPROVE,
+            MANAGER_NAME,
+            MANAGER_PHONE_NUMBER,
+            FILE_LOCATION,
+            STATUS,
+            PROVIDER_ID,
+            PROVIDER,
+            ROLE
+        ) VALUES (
+                     #{organizationId},
+                     #{locationId},
+                     #{email},
+                     #{password},
+                     #{name},
+                     #{phoneNumber},
+                     #{registerDate},
+                     #{emailApprove},
+                     #{phoneApprove},
+                     #{managerName},
+                     #{managerPhoneNumber},
+                     #{fileLocation},
+                     #{status},
+                     #{providerId},
+                     #{provider},
+                     #{role}
+                 )
+    </insert>
+
+
+<!--봉사기간 기준으로-->
+    <select id="">
+    select
+        form
+        where FILE_ID = #{fileId}
+    </select>
+
+
+
+
+
+
+
+    <!-- 새로운 사람 회원 가입 -->
+    <update id="insertNewUser">
+        update tbl_users
+        set PHONE_NUMBER = #{phoneNumber}, ADDRESS = #{address}, ROLE = #{role}
+        where PROVIDER_ID = #{providerId}
+    </update>
+
+
+<!--    게시글 목록 가져오기 -->
+<!--    -->
+    <select id="selectAll" resultType="anonymous">
+        SELECT *
+        FROM (
+                 SELECT ROWNUM AS RN, BOARD.*
+                 FROM (
+                          SELECT
+                              B.BOARD_ID,
+                              B.BOARD_TITLE,
+                              U.NAME,
+                              B.BOARD_VIEWS,
+                              B.BOARD_REGISTER_DATE,
+                              B.BOARD_UPDATE_DATE,
+                              U.PROVIDER_ID,
+                              (SELECT COUNT(*) FROM TBL_FILE F WHERE F.BOARD_ID = B.BOARD_ID) AS FILE_COUNT
+                          FROM
+                              TBL_BOARD B JOIN TBL_USERS U
+                                               ON
+                                                   U.PROVIDER_ID = B.PROVIDER_ID
+                          ORDER BY
+                              B.BOARD_UPDATE_DATE DESC
+                      ) BOARD
+                 WHERE ROWNUM &lt;= #{endRow}
+             )
+        WHERE rn &gt; #{startRow}
+    </select>
+
+
+
+
+</mapper>
