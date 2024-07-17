@@ -3,145 +3,126 @@
 
 <mapper namespace="com.example.doum.mapper.lee.LeeMapper">
 
-<!--    마이페이지 유저 프로필 정보 가져오기-->
+    <!--    마이페이지 유저 프로필 정보 가져오기-->
     <select id="getUser">
         select U.USER_ID,U.NAME,U.INTRODUCTION,U.EMAIL,U.PHONE_NUMBER
-        from  TBL_USER U 
-        WHERE  U.USER_ID =#{userId}
-    </select>
-    
-<!--    마이페이지 유저가 작성한 게시물 목록 가져오기-->
-    <select id="getStories" resultType="LeeMyPageStoryDTO">
-    SELECT S.STORY_ID,S.TITLE, S.CONTENT, S.CREATED_DATE, S.VIEWS, SI.FILE_LOCATION AS IMAGE
-    FROM TBL_STORY S LEFT JOIN TBL_STORY_IMG SI ON S.STORY_ID=SI.STORY_ID
-    WHERE S.USER_ID =#{userId}
-    ORDER BY S.CREATED_DATE DESC
+        from  TBL_USER U
+        WHERE  U.USER_ID = #{userId}
     </select>
 
-<!--    마이페이지 총 스토리 갯수-->
-    <select id="countStories">
-        select count(*)
-        from TBL_STORY
-    </select>
-
-<!--   마이페이지 속 게시물에 달린 댓글 가져오기-->
-    <select id="getComments" resultType="LeeCommentDTO">
-        SELECT SC.STORY_ID, SC.USER_ID, SC.CONTENT
-        FROM TBL_STORY_COMMENT SC JOIN TBL_USER U ON SC.USER_ID=U.USER_ID
-        WHERE SC.STORY_ID = #{storyId}
-        ORDER BY SC.CREATED_DATE ASC
-    </select>
-
-    <!--  다음 시퀀스를 가져오는 쿼리문  -->
-    <!--  마이페이지 스토리 insert 시 사용할 예정  -->
-    <select id="getSeq" resultType="long">
-        select SEQ_STORY.nextval from dual
+    <!--    마이페이지 유저가 작성한 게시물 목록 가져오기 ㅇㅇ -->
+    <select id="getStories" >
+        SELECT S.STORY_ID,S.TITLE, S.CONTENT, S.CREATED_DATE, S.VIEWS, SI.FILE_LOCATION AS IMAGE
+        FROM TBL_STORY S LEFT JOIN TBL_STORY_IMG SI ON S.STORY_ID=SI.STORY_ID
+        WHERE S.USER_ID =#{userId}
+        ORDER BY S.CREATED_DATE DESC
     </select>
 
 
+<!--    <insert id="saveStory">-->
+<!--    INSERT INTO TBL_STORY-->
+<!--    VALUES (#{storyId}, #{Title},#{appliedVolunteerId},#{content})-->
 
-<!--  마이페이지 게시물에 달린 공감 수 가져오기-->
-    <select id="getLikes">
-        SELECT COUNT(*) AS LIKE_COUNT
-        FROM TBL_STORY_LIKE
-        WHERE STORY_ID =#{storyId}
-    </select>
-
-<!--    마이페이지 유저가 받은 리뷰 가져오기-->
-    <select id="getReviews">
-    SELECT UR.USER_REVIEW_ID, UR.CONTENT, UR.RATING, O.NAME AS ORGANIZATION_NAME
-    FROM TBL_USER_REVIEW UR JOIN TBL_ORGANIZATION O ON UR.ORGANIZATION_ID = O.ORGANIZATION_ID
-    WHERE UR.USER_ID = #{userId}
-    </select>
-
-
-<!--  마이페이지 스토리 상세보기 -->
-    <select id="getStoriesDetail" resultType="LeeMyPageStoryDTO">
-        SELECT S.STORY_ID, S.USER_ID, S.TITLE, S.CONTENT, S.CREATED_DATE, S.VIEWS,
-               AV.VOLUNTEER_ID, AV.TITLE, AV.CONTENT,
-               O.ORGANIZATION_ID, O.NAME,
-               L.CITY, L.ADDRESS
-        FROM
-            TBL_STORY S
-            JOIN TBL_APPLIED_VOLUNTEER AV ON S.APPLIED_VOLUNTEER_ID = AV.APPLIED_VOLNTEER_ID
-            JOIN TBL_USER U ON S.USER_ID = U.USER_ID
-            JOIN TBL_ORGANIZATION O ON AV.ORGANIZATION_ID = O.ORGANIZATION_ID
-            JOIN TBL_LOCATION L ON O.LOCATION_ID = L.LOCATION_ID
-        WHERE
-            S.STORY_ID = #{storyId} AND
-            S.USER_ID = #{userId}
-    </select>
-
-    <!--  마이페이지 스토리 조회 수 +1  -->
-    <update id="plusView">
-        update TBL_STORY
-        set VIEWS = VIEWS + 1
-        where STORY_ID = #{storyId}
-    </update>
-
-    <!--  마이페이지 스토리 수정하기  -->
-    <update id="updateStory">
-        update TBL_STORY
-        set TITLE = #{boardTitle},
-            CONTENT = #{boardContent},
-            UPDATE_DATE = sysdate
-        where STORY_ID = #{storyId}
-    </update>
-
-    <!-- 마이페이지 스토리 삭제하기  -->
-    <delete id="deleteStory">
-        delete from TBL_STORY
-        where STORY_ID = #{storyId}
-    </delete>
+<!--    </insert>-->
 
 
 
-<!--   Searchuser 관련 -->
+    <!-- 게시글 작성 쿼리문 -->
+<!--    <insert id="saveBoard">-->
+<!--        insert into TBL_BOARD-->
+<!--        values(#{boardId}, #{boardTitle}, #{boardContent}, 0, sysdate, sysdate, #{providerId})-->
+<!--    </insert>-->
 
 
-    <!-- 사용자 목록 조회 -->
-    <!-- 사용자 목록 조회 -->
-    <select id="selectUserList" resultType="UserDTO">
-        SELECT
-            U.USER_ID,
-            U.EMAIL,
-            U.NAME,
-            U.PHONE_NUMBER,
-            U.REGISTER_DATE,
-            U.EMAIL_APPROVE,
-            U.PHONE_APPROVE,
-            U.BIRTH_DATE,
-            U.GENDER,
-            U.INTRODUCTION,
-            (SELECT COUNT(*) FROM TBL_APPLIED_VOLUNTEER AV WHERE AV.USER_ID = U.USER_ID) AS VOLUNTEER_COUNT,
-            (SELECT AVG(R.RATING) FROM TBL_USER_REVIEW R WHERE R.USER_ID = U.USER_ID) AS AVERAGE_RATING
-        FROM
-            TBL_USER U
-    </select>
+
+<!--    &lt;!&ndash;    마이페이지 총 스토리 갯수 ㅇㅇ&ndash;&gt;-->
+<!--    <select id="countStories">-->
+<!--        select count(*)-->
+<!--        from TBL_STORY-->
+<!--    </select>-->
+
+<!--    &lt;!&ndash;   마이페이지 속 게시물에 달린 댓글 가져오기&ndash;&gt;-->
+<!--    <select id="getComments" resultType="LeeCommentDTO">-->
+<!--        SELECT SC.STORY_ID, SC.USER_ID, SC.CONTENT-->
+<!--        FROM TBL_STORY_COMMENT SC JOIN TBL_USER U ON SC.USER_ID=U.USER_ID-->
+<!--        WHERE SC.STORY_ID = #{storyId}-->
+<!--        ORDER BY SC.CREATED_DATE ASC-->
+<!--    </select>-->
+
+<!--    &lt;!&ndash;  다음 시퀀스를 가져오는 쿼리문  &ndash;&gt;-->
+<!--    &lt;!&ndash;  마이페이지 스토리 insert 시 사용할 예정  &ndash;&gt;-->
+<!--    <select id="getSeq" resultType="long">-->
+<!--        select SEQ_STORY.nextval from dual-->
+<!--    </select>-->
+
+
+
+<!--    &lt;!&ndash;  마이페이지 게시물에 달린 공감 수 가져오기&ndash;&gt;-->
+<!--    <select id="getLikes">-->
+<!--        SELECT COUNT(*) AS LIKE_COUNT-->
+<!--        FROM TBL_STORY_LIKE-->
+<!--        WHERE STORY_ID =#{storyId}-->
+<!--    </select>-->
+
+<!--    &lt;!&ndash;    마이페이지 유저가 받은 리뷰 가져오기&ndash;&gt;-->
+<!--    <select id="getReviews">-->
+<!--        SELECT UR.USER_REVIEW_ID, UR.CONTENT, UR.RATING, O.NAME AS ORGANIZATION_NAME-->
+<!--        FROM TBL_USER_REVIEW UR JOIN TBL_ORGANIZATION O ON UR.ORGANIZATION_ID = O.ORGANIZATION_ID-->
+<!--        WHERE UR.USER_ID = #{userId}-->
+<!--    </select>-->
 
 
 
 
+<!--    &lt;!&ndash;  마이페이지 스토리 조회 수 +1  &ndash;&gt;-->
+<!--    <update id="plusView">-->
+<!--        update TBL_STORY-->
+<!--        set VIEWS = VIEWS + 1-->
+<!--        where STORY_ID = #{storyId}-->
+<!--    </update>-->
+
+<!--    &lt;!&ndash;  마이페이지 스토리 수정하기  &ndash;&gt;-->
+<!--    <update id="updateStory">-->
+<!--        update TBL_STORY-->
+<!--        set TITLE = #{boardTitle},-->
+<!--            CONTENT = #{boardContent}-->
+<!--        where STORY_ID = #{storyId}-->
+<!--    </update>-->
+
+<!--    &lt;!&ndash; 마이페이지 스토리 삭제하기  &ndash;&gt;-->
+<!--    <delete id="deleteStory">-->
+<!--        delete from TBL_STORY-->
+<!--        where STORY_ID = #{storyId}-->
+<!--    </delete>-->
 
 
 
+<!--    &lt;!&ndash;   Searchuser 관련 &ndash;&gt;-->
 
 
 
+<!--    &lt;!&ndash; 사용자 목록 조회 &ndash;&gt;-->
+<!--    <select id="selectUserList" resultType="UserDTO">-->
+<!--        SELECT-->
+<!--            U.USER_ID,-->
+<!--            U.EMAIL,-->
+<!--            U.NAME,-->
+<!--            U.PHONE_NUMBER,-->
+<!--            U.REGISTER_DATE,-->
+<!--            U.EMAIL_APPROVE,-->
+<!--            U.PHONE_APPROVE,-->
+<!--            U.BIRTH_DATE,-->
+<!--            U.GENDER,-->
+<!--            U.INTRODUCTION,-->
+<!--            (SELECT COUNT(*) FROM TBL_APPLIED_VOLUNTEER AV WHERE AV.USER_ID = U.USER_ID) AS VOLUNTEER_COUNT,-->
+<!--            (SELECT AVG(R.RATING) FROM TBL_USER_REVIEW R WHERE R.USER_ID = U.USER_ID) AS AVERAGE_RATING-->
+<!--        FROM-->
+<!--            TBL_USER U-->
+<!--    </select>-->
 
 
 
-
-
-
-
-
-
-
-
-
-
-
+<!--    &lt;!&ndash;    게시물 상세보기  select &ndash;&gt;-->
 
 
 

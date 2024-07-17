@@ -7,10 +7,7 @@ import com.example.doum.service.lee.LeeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
@@ -26,7 +23,7 @@ public class LeeController {
     @GetMapping("/writingStory")
     public String writingStory(Model model) {
         model.addAttribute("story", new LeeMyPageStoryDTO());
-        return "myPage/writingStory";
+        return "lee/writingStory";
     }
     //스토리 작성 처리
     @PostMapping("writingStory")
@@ -36,6 +33,24 @@ public class LeeController {
        // LeeService.saveStory(story,files);
         return "redirect:/lee/myPage-user";
     }
+
+
+    //스토리 상세보기
+//    @GetMapping("/story(others)/{storyId}")
+//    public String story(Model model, @PathVariable("storyId") String storyId) {
+//
+//
+//
+//
+//    }
+
+
+
+
+
+
+
+
 
 
 
