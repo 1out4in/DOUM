@@ -1,5 +1,6 @@
 package com.example.doum.domain.vo;
 
+import com.example.doum.domain.dto.lee.LeeMyPageStoryDTO;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -33,5 +34,21 @@ public class StoryVO {
         this.createdDate = createdDate;
         this.views = views;
     }
+
+    //entity 추가 0720
+    public static StoryVO toEntity(LeeMyPageStoryDTO storyDTO) {
+        return StoryVO.builder().storyId(storyDTO.getStoryId())
+                .userId(storyDTO.getUserId())
+                .anonymousId(storyDTO.getAnonymousId())
+                .appliedVolunteerId(storyDTO.getAppliedVolunteerId())
+                .title(storyDTO.getTitle())
+                .content(storyDTO.getContent())
+                .createdDate(storyDTO.getCreatedDate())
+                .views((long) storyDTO.getView())
+                .build();
+
+    }
+
+
 }
 

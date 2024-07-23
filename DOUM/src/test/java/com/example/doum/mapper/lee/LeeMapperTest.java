@@ -18,7 +18,7 @@ class LeeMapperTest {
     @Test
     void test(){
 //        log.info("{}", leeMapper.getUser("1").toString());
-        log.info("{}",leeMapper.getStories("1").toString());
+        log.info("{}",leeMapper.getStories(Long.valueOf("1")).toString());
     }
 
 }

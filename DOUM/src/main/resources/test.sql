@@ -149,6 +149,95 @@ FROM
 
 
 
+SELECT
+    S.STORY_ID,
+    S.TITLE,
+    S.CONTENT,
+    U.NAME,
+    S.VIEWS,
+    S.CREATED_DATE,
+    U.USER_ID,
+    (SELECT COUNT(*) FROM TBL_STORY_IMG SI WHERE SI.STORY_ID = S.STORY_ID) AS IMG_COUNT
+FROM
+    TBL_STORY S JOIN TBL_USER U ON U.USER_ID = S.USER_ID
+where S.STORY_ID = 1;
+
+
+
+select
+    STORY_IMG_ID,
+    FILE_LOCATION,
+    STORY_ID
+from
+    TBL_STORY_IMG
+where STORY_ID =1;
+
+
+
+select
+    STORY_IMG_ID,
+    FILE_LOCATION,
+    STORY_ID
+from
+    TBL_STORY_IMG
+where STORY_IMG_ID = 1;
+
+
+select U.name, SC.*
+from TBL_USER U join TBL_STORY_COMMENT SC
+                     on U.USER_ID = SC.USER_ID
+                         and STORY_ID = 1
+order by CREATED_DATE desc;
+
+
+
+
+
+
+
+insert into TBL_STORY_COMMENT (STORY_COMMENT_ID, STORY_ID, USER_ID, CONTENT, CREATED_DATE)
+values (seq_story_comment.nextval, 2, 2, '너무 좋아보여요', sysdate);
+
+
+
+
+
+delete from TBL_STORY_COMMENT
+where STORY_COMMENT_ID=2;
+
+
+
+
+
+update TBL_STORY_COMMENT
+set
+    CONTENT = 'looks great! very goooood ~ '
+where STORY_COMMENT_ID = 1;
+
+
+
+INSERT INTO TBL_STORY
+VALUES (4, 1,1, 1,'유기견 봉사 다녀왔습니다 0720','너무 힘들었습니다',sysdate, 0);
+
+select *
+from TBL_STORY;
+
+select count(*)
+from TBL_STORY;
+
+
+select VIEWS
+from TBL_STORY
+where STORY_ID = 1;
+
+
+update TBL_STORY
+set TITLE = '도서관 봉사간 날',
+            CONTENT = '힘들었습니다'
+where STORY_ID = 4;
+
+select *
+from TBL_STORY;
 
 
 

@@ -1,5 +1,6 @@
 package com.example.doum.domain.vo;
 
+import com.example.doum.domain.dto.lee.LeeUsersDTO;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -49,4 +50,28 @@ public class UserVO {
         this.provider = provider;
         this.role = role;
     }
+    //entity 추가 0722 이현수
+    public static UserVO toEntity(LeeUsersDTO usersDTO) {
+
+        return UserVO.builder().userId(usersDTO.getUserId())
+                .locationId(usersDTO.getLocationId())
+                .email(usersDTO.getEmail())
+                .password(usersDTO.getPassword())
+                .name(usersDTO.getName())
+                .phoneNumber(usersDTO.getPhoneNumber())
+                .registerDate(usersDTO.getRegisterDate())
+                .emailApprove(usersDTO.getEmailApprove())
+                .phoneApprove(usersDTO.getPhoneApprove())
+                .birthDate(usersDTO.getBirthDate())
+                .gender(usersDTO.getGender())
+                .providerId(usersDTO.getProviderId())
+                .provider(usersDTO.getProvider())
+                .role(usersDTO.getRole())
+                .build();
+
+    }
+
+
+
+
 }

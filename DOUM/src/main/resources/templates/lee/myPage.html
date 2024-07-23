@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>MyPage</title>
+    <link rel="stylesheet" th:href="@{/css/lee/myPage(user).css}" />
+</head>
+<body>
+<header class="common-width">
+    <h1>MyPage | DAUM</h1>
+    <div class="nav-right">
+        <form action="/search" method="get">
+            <input type="text" name="query" placeholder="Search users...">
+            <button type="submit"><i class="fas fa-search"></i></button>
+        </form>
+        <button type="button"><i class="fas fa-bell icon"></i></button>
+    </div>
+</header>
+<main style="width: 1200px;" class="main-container common-width">
+    <section class="basic-info">
+        <h2>ABOUT ME</h2>
+        <div class="info-wrapper">
+            <div class="photo">
+<!--                <img th:each="image : ${storyImg}" th:src="@{${image.fileLocation}}" alt="게시물 이미지">-->
+
+<!--                                <img th:src="${user.profilePic}" alt="프로필 사진">-->
+<!--                <img th:src="*{profilePic}" alt="프로필 사진">-->
+                <img th:src="@{${user.profilePic}}" alt="프로필 사진">
+
+            </div>
+            <div class="text-info">
+                <h3>
+                    <span style="font-size: larger;" th:text="${user.name}"></span>님의 마이페이지
+                    <span style="font-size: x-small;">★4.3</span>
+                </h3>
+                <div style="margin-bottom: 50px;" class="basic-info-short">
+<!--                    <p><strong>나이</strong> <span th:text="${user.age}">25</span></p>-->
+                    <p><strong>주 봉사활동 지역</strong> <span th:text="${user.locationId}">부산</span></p>
+                    <p><strong>성별</strong> <span th:text="${user.gender}">여</span></p>
+                    <p><strong>이메일</strong> <span th:text="${user.email}">doum@gmail.com</span></p>
+                    <p>
+                        <strong>별점</strong> 4.3
+                        <button style="background-color: #ddd; border: none;">리뷰 상세보기</button>
+                    </p>
+                </div>
+                <div class="basic-info-long">
+                    <p th:text="${user.introduction}"></p>
+<!--                    <div th:if="${user.userId == loggedInUserId}">-->
+<!--                        <button class="btn_tistory" id="edit-intro-btn">자기소개글 수정</button>-->
+<!--                        <button class="btn_tistory">봉사 글 작성하기</button>-->
+<!--                        <button class="btn_tistory" id="profile-button-pic">프로필 사진 수정</button>-->
+<!--                    </div>-->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>VOLUNTEER HISTORY</h2>
+        <div class="contest-list">
+            <div th:each="story, storyStat : ${stories}" class="contest-item"
+                 th:data-title="${story.title}"
+                 th:data-date="${#temporals.format(story.createdDate,'yyyy.MM.dd')}"
+                 th:data-org="${story.content}">
+
+<!--                <a th:href="@{/story(others).html/{id}(id=${story.storyId})}">-->
+<!--                <a th:href="@{/story.html/{id}(id=${story.storyId})}">-->
+                <a th:href="@{/Lee/story/{id}(id=${story.storyId})}">
+
+
+<!--                <img th:src="${storyImg.}" alt="Story Image">-->
+<!--                <img th:each="image : ${storyImg}" th:src="@{${image.fileLocation}}" alt="게시물 이미지">-->
+                <img th:src="@{${storyImg[0].fileLocation}}" alt="게시물 이미지">
+
+
+                <div class="contest-list-text">
+                    <h3 th:text="${story.title}">[도서관 책 정리-수서도서관] 0211321</h3>
+                    <p th:text="${#temporals.format(story.createdDate,'yyyy.MM.dd')}">2023.04.21</p>
+                    <p th:text="${story.content}">수서도서관</p>
+                </div>
+                </a>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <img src="../img/도움로고.png" alt="DAUM Logo">
+    <p>Ministry of the Interior and Safety. All Rights Reserved.</p>
+</footer>
+
+<!--<script th:src="@{/js/myPage.js}"></script>-->
+</body>
+</html>

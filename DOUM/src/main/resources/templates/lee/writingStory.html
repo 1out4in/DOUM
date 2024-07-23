@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>게시물을 작성해요</title>
@@ -9,6 +9,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" th:href="@{/css/lee/writingStory.css}" />
+<!--    <link rel="stylesheet" href="@{/css/lee/writingStory.css}" />-->
+
+
+
 </head>
 <body>
 
@@ -25,28 +29,59 @@
 <div class="container">
     <h3>오늘 봉사활동은 어땠나요 ? </h3>
     <br>
+<!--타임리프 추가 -->
+<!--    <form method="post" id="myForm" th:action="@{/Lee/writingStory}" enctype="multipart/form-data" th:object="${story}">-->
+<!--        <div class="selection-box">-->
+<!--            <label for="volunteer-type">봉사 선택</label>-->
+<!--            <select id="volunteer-type">-->
+<!--                <option value="environment">[친환경체험교육 지구 그린데이] 기후위기와 지속가능한 사회</option>-->
+<!--                <option value="education">[친환경체험교육 지구 그린데이] 기후위기와 지속가능한 사회</option>-->
+<!--                <option value="community">[친환경체험교육 지구 그린데이] 기후위기와 지속가능한 사회</option>-->
+<!--                <option value="health">[친환경체험교육 지구 그린데이] 기후위기와 지속가능한 사회</option>-->
+<!--            </select>-->
 
-    <form>
-        <div class="selection-box">
-            <label for="volunteer-type">봉사 선택</label>
-            <select id="volunteer-type">
-                <option value="environment">[친환경체험교육 지구 그린데이] 기후위기와 지속가능한 사회</option>
-                <option value="education">[친환경체험교육 지구 그린데이] 기후위기와 지속가능한 사회</option>
-                <option value="community">[친환경체험교육 지구 그린데이] 기후위기와 지속가능한 사회</option>
-                <option value="health">[친환경체험교육 지구 그린데이] 기후위기와 지속가능한 사회</option>
-            </select>
 
 
-            <div class="form-group">
-                <label for="attachment">사진 첨부</label>
-                <input type="file" id="attachment" name="attachment">
-            </div>
-            <div class="form-group">
-                <label for="content">글 내용</label>
-                <textarea id="content" name="content" rows="10"></textarea>
-            </div>
-            <button class="fin_btn" type="button">작성 완료</button>
-    </form>
+            <form method="post" id="myForm"  enctype="multipart/form-data">
+                <div class="selection-box">
+                    <label for="volunteer-type">봉사 선택</label>
+                    <select id="volunteer-type">
+                        <option value="environment">[친환경체험교육 지구 그린데이] 기후위기와 지속가능한 사회</option>
+                        <option value="education">[친환경체험교육 지구 그린데이] 기후위기와 지속가능한 사회</option>
+                        <option value="community">[친환경체험교육 지구 그린데이] 기후위기와 지속가능한 사회</option>
+                        <option value="health">[친환경체험교육 지구 그린데이] 기후위기와 지속가능한 사회</option>
+                    </select>
+
+
+
+
+                    <div class="form-group">
+                        <label for="attachment">사진 첨부</label>
+                        <input type="file" id="attachment" name="attachment">
+                    </div>
+                    <div class="form-group">
+                        <label for="content">글 내용</label>
+                        <textarea id="content" name="content" rows="10"
+                                  placeholder="Content" ></textarea>
+                    </div>
+                    <button class="fin_btn" type="button">작성 완료</button>
+
+
+
+
+<!--            <div class="form-group">-->
+<!--                <label for="attachment">사진 첨부</label>-->
+<!--                <input type="file" id="attachment" name="attachment">-->
+<!--            </div>-->
+<!--            <div class="form-group">-->
+<!--                <label for="content">글 내용</label>-->
+<!--                <textarea id="content" name="content" rows="10"-->
+<!--                placeholder="Content" th:field="*{content}"></textarea>-->
+<!--            </div>-->
+<!--            <button class="fin_btn" type="button">작성 완료</button>-->
+<!--                    <input type="hidden" th:value="${#authentication.getPrincipal().getUserId()}" name="userId">-->
+
+            </form>
 
 
 </div>
