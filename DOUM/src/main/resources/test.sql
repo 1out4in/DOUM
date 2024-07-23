@@ -76,7 +76,21 @@ FROM
 
 
 
+select *
+    from TBL_ORGANIZATION;
 
+
+
+INSERT INTO tbl_organization (
+    organization_id, location_id, email, password, name,
+    phone_number, register_date, email_approve, phone_approve, manager_name,
+    manager_phone_number, file_location, status, provider_id, provider, role
+)
+VALUES (
+           8,7, '#{email}', '1234' ,
+           '#{name}', '1111',to_date('2024-07-12'),11, 94, '#{managerName}',
+           '1234', '/files/org1/}','Inactive', '123','2', '#{role}'
+       );
 
 
 
