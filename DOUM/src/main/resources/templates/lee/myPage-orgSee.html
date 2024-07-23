@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/lee/myPage(orgSee).css}" />
 </head>
 <body>
 <header class="common-width">
@@ -108,6 +109,8 @@
                 </div>
             </div>
 
+
+
             <!-- 게시글 더 추가할거면 여기서 더 추가  -->
         </div>
     </section>
@@ -118,5 +121,76 @@
     <p>Ministry of the Interior and Safety.All Rights reserved.</p>
 </footer>
 
+
+
+
+
+<script>
+
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const modal = document.getElementById("modal");
+        const modalImg = document.getElementById("modal-img");
+        const modalTitle = document.getElementById("modal-title");
+        const modalDate = document.getElementById("modal-date");
+        const modalOrg = document.getElementById("modal-org");
+        const closeBtn = document.getElementsByClassName("close")[0];
+        const commentForm = document.getElementById("comment-form");
+
+        const badgeModal = document.getElementById("badge-modal");
+        const badgeModalImg = document.getElementById("badge-modal-img");
+        const badgeModalTitle = document.getElementById("badge-modal-title");
+        const badgeModalDescription = document.getElementById("badge-modal-description");
+        const badgeCloseBtn = document.getElementsByClassName("badge-close")[0];
+
+
+        document.querySelectorAll('.contest-item').forEach(item => {
+            item.addEventListener('click', () => {
+                modalImg.src = item.getAttribute('data-img');
+                modalTitle.innerText = item.getAttribute('data-title');
+                modalDate.innerText = item.getAttribute('data-date');
+                modalOrg.innerText = item.getAttribute('data-org');
+                modal.style.display = "block";
+            });
+        });
+
+        document.querySelectorAll('.badges img').forEach(item => {
+            item.addEventListener('click', () => {
+                badgeModalImg.src = item.src;
+                badgeModalTitle.innerText = item.getAttribute('data-title');
+                badgeModalDescription.innerText = item.getAttribute('data-description');
+                badgeModal.style.display = "block";
+            });
+        });
+
+
+
+
+        closeBtn.onclick = function() {
+            modal.style.display = "none";
+        }
+        badgeCloseBtn.onclick = function() {
+            badgeModal.style.display = "none";
+        }
+
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+            if (event.target == badgeModal) {
+                badgeModal.style.display = "none";
+            }
+        }
+
+        commentForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const comment = document.getElementById("comment").value;
+            alert("댓글이 추가되었습니다: " + comment);
+            document.getElementById("comment").value = "";
+        });
+    });
+
+</script>
 </body>
 </html>

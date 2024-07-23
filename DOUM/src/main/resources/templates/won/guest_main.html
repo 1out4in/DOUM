@@ -5,8 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>main</title>
     <link rel="stylesheet" th:href="@{/css/won/guest_main.css}">
-<!--    <link rel="stylesheet" href="nav.css">-->
-<!--    <link rel="stylesheet" href="footer.css">-->
+    <link rel="stylesheet" th:href="@{/css/won/nav.css}">
+    <link rel="stylesheet" th:href="@{/css/won/footer.css}">
+
+
+
 
     
 </head>
@@ -23,9 +26,9 @@
            <span><a href="">고객센터</a></span>
           <span><a href="registered-volunteer.html">내가 등록한 봉사</a></span>
      <span id="toggleButton" class="menu-item">전체메뉴</span> 
-     <span id="bell"><a href="#">  🛎</a></span>
+     <span id="bell"><a href="#">🛎</a></span>
      <span id="login"><a href="login_test.html">로그인</a></span>
-     <span id="join"><a href="join2.html">회원가입</a></span>
+     <span id="join"><a th:href="@{/Won/org_join}">회원가입</a></span>
  </div> 
 
  
@@ -118,7 +121,7 @@
         <p class="text">
           대전중구치매안심센터 자원봉사자 모집(쉼터)오후
         </p>
-              
+
               <p class="font">▷모집인원:5명/1일</p>
               <p class="font">▷모집기간:2024:07.20~2024.07.29</p>
             <p class="font">▷봉사기간:2024.04.20~2024.04.17</p></div>
@@ -216,34 +219,36 @@
 </div>
 
         <div class="line"></div>
-      
-
-          <div class="board-items2">
+            <div class="board-items2">
             <p class="p">
               익명 게시판
             <span class="plus1">
               더보기
             </span>
-
             </p>
-              
-          
-        
-        <br>
+                <br>
 
       
 <a href="#"> 
 
   
-  [공지]국민비서 서비스 중단 안내
+
     <br>
-    [공지][NICE평가정보] KT 휴대폰 본인 확인 일시
-    <br>
-    [공지][온기나눔 범국민 캠페인]]
-    <br>
-    [공지]1365포털 인증 자원봉사자 혜택제공 안내
-    <br>
-    [공지] 온기나누 범국민 캠페인 추진안내
+    <p>
+   제목  :
+    </p>>
+
+    <p>
+
+    </p>>
+
+    <p>
+
+    </p>>
+
+    <p>
+
+    </p>>
 </a>
 
 </div>
@@ -391,86 +396,87 @@
 </body>
 </html>
 
+
 <script>
     /*
   div사이즈 동적으로 구하기
 */
-const outer = document.querySelector('.outer');
-const innerList = document.querySelector('.inner-list');
-const inners = document.querySelectorAll('.inner');
-let currentIndex = 0; // 현재 슬라이드 화면 인덱스
+    const outer = document.querySelector('.outer');
+    const innerList = document.querySelector('.inner-list');
+    const inners = document.querySelectorAll('.inner');
+    let currentIndex = 0; // 현재 슬라이드 화면 인덱스
 
-inners.forEach((inner) => {
-  inner.style.width = `${outer.clientWidth}px`; // inner의 width를 모두 outer의 width로 만들기
-})
+    inners.forEach((inner) => {
+        inner.style.width = `${outer.clientWidth}px`; // inner의 width를 모두 outer의 width로 만들기
+    })
 
-innerList.style.width = `${outer.clientWidth * inners.length}px`; // innerList의 width를 inner의 width * inner의 개수로 만들기
+    innerList.style.width = `${outer.clientWidth * inners.length}px`; // innerList의 width를 inner의 width * inner의 개수로 만들기
 
-/*
-  버튼에 이벤트 등록하기
-*/
-const buttonLeft = document.querySelector('.button-left');
-const buttonRight = document.querySelector('.button-right');
+    /*
+      버튼에 이벤트 등록하기
+    */
+    const buttonLeft = document.querySelector('.button-left');
+    const buttonRight = document.querySelector('.button-right');
 
-buttonLeft.addEventListener('click', () => {
-  currentIndex--;
-  currentIndex = currentIndex < 0 ? 0 : currentIndex; // index값이 0보다 작아질 경우 0으로 변경
-  innerList.style.marginLeft = `-${outer.clientWidth * currentIndex}px`; // index만큼 margin을 주어 옆으로 밀기
-  clearInterval(interval); // 기존 동작되던 interval 제거
-  interval = getInterval(); // 새로운 interval 등록
-});
+    buttonLeft.addEventListener('click', () => {
+        currentIndex--;
+        currentIndex = currentIndex < 0 ? 0 : currentIndex; // index값이 0보다 작아질 경우 0으로 변경
+        innerList.style.marginLeft = `-${outer.clientWidth * currentIndex}px`; // index만큼 margin을 주어 옆으로 밀기
+        clearInterval(interval); // 기존 동작되던 interval 제거
+        interval = getInterval(); // 새로운 interval 등록
+    });
 
-buttonRight.addEventListener('click', () => {
-  currentIndex++;
-  currentIndex = currentIndex >= inners.length ? inners.length - 1 : currentIndex; // index값이 inner의 총 개수보다 많아질 경우 마지막 인덱스값으로 변경
-  innerList.style.marginLeft = `-${outer.clientWidth * currentIndex}px`; // index만큼 margin을 주어 옆으로 밀기
-  clearInterval(interval); // 기존 동작되던 interval 제거
-  interval = getInterval(); // 새로운 interval 등록
-});
+    buttonRight.addEventListener('click', () => {
+        currentIndex++;
+        currentIndex = currentIndex >= inners.length ? inners.length - 1 : currentIndex; // index값이 inner의 총 개수보다 많아질 경우 마지막 인덱스값으로 변경
+        innerList.style.marginLeft = `-${outer.clientWidth * currentIndex}px`; // index만큼 margin을 주어 옆으로 밀기
+        clearInterval(interval); // 기존 동작되던 interval 제거
+        interval = getInterval(); // 새로운 interval 등록
+    });
 
-/*
-  주기적으로 화면 넘기기
-*/
-const getInterval = () => {
-  return setInterval(() => {
-    currentIndex++;
-    currentIndex = currentIndex >= inners.length ? 0 : currentIndex;
-    innerList.style.marginLeft = `-${outer.clientWidth * currentIndex}px`;
-  }, 3000);
-}
-
-let interval = getInterval(); // interval 등록
-
-
-
-document.addEventListener('DOMContentLoaded', function() {
-  var toggleButton = document.getElementById('toggleButton');
-  var nav = document.querySelector('nav');
-  
-  toggleButton.addEventListener('click', function() {
-    // nav의 display를 toggle하여 보이거나 숨김
-    nav.style.display = (nav.style.display === 'none') ? 'block' : 'none';
-  });
-
-  // 각 메뉴 아이템에 클릭 이벤트 추가
-  var volunteerInfo = document.getElementById('volunteerInfo');
-  var volunteerJoin = document.getElementById('volunteerJoin');
-  var volunteerCenter = document.getElementById('volunteerCenter');
-  var myVolunteer = document.getElementById('myVolunteer');
-
-  document.getElementById('toggleButton').addEventListener('click', function() {
-    if (volunteerInfo.style.display === 'none') {
-      volunteerInfo.style.display = 'block';
-      volunteerJoin.style.display = 'block';
-      volunteerCenter.style.display = 'block';
-      myVolunteer.style.display = 'block';
-    } else {
-      volunteerInfo.style.display = 'none';
-      volunteerJoin.style.display = 'none';
-      volunteerCenter.style.display = 'none';
-      myVolunteer.style.display = 'none';
+    /*
+      주기적으로 화면 넘기기
+    */
+    const getInterval = () => {
+        return setInterval(() => {
+            currentIndex++;
+            currentIndex = currentIndex >= inners.length ? 0 : currentIndex;
+            innerList.style.marginLeft = `-${outer.clientWidth * currentIndex}px`;
+        }, 3000);
     }
-  });
-});
+
+    let interval = getInterval(); // interval 등록
+
+
+
+    document.addEventListener('DOMContentLoaded', function() {
+        var toggleButton = document.getElementById('toggleButton');
+        var nav = document.querySelector('nav');
+
+        toggleButton.addEventListener('click', function() {
+            // nav의 display를 toggle하여 보이거나 숨김
+            nav.style.display = (nav.style.display === 'none') ? 'block' : 'none';
+        });
+
+        // 각 메뉴 아이템에 클릭 이벤트 추가
+        var volunteerInfo = document.getElementById('volunteerInfo');
+        var volunteerJoin = document.getElementById('volunteerJoin');
+        var volunteerCenter = document.getElementById('volunteerCenter');
+        var myVolunteer = document.getElementById('myVolunteer');
+
+        document.getElementById('toggleButton').addEventListener('click', function() {
+            if (volunteerInfo.style.display === 'none') {
+                volunteerInfo.style.display = 'block';
+                volunteerJoin.style.display = 'block';
+                volunteerCenter.style.display = 'block';
+                myVolunteer.style.display = 'block';
+            } else {
+                volunteerInfo.style.display = 'none';
+                volunteerJoin.style.display = 'none';
+                volunteerCenter.style.display = 'none';
+                myVolunteer.style.display = 'none';
+            }
+        });
+    });
 
 </script>

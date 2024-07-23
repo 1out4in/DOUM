@@ -6,16 +6,33 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/jung")
 @RequiredArgsConstructor
 public class JungController {
     @GetMapping("/announcement")
     public String announcement(Model model) {
+        /*
+        * 총 공지수 구하기
+        * 총 페이지수 구하기
+        * 공지사항 가져오기(검색 포함)
+        *
+        * 모델로 넘겨주기
+        * */
         return "/jung/announcement";
     }
+
     @GetMapping("/anonymous")
     public String anonymous(Model model) {
+        /*
+         * 총 게시글수 구하기
+         * 총 페이지수 구하기
+         * 게시글 가져오기 (정렬 포함
+         *
+         * 모델로 넘겨주기
+         * */
         return "/jung/anonymous";
     }
 
