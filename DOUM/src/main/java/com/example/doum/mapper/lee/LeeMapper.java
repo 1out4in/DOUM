@@ -1,4 +1,4 @@
-package com.example.doum.mapper.lee;
-
-public interface LeeMapper {
-}
+//package com.example.doum.mapper.lee;
+//
+//public interface LeeMapper {
+//}

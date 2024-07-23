@@ -16,7 +16,6 @@ public class LocationVO {
     private String address;
     private String detail;
 
-
     // Parameterized constructor
     @Builder
     public LocationVO(Long locationId, String city, String address, String detail) {

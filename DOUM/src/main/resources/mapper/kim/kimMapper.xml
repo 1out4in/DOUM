@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.doum.mapper.kim.kimMapper">
+
+<!--    공지사항 상세보기-->
+<!--    <select id="selectDetailAnnouncement" resultType="kimDetailAnnouncementDTO">-->
+<!--        select-->
+<!--            announcement_id,-->
+<!--            title,-->
+<!--            created_date,-->
+<!--            views,-->
+<!--            content-->
+<!--        from tbl_announcement-->
+<!--    </select>-->
+
+<!--    기관 상세보기-->
+    <select id="selectOrtDetail" resultType="KimOrtDetailDTO">
+        select
+            organization_id,
+            location_id,
+            name,
+            manager_name,
+            manager_phone_number,
+            phone_number,
+            email
+        from tbl_organization
+        where organization_id = #{organizationId}
+    </select>
+
+<!--    기관 상세보기 리뷰 모달-->
+<!--    <select id="selectORTReview" resultType="kimOrtDetailDTO">-->
+<!--        select-->
+<!--            organization_review_id,-->
+<!--            organization_id,-->
+<!--            user_id,-->
+<!--            content,-->
+<!--            rating-->
+<!--        from tbl_organization_review-->
+<!--    </select>-->
+
+<!--        기관 정보 수정(일단 출력을 위해 select 로 만들어둠)-->
+        <select id="updateEditOrtList" resultType="KimEditOrtListDTO">
+          select
+            organization_id,
+            provider_id,
+            name,
+            register_date,
+            location_id,
+            email,
+            manager_phone_number,
+            phone_number,
+            email_approve,
+            phone_approve
+          from tbl_organization
+          where organization_id = #{organizationId}
+        </select>
+
+    <!--    유저 정보 수정(일단 출력을 위해 select 로 만들어둠)-->
+    <select id="updateEditUserList" resultType="KimEditUserListDTO">
+        select
+            user_id,
+            provider_id,
+            location_id,
+            register_date,
+            name,
+            birth_date,
+            gender,
+            phone_number,
+            email,
+            email_approve,
+            phone_approve
+        from tbl_user
+        where user_id = #{userId}
+    </select>
+
+<!--    봉사글 등록하기-->
+<!--    <select id="selectRegistration" resultType="kimRegistrationDTO">-->
+<!--        select-->
+<!--            v.title,-->
+<!--            v.organization_id,-->
+<!--            v.content,-->
+<!--            v.recruit_start_date,-->
+<!--            v.recruit_end_date,-->
+<!--            v.location_id,-->
+<!--            v.recruit_number,-->
+<!--            v.volunteer_date,-->
+<!--            v.category,-->
+<!--            o.manager_name,-->
+<!--            o.manager_phone_number,-->
+<!--            v.is_adult_allowed,-->
+<!--            v.is_teen_allowed,-->
+<!--            v.file_location-->
+<!--        from tbl_volunteer v join tbl_organization o on v.organization_id = o.organization_id-->
+<!--            where v.organization_id = #{organizationId}-->
+<!--    </select>-->
+
+
+<!--&lt;!&ndash;    봉사글 상세보기&ndash;&gt;-->
+<!--    <select id="selectViewDetailVol" resultType="kimViewDetailVolDTO">-->
+<!--        select-->
+<!--            title,-->
+<!--            recruit_stert_date,-->
+<!--            recruit_end_date,-->
+<!--            volunteer_date,-->
+<!--            category,-->
+<!--            is_adult_allowen,-->
+<!--            is_teen_allowen,-->
+<!--            o.location_id,-->
+<!--            target,-->
+<!--            is_online,-->
+<!--            content-->
+<!--            o.manager_name,-->
+<!--            o.manager_phone_number-->
+<!--        from tbl_volunteer join tbl_organization-->
+<!--    </select>-->
+
+<!--&lt;!&ndash;    익명 게시판 상세보기&ndash;&gt;-->
+<!--    <select id="selectDetailAnonymous" resultType="kimDetailAnonymousDTO">-->
+<!--        select-->
+<!--            title,-->
+<!--            anonymous_comment_id,-->
+<!--            anonymous_id,-->
+<!--            user_id,-->
+<!--            content,-->
+<!--            created_date,-->
+<!--            views-->
+<!--        from tbl_anonymous join tbl_anonymous_comment-->
+<!--    </select>-->
+</mapper>

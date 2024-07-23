@@ -4,11 +4,11 @@
 <mapper namespace="com.example.doum.mapper.lee.MyPageMapper">
 
 
-<!-- 게시물 작성 쿼리문 -->
-<insert id="saveStory">
-    insert into TBL_BOARD
-    values(#{boardId}, #{boardTitle}, #{boardContent}, 0, sysdate, sysdate, #{providerId})
-</insert>
+<!--&lt;!&ndash; 게시물 작성 쿼리문 &ndash;&gt;-->
+<!--<insert id="saveStory">-->
+<!--    insert into TBL_BOARD-->
+<!--    values(#{boardId}, #{boardTitle}, #{boardContent}, 0, sysdate, sysdate, #{providerId})-->
+<!--</insert>-->
 
 
 

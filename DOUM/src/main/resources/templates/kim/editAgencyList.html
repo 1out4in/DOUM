@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>기관 정보 수정하기</title>
-    <link rel="stylesheet" href="edit-Agency-List.css">
+    <link rel="stylesheet" th:href="@{/css/kim/editAgencyList.css}">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet" />
 </head>
 <body>
@@ -16,7 +16,7 @@
     <div id="contents"> <!-- side바를 만들지 말지 회의중이라 왼쪽에 빈곳이 있음 -->
         <div class="content" id="content">
             <div class="content_header">
-                <h2 class="top_title">기본 정보</h2>
+                <h2 class="top_title">기관 정보 수정하기</h2>
             </div>
 
             <!-- 등록글 제목 -->
@@ -30,19 +30,19 @@
 
                             <!-- 등록글 내역 -->
                             <div class="board_data type2">
-                                <div class="group group_dl1">
+                                <div class="group group_dl1" th:object="${updateOrtList}">
                                     <dl>
                                         <dt>아이디</dt>
-                                        <dd>DOUM0011</dd>
+                                        <dd ></dd>
 
                                         <dt>회원번호</dt>
-                                        <dd>27190508</dd>
+                                        <dd th:text="*{organization_id}"></dd>
 
-                                        <dt class="name">기관명</dt>
-                                        <dd>00센터</dd>
+                                        <dt class="name">유저이름</dt>
+                                        <dd th:text="*{name}"></dd>
 
                                         <dt>계정생성일</dt>
-                                        <dd>1999-02-08</dd>
+                                        <dd th:text="*{register_date}"></dd>
 
                                         <dt class="location">※주소</dt>
                                         <!-- <dd>
