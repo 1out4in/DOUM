@@ -11,14 +11,14 @@ public class WonJoinOrgDTO {
 
     // 기관 테이블
     private Long organizationId;
-    private Long  locarionId;
-    private String eail;
+    private Long  locationId;
+    private String email;
     private String password;
     private String name;
     private Long  phoneNumber;
     private LocalDateTime resisterDate;
-    private Long eailApprove;
-    private Long   privatephoneApprove;
+    private Long emailApprove;
+    private Long   privatePhoneApprove;
 
     private String managerName;
     private String managerPhoneNumber;

@@ -3,16 +3,13 @@ package com.example.doum.domain.dto.won;
 import lombok.Data;
 import org.springframework.stereotype.Component;
 
-import java.time.LocalDateTime;
-
 @Component
 @Data
-public class WonAnonymousDTO {
-    private Long anonymousId;
+public class userRiewDTO {
+    private Long userReviewId;
     private Long userId;
-    private String title;
+    private Long orgazizationId;
     private String content;
-    private LocalDateTime createdDate;
-    private Long views;
+    private Long Rating;
 
 }
