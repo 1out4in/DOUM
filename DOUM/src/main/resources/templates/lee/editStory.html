@@ -28,12 +28,20 @@
     <h3>오늘 봉사활동은 어땠나요 ? - 스토리 수정 - </h3>
     <br>
 
-    <form action="/Lee/updateStory" method="post">
+<!--    <form action="/Lee/updateStory" method="post">-->
+    <form method="post" th:action="@{Lee/editStory}"  enctype="multipart/form-data" th:object="${story}">
+<!--    <form method="post" th:action="@{Lee/editStory}"  enctype="multipart/form-data" th:object="*{story}">-->
+
+
         <input type="hidden" name="storyId" value="1">
         <input type="hidden" name="userId" value="1">
         <div>
             <label for="title">제목</label>
-            <input id="title" name="title" th:value="${story.title}">
+<!--            <input id="title" name="title" th:value="${story.title}">-->
+<!--            <input id="title" name="title" th:field="${story.title}">-->
+
+            <input id="title" name="title" th:field="*{title}">
+
 
 
 
@@ -47,9 +55,10 @@
         <div>
             <label for="content">내용</label>
 <!--            <textarea id="content" name="content">${story.content}</textarea>-->
-            <textarea id="content" name="content" th:text="${story.content}"></textarea>
-        </div>
-        <button type="submit">수정</button>
+<!--            <textarea id="content" name="content" th:text="${story.content}"></textarea>-->
+            <textarea id="content" name="content" th:field="${story.content}"></textarea>
+<!--            <textarea id="content" name="content" th:field="*{content}"></textarea>-->
+<!---->
     </form>
 <!--        <div class="selection-box">-->
 <!--            <label for="volunteer-type">봉사 선택</label>-->
@@ -72,6 +81,7 @@
 <!--            </div>-->
 <!--            <button class="fin_btn" type="button">작성 완료</button>-->
 <!--    </form>-->
+    <button type="submit" class="btn">수정</button>
 
 
 <!--</div>-->

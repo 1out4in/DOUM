@@ -12,6 +12,14 @@
         WHERE  U.USER_ID = #{userId}
     </select>
 
+    <select id="getUsers" resultType="LeeUsersDTO">
+        select U.USER_ID,U.NAME
+        from  TBL_USER U
+    </select>
+
+
+
+
     <!--    마이페이지 유저가 작성한 게시물 목록 가져오기 ㅇㅇ -->
     <select id="getStories" resultType="LeeMyPageStoryDTO">
         SELECT S.STORY_ID,S.TITLE, S.CONTENT, S.CREATED_DATE, S.VIEWS, SI.FILE_LOCATION AS IMAGE

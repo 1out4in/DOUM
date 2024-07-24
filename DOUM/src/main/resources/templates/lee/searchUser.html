@@ -31,79 +31,107 @@
                 <option value="education">연령대</option>
             </select>
         </div>
+<!--        <div class="contest-list">-->
+<!--            <div th:each="user, userStat :${users}" class="contest-item"-->
+<!--                 th:data-name="${user.name}"-->
+<!--                th:data-pic="${user.userId}"></div>-->
         <div class="contest-list">
-            <div class="contest-item" data-title="정부24 영상 콘텐츠 공모전-수정" data-date="2023.04.21 ~ 2023.06.12" data-org="행정안전부" data-img="../img/climateChange.jpg">
-                <img src="https://mblogthumb-phinf.pstatic.net/MjAyMTA0MjBfMTI4/MDAxNjE4ODQ5MzAxMDYz._Gue5YTe-oTAdUJvNs6beibTS4Dh7e2GCPhYhIfViUIg.lgS2THGm14_RIKpbvUQHl_xnrOie7wtNuhl286NE58Qg.JPEG.algus6210/%EA%B3%A0%EB%AF%BC%EC%8B%9C_(11).jpg?type=w800" alt="Climate Change">
-                <div class="contest-list-text">
-                    <h3>Ally <span style="font-size: x-small;">★4.3</span>   </h3>
-                    <p ><span style="font-weight: bold;">주 봉사 활동 지역</span>  <span>부산</span></p>
-                    <p><span style="font-weight: bold;">연령대</span>  20대</p>
+            <div th:each="user:${users}">
+                <div class="contest-item">
+                    <img th:src="@{${user.profilePic}}" alt="userImg">
+<!--                    <img src="@{*{image}}" alt="userImg">-->
+
+                    <div class="contest-list-text">
+                        <h3 th:text="${user.name}">username<span style="font-size: x-small;">★4.3</span> </h3>
+<!--                        <p><span style="font-weight: bold;">주 봉사지역</span> </p>-->
+                        <p><span style="font-weight: bold;">email</span> <span th:text="${user.email}"></span></p>
+<!--                        <p><span th:text="${user.email}"></span></p>-->
+
+
+<!--                        <h3>Ally <span style="font-size: x-small;">★4.3</span>   </h3>-->
+
+                    </div>
                 </div>
             </div>
-            <div class="contest-item" data-title="정부24 영상 콘텐츠 공모전-수정" data-date="2023.04.21 ~ 2023.06.12" data-org="행정안전부" data-img="../img/climateChange.jpg">
-                <img src="https://mblogthumb-phinf.pstatic.net/MjAyMTA0MjBfMTI4/MDAxNjE4ODQ5MzAxMDYz._Gue5YTe-oTAdUJvNs6beibTS4Dh7e2GCPhYhIfViUIg.lgS2THGm14_RIKpbvUQHl_xnrOie7wtNuhl286NE58Qg.JPEG.algus6210/%EA%B3%A0%EB%AF%BC%EC%8B%9C_(11).jpg?type=w800" alt="Climate Change">
-                <div class="contest-list-text">
-                    <h3>Ally <span style="font-size: x-small;">★4.3</span>   </h3>
-                    <p ><span style="font-weight: bold;">주 봉사 활동 지역</span>  <span>부산</span></p>
-                    <p><span style="font-weight: bold;">연령대</span>  20대</p>
-                </div>
-            </div>
-            <div class="contest-item" data-title="정부24 영상 콘텐츠 공모전-수정" data-date="2023.04.21 ~ 2023.06.12" data-org="행정안전부" data-img="../img/climateChange.jpg">
-                <img src="https://mblogthumb-phinf.pstatic.net/MjAyMTA0MjBfMTI4/MDAxNjE4ODQ5MzAxMDYz._Gue5YTe-oTAdUJvNs6beibTS4Dh7e2GCPhYhIfViUIg.lgS2THGm14_RIKpbvUQHl_xnrOie7wtNuhl286NE58Qg.JPEG.algus6210/%EA%B3%A0%EB%AF%BC%EC%8B%9C_(11).jpg?type=w800" alt="Climate Change">
-                <div class="contest-list-text">
-                    <h3>Ally <span style="font-size: x-small;">★4.3</span>   </h3>
-                    <p ><span style="font-weight: bold;">주 봉사 활동 지역</span>  <span>부산</span></p>
-                    <p><span style="font-weight: bold;">연령대</span>  20대</p>
-                </div>
-            </div>
-            <div class="contest-item" data-title="정부24 영상 콘텐츠 공모전-수정" data-date="2023.04.21 ~ 2023.06.12" data-org="행정안전부" data-img="../img/climateChange.jpg">
-                <img src="https://mblogthumb-phinf.pstatic.net/MjAyMTA0MjBfMTI4/MDAxNjE4ODQ5MzAxMDYz._Gue5YTe-oTAdUJvNs6beibTS4Dh7e2GCPhYhIfViUIg.lgS2THGm14_RIKpbvUQHl_xnrOie7wtNuhl286NE58Qg.JPEG.algus6210/%EA%B3%A0%EB%AF%BC%EC%8B%9C_(11).jpg?type=w800" alt="Climate Change">
-                <div class="contest-list-text">
-                    <h3>Ally <span style="font-size: x-small;">★4.3</span>   </h3>
-                    <p ><span style="font-weight: bold;">주 봉사 활동 지역</span>  <span>부산</span></p>
-                    <p><span style="font-weight: bold;">연령대</span>  20대</p>
-                </div>
-            </div>
-            <div class="contest-item" data-title="정부24 영상 콘텐츠 공모전-수정" data-date="2023.04.21 ~ 2023.06.12" data-org="행정안전부" data-img="../img/climateChange.jpg">
-                <img src="https://mblogthumb-phinf.pstatic.net/MjAyMTA0MjBfMTI4/MDAxNjE4ODQ5MzAxMDYz._Gue5YTe-oTAdUJvNs6beibTS4Dh7e2GCPhYhIfViUIg.lgS2THGm14_RIKpbvUQHl_xnrOie7wtNuhl286NE58Qg.JPEG.algus6210/%EA%B3%A0%EB%AF%BC%EC%8B%9C_(11).jpg?type=w800" alt="Climate Change">
-                <div class="contest-list-text">
-                    <h3>Ally <span style="font-size: x-small;">★4.3</span>   </h3>
-                    <p ><span style="font-weight: bold;">주 봉사 활동 지역</span>  <span>부산</span></p>
-                    <p><span style="font-weight: bold;">연령대</span>  20대</p>
-                </div>
-            </div>
-            <div class="contest-item" data-title="정부24 영상 콘텐츠 공모전-수정" data-date="2023.04.21 ~ 2023.06.12" data-org="행정안전부" data-img="../img/climateChange.jpg">
-                <img src="https://mblogthumb-phinf.pstatic.net/MjAyMTA0MjBfMTI4/MDAxNjE4ODQ5MzAxMDYz._Gue5YTe-oTAdUJvNs6beibTS4Dh7e2GCPhYhIfViUIg.lgS2THGm14_RIKpbvUQHl_xnrOie7wtNuhl286NE58Qg.JPEG.algus6210/%EA%B3%A0%EB%AF%BC%EC%8B%9C_(11).jpg?type=w800" alt="Climate Change">
-                <div class="contest-list-text">
-                    <h3>Ally <span style="font-size: x-small;">★4.3</span>   </h3>
-                    <p ><span style="font-weight: bold;">주 봉사 활동 지역</span>  <span>부산</span></p>
-                    <p><span style="font-weight: bold;">연령대</span>  20대</p>
-                </div>
-            </div>
-            <div class="contest-item" data-title="정부24 영상 콘텐츠 공모전-수정" data-date="2023.04.21 ~ 2023.06.12" data-org="행정안전부" data-img="../img/climateChange.jpg">
-                <img src="https://mblogthumb-phinf.pstatic.net/MjAyMTA0MjBfMTI4/MDAxNjE4ODQ5MzAxMDYz._Gue5YTe-oTAdUJvNs6beibTS4Dh7e2GCPhYhIfViUIg.lgS2THGm14_RIKpbvUQHl_xnrOie7wtNuhl286NE58Qg.JPEG.algus6210/%EA%B3%A0%EB%AF%BC%EC%8B%9C_(11).jpg?type=w800" alt="Climate Change">
-                <div class="contest-list-text">
-                    <h3>Ally <span style="font-size: x-small;">★4.3</span>   </h3>
-                    <p ><span style="font-weight: bold;">주 봉사 활동 지역</span>  <span>부산</span></p>
-                    <p><span style="font-weight: bold;">연령대</span>  20대</p>
-                </div>
-            </div>
-            <div class="contest-item" data-title="정부24 영상 콘텐츠 공모전-수정" data-date="2023.04.21 ~ 2023.06.12" data-org="행정안전부" data-img="../img/climateChange.jpg">
-                <img src="https://mblogthumb-phinf.pstatic.net/MjAyMTA0MjBfMTI4/MDAxNjE4ODQ5MzAxMDYz._Gue5YTe-oTAdUJvNs6beibTS4Dh7e2GCPhYhIfViUIg.lgS2THGm14_RIKpbvUQHl_xnrOie7wtNuhl286NE58Qg.JPEG.algus6210/%EA%B3%A0%EB%AF%BC%EC%8B%9C_(11).jpg?type=w800" alt="Climate Change">
-                <div class="contest-list-text">
-                    <h3>Ally <span style="font-size: x-small;">★4.3</span>   </h3>
-                    <p ><span style="font-weight: bold;">주 봉사 활동 지역</span>  <span>부산</span></p>
-                    <p><span style="font-weight: bold;">연령대</span>  20대</p>
-                </div>
-            </div>
-            <div class="contest-item" data-title="정부24 영상 콘텐츠 공모전-수정" data-date="2023.04.21 ~ 2023.06.12" data-org="행정안전부" data-img="../img/climateChange.jpg">
-                <img src="https://mblogthumb-phinf.pstatic.net/MjAyMTA0MjBfMTI4/MDAxNjE4ODQ5MzAxMDYz._Gue5YTe-oTAdUJvNs6beibTS4Dh7e2GCPhYhIfViUIg.lgS2THGm14_RIKpbvUQHl_xnrOie7wtNuhl286NE58Qg.JPEG.algus6210/%EA%B3%A0%EB%AF%BC%EC%8B%9C_(11).jpg?type=w800" alt="Climate Change">
-                <div class="contest-list-text">
-                    <h3>Ally <span style="font-size: x-small;">★4.3</span>   </h3>
-                    <p ><span style="font-weight: bold;">주 봉사 활동 지역</span>  <span>부산</span></p>
-                    <p><span style="font-weight: bold;">연령대</span>  20대</p>
-                </div>
-            </div>
+
+
+
+
+
+
+
+<!--            <div class="contest-item" data-title="정부24 영상 콘텐츠 공모전-수정" data-date="2023.04.21 ~ 2023.06.12" data-org="행정안전부" data-img="../img/climateChange.jpg">-->
+<!--                <img src="https://mblogthumb-phinf.pstatic.net/MjAyMTA0MjBfMTI4/MDAxNjE4ODQ5MzAxMDYz._Gue5YTe-oTAdUJvNs6beibTS4Dh7e2GCPhYhIfViUIg.lgS2THGm14_RIKpbvUQHl_xnrOie7wtNuhl286NE58Qg.JPEG.algus6210/%EA%B3%A0%EB%AF%BC%EC%8B%9C_(11).jpg?type=w800" alt="Climate Change">-->
+<!--                <div class="contest-list-text">-->
+<!--                    <h3>Ally <span style="font-size: x-small;">★4.3</span>   </h3>-->
+<!--                    <p ><span style="font-weight: bold;">주 봉사 활동 지역</span>  <span>부산</span></p>-->
+<!--                    <p><span style="font-weight: bold;">연령대</span>  20대</p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="contest-item" data-title="정부24 영상 콘텐츠 공모전-수정" data-date="2023.04.21 ~ 2023.06.12" data-org="행정안전부" data-img="../img/climateChange.jpg">-->
+<!--                <img src="https://mblogthumb-phinf.pstatic.net/MjAyMTA0MjBfMTI4/MDAxNjE4ODQ5MzAxMDYz._Gue5YTe-oTAdUJvNs6beibTS4Dh7e2GCPhYhIfViUIg.lgS2THGm14_RIKpbvUQHl_xnrOie7wtNuhl286NE58Qg.JPEG.algus6210/%EA%B3%A0%EB%AF%BC%EC%8B%9C_(11).jpg?type=w800" alt="Climate Change">-->
+<!--                <div class="contest-list-text">-->
+<!--                    <h3>Ally <span style="font-size: x-small;">★4.3</span>   </h3>-->
+<!--                    <p ><span style="font-weight: bold;">주 봉사 활동 지역</span>  <span>부산</span></p>-->
+<!--                    <p><span style="font-weight: bold;">연령대</span>  20대</p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="contest-item" data-title="정부24 영상 콘텐츠 공모전-수정" data-date="2023.04.21 ~ 2023.06.12" data-org="행정안전부" data-img="../img/climateChange.jpg">-->
+<!--                <img src="https://mblogthumb-phinf.pstatic.net/MjAyMTA0MjBfMTI4/MDAxNjE4ODQ5MzAxMDYz._Gue5YTe-oTAdUJvNs6beibTS4Dh7e2GCPhYhIfViUIg.lgS2THGm14_RIKpbvUQHl_xnrOie7wtNuhl286NE58Qg.JPEG.algus6210/%EA%B3%A0%EB%AF%BC%EC%8B%9C_(11).jpg?type=w800" alt="Climate Change">-->
+<!--                <div class="contest-list-text">-->
+<!--                    <h3>Ally <span style="font-size: x-small;">★4.3</span>   </h3>-->
+<!--                    <p ><span style="font-weight: bold;">주 봉사 활동 지역</span>  <span>부산</span></p>-->
+<!--                    <p><span style="font-weight: bold;">연령대</span>  20대</p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="contest-item" data-title="정부24 영상 콘텐츠 공모전-수정" data-date="2023.04.21 ~ 2023.06.12" data-org="행정안전부" data-img="../img/climateChange.jpg">-->
+<!--                <img src="https://mblogthumb-phinf.pstatic.net/MjAyMTA0MjBfMTI4/MDAxNjE4ODQ5MzAxMDYz._Gue5YTe-oTAdUJvNs6beibTS4Dh7e2GCPhYhIfViUIg.lgS2THGm14_RIKpbvUQHl_xnrOie7wtNuhl286NE58Qg.JPEG.algus6210/%EA%B3%A0%EB%AF%BC%EC%8B%9C_(11).jpg?type=w800" alt="Climate Change">-->
+<!--                <div class="contest-list-text">-->
+<!--                    <h3>Ally <span style="font-size: x-small;">★4.3</span>   </h3>-->
+<!--                    <p ><span style="font-weight: bold;">주 봉사 활동 지역</span>  <span>부산</span></p>-->
+<!--                    <p><span style="font-weight: bold;">연령대</span>  20대</p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="contest-item" data-title="정부24 영상 콘텐츠 공모전-수정" data-date="2023.04.21 ~ 2023.06.12" data-org="행정안전부" data-img="../img/climateChange.jpg">-->
+<!--                <img src="https://mblogthumb-phinf.pstatic.net/MjAyMTA0MjBfMTI4/MDAxNjE4ODQ5MzAxMDYz._Gue5YTe-oTAdUJvNs6beibTS4Dh7e2GCPhYhIfViUIg.lgS2THGm14_RIKpbvUQHl_xnrOie7wtNuhl286NE58Qg.JPEG.algus6210/%EA%B3%A0%EB%AF%BC%EC%8B%9C_(11).jpg?type=w800" alt="Climate Change">-->
+<!--                <div class="contest-list-text">-->
+<!--                    <h3>Ally <span style="font-size: x-small;">★4.3</span>   </h3>-->
+<!--                    <p ><span style="font-weight: bold;">주 봉사 활동 지역</span>  <span>부산</span></p>-->
+<!--                    <p><span style="font-weight: bold;">연령대</span>  20대</p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="contest-item" data-title="정부24 영상 콘텐츠 공모전-수정" data-date="2023.04.21 ~ 2023.06.12" data-org="행정안전부" data-img="../img/climateChange.jpg">-->
+<!--                <img src="https://mblogthumb-phinf.pstatic.net/MjAyMTA0MjBfMTI4/MDAxNjE4ODQ5MzAxMDYz._Gue5YTe-oTAdUJvNs6beibTS4Dh7e2GCPhYhIfViUIg.lgS2THGm14_RIKpbvUQHl_xnrOie7wtNuhl286NE58Qg.JPEG.algus6210/%EA%B3%A0%EB%AF%BC%EC%8B%9C_(11).jpg?type=w800" alt="Climate Change">-->
+<!--                <div class="contest-list-text">-->
+<!--                    <h3>Ally <span style="font-size: x-small;">★4.3</span>   </h3>-->
+<!--                    <p ><span style="font-weight: bold;">주 봉사 활동 지역</span>  <span>부산</span></p>-->
+<!--                    <p><span style="font-weight: bold;">연령대</span>  20대</p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="contest-item" data-title="정부24 영상 콘텐츠 공모전-수정" data-date="2023.04.21 ~ 2023.06.12" data-org="행정안전부" data-img="../img/climateChange.jpg">-->
+<!--                <img src="https://mblogthumb-phinf.pstatic.net/MjAyMTA0MjBfMTI4/MDAxNjE4ODQ5MzAxMDYz._Gue5YTe-oTAdUJvNs6beibTS4Dh7e2GCPhYhIfViUIg.lgS2THGm14_RIKpbvUQHl_xnrOie7wtNuhl286NE58Qg.JPEG.algus6210/%EA%B3%A0%EB%AF%BC%EC%8B%9C_(11).jpg?type=w800" alt="Climate Change">-->
+<!--                <div class="contest-list-text">-->
+<!--                    <h3>Ally <span style="font-size: x-small;">★4.3</span>   </h3>-->
+<!--                    <p ><span style="font-weight: bold;">주 봉사 활동 지역</span>  <span>부산</span></p>-->
+<!--                    <p><span style="font-weight: bold;">연령대</span>  20대</p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="contest-item" data-title="정부24 영상 콘텐츠 공모전-수정" data-date="2023.04.21 ~ 2023.06.12" data-org="행정안전부" data-img="../img/climateChange.jpg">-->
+<!--                <img src="https://mblogthumb-phinf.pstatic.net/MjAyMTA0MjBfMTI4/MDAxNjE4ODQ5MzAxMDYz._Gue5YTe-oTAdUJvNs6beibTS4Dh7e2GCPhYhIfViUIg.lgS2THGm14_RIKpbvUQHl_xnrOie7wtNuhl286NE58Qg.JPEG.algus6210/%EA%B3%A0%EB%AF%BC%EC%8B%9C_(11).jpg?type=w800" alt="Climate Change">-->
+<!--                <div class="contest-list-text">-->
+<!--                    <h3>Ally <span style="font-size: x-small;">★4.3</span>   </h3>-->
+<!--                    <p ><span style="font-weight: bold;">주 봉사 활동 지역</span>  <span>부산</span></p>-->
+<!--                    <p><span style="font-weight: bold;">연령대</span>  20대</p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="contest-item" data-title="정부24 영상 콘텐츠 공모전-수정" data-date="2023.04.21 ~ 2023.06.12" data-org="행정안전부" data-img="../img/climateChange.jpg">-->
+<!--                <img src="https://mblogthumb-phinf.pstatic.net/MjAyMTA0MjBfMTI4/MDAxNjE4ODQ5MzAxMDYz._Gue5YTe-oTAdUJvNs6beibTS4Dh7e2GCPhYhIfViUIg.lgS2THGm14_RIKpbvUQHl_xnrOie7wtNuhl286NE58Qg.JPEG.algus6210/%EA%B3%A0%EB%AF%BC%EC%8B%9C_(11).jpg?type=w800" alt="Climate Change">-->
+<!--                <div class="contest-list-text">-->
+<!--                    <h3>Ally <span style="font-size: x-small;">★4.3</span>   </h3>-->
+<!--                    <p ><span style="font-weight: bold;">주 봉사 활동 지역</span>  <span>부산</span></p>-->
+<!--                    <p><span style="font-weight: bold;">연령대</span>  20대</p>-->
+<!--                </div>-->
+<!--            </div>-->
 
             <!-- jser 더 추가할거면 여기서 더 추가  -->
         </div>

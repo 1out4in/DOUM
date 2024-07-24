@@ -65,15 +65,15 @@ function formatDate(dateString) {
 // 페이지가 처음 로드 될 때 댓글 목록 조회 함수가 실행되도록 한다.
 $(document).ready(function () {
     // let boardId = document.querySelector('input[name="boardId"]').value;
-    let boardId = $('input[name="boardId"]').val();
-    getComments(boardId);
+    let storyId = $('input[name="storyId"]').val();
+    getComments(storyId);
 })
 
 // 댓글 목록 조회 함수
-function getComments(boardId) {
+function getComments(storyId) {
     $.ajax({
         method : 'get',
-        url : '/comments/' + boardId,
+        url : '/comments/' + storyId,
         success : function(data) {
             let commentListArea = $('.comment-list')
 
@@ -91,25 +91,25 @@ function getComments(boardId) {
 
             // 댓글 있을 때 목록을 뿌려줄 반복문.
             data.forEach(function(comment) {
-                let commentDate = formatDate(comment.commentRegisterDate);
+                // let commentDate = formatDate(comment.commentRegisterDate);
                 let buttons = '';
                 let editStr = '';
 
                 // 작성일과 수정일을 비교해서 html 에 다른 모양으로 표시.
-                if(comment.commentUpdateDate !== comment.commentRegisterDate){
-                    commentDate = formatDate(comment.commentUpdateDate);
-                    editStr = ' (수정)';
-                }
+                // if(comment.commentUpdateDate !== comment.commentRegisterDate){
+                //     commentDate = formatDate(comment.commentUpdateDate);
+                //     editStr = ' (수정)';
+                // }
 
                 // 현재 로그인된 계정과 댓글 작성자가 동일하다면 만들어줄 버튼
-                if(loginId === comment.providerId){
-                    buttons = `
-                        <div class="comment-actions">
-                            <button onclick="updateComment(${comment.commentId})" class="btn btn-primary">수정</button>
-                            <button onclick="deleteComment(${comment.commentId})" class="btn btn-danger">삭제</button>
-                        </div>
-                    `
-                }
+                // if(loginId === comment.providerId){
+                //     buttons = `
+                //         <div class="comment-actions">
+                //             <button onclick="updateComment(${comment.commentId})" class="btn btn-primary">수정</button>
+                //             <button onclick="deleteComment(${comment.commentId})" class="btn btn-danger">삭제</button>
+                //         </div>
+                //     `
+                // }
 
                 // 종합적으로 뿌려줄 html
                 let commentElement = `
@@ -135,9 +135,11 @@ function getComments(boardId) {
 }
 
 // 댓글 추가
-function addComment(){
-    let boardId = $('input[name="boardId"]').val();
+function addStoryComment(){
+    let storyId = $('input[name="storyId"]').val();
     let commentContent = $('#commentContent').val();
+    let userId = $('input[name="userId"]').val();
+
 
     // textarea 비어 있으면 경고
     if(!commentContent){
@@ -150,13 +152,13 @@ function addComment(){
         url: '/comments',
         contentType: 'application/json',
         data: JSON.stringify({
-            boardId: boardId,
+            storyId: storyId,
             commentContent: commentContent,
-            providerId : loginId
+            providerId : userId
         }),
         success : function(data) {
             $('#commentContent').val('')
-            getComments(boardId);
+            getComments(storyId);
         },
         error : function(data) {
             console.error(data);

@@ -20,6 +20,9 @@ public interface LeeMapper {
     //마이페이지 유저 프로필 정보
    LeeUsersDTO getUser(Long userId);
 
+   //searchUsers 유저들
+    List<LeeUsersDTO> getUsers();
+
      //마이페이지 유저가 작성한 게시물 목록 가져오기
      List<LeeMyPageStoryDTO> getStories(Long userId);
 

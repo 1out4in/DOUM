@@ -12,6 +12,8 @@ public interface LeeService {
 
    LeeUsersDTO getUserById(Long userId);
 
+   List<LeeUsersDTO> getAllUsers();
+
 
     //게시물(내 스토리들) 목록
    List<LeeMyPageStoryDTO> getStoriesByUserId(Long userId);

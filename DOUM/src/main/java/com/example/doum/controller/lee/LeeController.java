@@ -50,6 +50,19 @@ public class LeeController {
 
 
 
+    @GetMapping("/searchUser/{userId}")
+    public String searchUser(@PathVariable long userId, Model model) {
+        LeeUsersDTO user= leeService.getUserById(userId);
+        // 유저들 리스트가 필요
+//        List<LeeUsersDTO> users = leeService.getUsersById(userId);
+        List<LeeUsersDTO> users = leeService.getAllUsers();
+        model.addAttribute("user", user);
+        model.addAttribute("users", users);
+        return "lee/searchUser";
+
+    }
+
+
 //마이페이지 스토리 띄우기 ㅇㅇ
 //    @GetMapping("/story(others)/{storyId}")
 //    public String getStory(@PathVariable long storyId, Model model) {
@@ -240,13 +253,14 @@ public class LeeController {
     }
 
 
-//    @PostMapping("/editStory")
-//    public String editStory(LeeMyPageStoryDTO story,List<MultipartFile> files){
-//        leeService.updateStory(story,files);
+    @PostMapping("/editStory")
+    public String editStory(LeeMyPageStoryDTO story,List<MultipartFile> files){
+        leeService.updateStory(story,files);
+
+        return "redirect:/Lee/story/"+story.getStoryId();
 //        return "redirect:/Lee/story/"+story.getStoryId();
-//
-//
-//                           }
+
+    }
 
 
 
@@ -326,6 +340,7 @@ public class LeeController {
 
 
 
+//유저 검색
 
 
 

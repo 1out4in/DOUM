@@ -42,6 +42,16 @@ public class LeeServiceImpl implements LeeService {
     }
 
     @Override
+    public List<LeeUsersDTO> getAllUsers() {
+        return leeMapper.getUsers();
+    }
+
+//    @Override
+//    public List<LeeUsersDTO> getUsersById(Long userId) {
+//       return leeMapper.getUsers();
+//    }
+
+    @Override
     public List<LeeMyPageStoryDTO> getStoriesByUserId(Long userId) {
         return leeMapper.getStories(userId);
     }

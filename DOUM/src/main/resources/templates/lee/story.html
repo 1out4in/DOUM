@@ -7,6 +7,7 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" th:href="@{/css/lee/story(others).css}" />
+<!--    <link rel="stylesheet" th:href="@{/css/lee/detail.css}" />-->
 
 </head>
 <body>
@@ -115,12 +116,47 @@
 <!--            </div>-->
 
             <div class="comment-form">
-                <textarea placeholder="댓글을 입력하세요..."></textarea>
-                <button>댓글 달기</button>
+                <textarea id="commentContent" placeholder="댓글을 입력하세요..."></textarea>
+                <button type="button"  onclick="addStoryComment()" >댓글 달기</button>
 
             </div>
             <input type="hidden" name="userId" value="1">
             <input type="hidden" name="storyId" value="1">
+
+
+
+<!--&lt;!&ndash;            동적 댓글 &ndash;&gt;-->
+<!--            <div class="comment-list mt-4">-->
+<!--                &lt;!&ndash; 댓글 목록을 동적으로 추가. &ndash;&gt;-->
+<!--                <div class="comment-card">-->
+<!--                    <div class="comment-body">-->
+<!--                        <div class="comment-title">작성자 이름</div>-->
+<!--                        <div class="comment-subtitle">2024년 8월 29일</div>-->
+<!--                        <p class="comment-text">댓글 본문</p>-->
+<!--                        &lt;!&ndash; 수정, 삭제 버튼 &ndash;&gt;-->
+<!--                        <div class="comment-actions">-->
+<!--                            <button onclick="" class="btn btn-primary">수정</button>-->
+<!--                            <button onclick="" class="btn btn-danger">삭제</button>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="comment-card">-->
+<!--                    <div class="comment-body">-->
+<!--                        <div class="comment-title">작성자 이름</div>-->
+<!--                        <div class="comment-subtitle">2024년 8월 29일</div>-->
+<!--                        <p class="comment-text">댓글 본문</p>-->
+<!--                        &lt;!&ndash; 수정, 삭제 버튼 &ndash;&gt;-->
+<!--                        <div class="comment-actions">-->
+<!--                            <button onclick="" class="btn btn-primary">수정</button>-->
+<!--                            <button onclick="" class="btn btn-danger">삭제</button>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+
+
+
+
 
             <div class="edit-delete-buttons">
                 <button onclick="editPost()">수정</button>

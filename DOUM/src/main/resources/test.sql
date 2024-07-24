@@ -144,7 +144,8 @@ FROM
     TBL_USER U;
 
 
-
+select U.USER_ID,U.NAME
+from  TBL_USER U;
 
 
 
