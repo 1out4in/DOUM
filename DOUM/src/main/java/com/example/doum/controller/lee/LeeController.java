@@ -163,22 +163,24 @@ public class LeeController {
         return "lee/writingStoryT";
     }
 
+    //스토리 작성 처리 로그인 처리 하고나서야 가능해질듯 ---? ? ?
+    @PostMapping("/writingStoryT")
+    public String write(LeeMyPageStoryDTO story,
+                        @RequestParam("userId")Long userId,
+                        List<MultipartFile> files) {
 
-//    //마이페이지 스토리 작성 폼으로 이동 수정중
-//    @GetMapping("/writingStoryT")
-//    public String writingStory(@PathVariable("userId") long userId,
-//                               Model model) {
-////        System.out.println("writingStory 메소드가 호출되었습니다.");
-//        LeeUsersDTO user = leeService.getUserById(userId);
-//
-//        model.addAttribute("story", new LeeMyPageStoryDTO());
-//        return "lee/writingStoryT";
-//    }
+        story.setUserId(userId);
+        leeService.saveStory(story,files);
+        return "redirect:/Lee/myPage/" + userId;
+//        return "redirect:/lee/myPage";
+//        return "redirect:/Lee/story/"+story.getStoryId();
+
+    }
 
 
 
 //스토리 작성 처리 로그인 처리 하고나서야 가능해질듯 ---? ? ?
-//    @PostMapping("writingStoryT")
+//    @PostMapping("/writingStoryT")
 //    public String write(LeeMyPageStoryDTO story,@RequestParam("userId") Long userId,
 //                        @RequestParam("attachment") List<MultipartFile> files) {
 //
@@ -190,6 +192,20 @@ public class LeeController {
 
 
 
+
+
+
+    //
+//    //마이페이지 스토리 작성 폼으로 이동 수정중
+//    @GetMapping("/writingStoryT")
+//    public String writingStory(@PathVariable("userId") long userId,
+//                               Model model) {
+//
+//        LeeUsersDTO user = leeService.getUserById(userId);
+//
+//        model.addAttribute("story", new LeeMyPageStoryDTO());
+//        return "lee/writingStoryT";
+//    }
 
 
 

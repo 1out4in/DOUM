@@ -25,7 +25,7 @@
 
 <!--                                <img th:src="${user.profilePic}" alt="프로필 사진">-->
 <!--                <img th:src="*{profilePic}" alt="프로필 사진">-->
-                <img th:src="@{${user.profilePic}}" alt="프로필 사진">
+                <img th:src="@{${user.profilePic}}" alt="프로필 사진"/>
 <!--                <img th:src="${user.profilePic}" alt="프로필 사진">-->
 <!--                <img src="https://img4.daumcdn.net/thumb/R658x0.q70/?fname=https://t1.daumcdn.net/news/202105/24/notepet/20210524031337477vmkh.jpg">-->
 
@@ -40,8 +40,8 @@
                 </h3>
                 <div style="margin-bottom: 50px;" class="basic-info-short">
 <!--                    <p><strong>나이</strong> <span th:text="${user.age}">25</span></p>-->
-                    <p><strong>주 봉사활동 지역</strong> <span th:text="${user.locationId}">부산</span></p>
-                    <p><strong>성별</strong> <span th:text="${user.gender}">여</span></p>
+<!--                    <p><strong>주 봉사활동 지역</strong> <span th:text="${user.locationId}">부산</span></p>-->
+<!--                    <p><strong>성별</strong> <span th:text="${user.gender}">여</span></p>-->
                     <p><strong>이메일</strong> <span th:text="${user.email}">doum@gmail.com</span></p>
                     <p>
                         <strong>별점</strong> 4.3
@@ -52,8 +52,10 @@
                     <p th:text="${user.introduction}"></p>
 <!--                    <div th:if="${user.userId == loggedInUserId}">-->
                         <button class="btn_tistory" id="edit-intro-btn">자기소개글 수정</button>
-                        <button class="btn_tistory">봉사 글 작성하기</button>
-                        <button class="btn_tistory" id="profile-button-pic">프로필 사진 수정</button>
+<!--                        <button class="btn_tistory">봉사 글 작성하기</button>-->
+                    <a href="/Lee/writingStoryT" class="btn_tistory">봉사 글 작성하기</a>
+
+                    <button class="btn_tistory" id="profile-button-pic">프로필 사진 수정</button>
 <!--                    </div>-->
                 </div>
             </div>
