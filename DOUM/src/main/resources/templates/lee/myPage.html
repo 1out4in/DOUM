@@ -26,6 +26,11 @@
 <!--                                <img th:src="${user.profilePic}" alt="프로필 사진">-->
 <!--                <img th:src="*{profilePic}" alt="프로필 사진">-->
                 <img th:src="@{${user.profilePic}}" alt="프로필 사진">
+<!--                <img th:src="${user.profilePic}" alt="프로필 사진">-->
+<!--                <img src="https://img4.daumcdn.net/thumb/R658x0.q70/?fname=https://t1.daumcdn.net/news/202105/24/notepet/20210524031337477vmkh.jpg">-->
+
+<!--                                <img th:src="${user}" alt="Story Image">-->
+<!--                                <img th:each="image : ${user}" th:src="@{${image.profilePic}}" alt="게시물 이미지">-->
 
             </div>
             <div class="text-info">
@@ -46,9 +51,9 @@
                 <div class="basic-info-long">
                     <p th:text="${user.introduction}"></p>
 <!--                    <div th:if="${user.userId == loggedInUserId}">-->
-<!--                        <button class="btn_tistory" id="edit-intro-btn">자기소개글 수정</button>-->
-<!--                        <button class="btn_tistory">봉사 글 작성하기</button>-->
-<!--                        <button class="btn_tistory" id="profile-button-pic">프로필 사진 수정</button>-->
+                        <button class="btn_tistory" id="edit-intro-btn">자기소개글 수정</button>
+                        <button class="btn_tistory">봉사 글 작성하기</button>
+                        <button class="btn_tistory" id="profile-button-pic">프로필 사진 수정</button>
 <!--                    </div>-->
                 </div>
             </div>
@@ -90,5 +95,7 @@
 </footer>
 
 <!--<script th:src="@{/js/myPage.js}"></script>-->
+
 </body>
+
 </html>

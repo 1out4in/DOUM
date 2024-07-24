@@ -151,10 +151,23 @@ public class LeeController {
     }
 
 
-//스토리 작성 처리 로그인 처리 하고나서야 가능해질듯
+//    //마이페이지 스토리 작성 폼으로 이동 수정중
+//    @GetMapping("/writingStoryT")
+//    public String writingStory(@PathVariable("userId") long userId,
+//                               Model model) {
+////        System.out.println("writingStory 메소드가 호출되었습니다.");
+//        LeeUsersDTO user = leeService.getUserById(userId);
+//
+//        model.addAttribute("story", new LeeMyPageStoryDTO());
+//        return "lee/writingStoryT";
+//    }
+
+
+
+//스토리 작성 처리 로그인 처리 하고나서야 가능해질듯 ---? ? ?
 //    @PostMapping("writingStoryT")
 //    public String write(LeeMyPageStoryDTO story,@RequestParam("userId") Long userId,
-//                        List<MultipartFile> files) {
+//                        @RequestParam("attachment") List<MultipartFile> files) {
 //
 //        story.setUserId(userId);
 //        leeService.saveStory(story,files);
@@ -212,10 +225,37 @@ public class LeeController {
 
 
     //스토리 수정 폼으로 이동
+//    @GetMapping("/editStory/{storyId}")
+//    public String editStory(@PathVariable Long storyId,Model model) {
+//        model.addAttribute("story", leeService.getStoryById(storyId));
+//        return "lee/editStory";
+//    }
+
+
     @GetMapping("/editStory/{storyId}")
-    public String editStory(@PathVariable Long storyId,Model model) {
-        model.addAttribute("story", leeService.getStoryById(storyId));
+    public String editStory(@PathVariable Long storyId,Model model){
+        LeeMyPageStoryDTO story = leeService.getStoryById(storyId);
+        model.addAttribute("story", story);
         return "lee/editStory";
+    }
+
+
+//    @PostMapping("/editStory")
+//    public String editStory(LeeMyPageStoryDTO story,List<MultipartFile> files){
+//        leeService.updateStory(story,files);
+//        return "redirect:/Lee/story/"+story.getStoryId();
+//
+//
+//                           }
+
+
+
+    @PostMapping("/delete/{storyId}")
+    public String deleteStory(@PathVariable Long storyId) {
+        leeService.deleteStory(storyId);
+        return "redirect:/myPage";
+
+
     }
 
 
@@ -223,21 +263,21 @@ public class LeeController {
 
 
     //스토리 수정
-    @PostMapping("/editStory")
-    public String editStory(LeeMyPageStoryDTO story, List<MultipartFile> files) {
-        leeService.updateStory(story , files);
-
-        return "redirect:/lee/myPage-user" + story.getUserId();
-    }
+//    @PostMapping("/editStory")
+//    public String editStory(LeeMyPageStoryDTO story, List<MultipartFile> files) {
+//        leeService.updateStory(story , files);
+//
+//        return "redirect:/lee/myPage-user" + story.getUserId();
+//    }
 
 
 
     //마이페이지 스토리 삭제
-    @PostMapping("/delete/{storyId}")
-    public String delete(@PathVariable Long storyId) {
-        leeService.deleteStory(storyId);
-        return "redirect:/lee/myPage-user";
-    }
+//    @PostMapping("/delete/{storyId}")
+//    public String delete(@PathVariable Long storyId) {
+//        leeService.deleteStory(storyId);
+//        return "redirect:/lee/myPage-user";
+//    }
 
 
 
