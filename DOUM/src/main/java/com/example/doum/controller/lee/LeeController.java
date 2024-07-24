@@ -255,6 +255,7 @@ public class LeeController {
 
     @PostMapping("/editStory")
     public String editStory(LeeMyPageStoryDTO story,List<MultipartFile> files){
+        System.out.println("들어옴");
         leeService.updateStory(story,files);
 
         return "redirect:/Lee/story/"+story.getStoryId();

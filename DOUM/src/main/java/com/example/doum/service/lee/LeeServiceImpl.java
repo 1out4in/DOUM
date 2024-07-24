@@ -87,9 +87,12 @@ public class LeeServiceImpl implements LeeService {
     @Override
     public void updateStory(LeeMyPageStoryDTO story, List<MultipartFile> files) {
         leeMapper.updateStory(StoryVO.toEntity(story));
-        leeMapper.deleteStory(story.getStoryId());
+        leeMapper.deleteStoryImg(story.getStoryId());
+//        leeMapper.deleteStory(story.getStoryId());
 
-        saveFile(story.getStoryId(), files);
+        if (files != null && !files.isEmpty()){
+            saveFile(story.getStoryId(), files);
+        }
     }
 
 
@@ -111,7 +114,7 @@ public class LeeServiceImpl implements LeeService {
 
             try {
                 // 파일 저장 경로 설정
-                Path directoryPath = Paths.get("C:/upload/" + datePath);
+                Path directoryPath = Paths.get("src/main/resources/static/uploads/" + datePath + "/story/");
                 if (!Files.exists(directoryPath)) {
                     Files.createDirectories(directoryPath); // 폴더가 없으면 생성
                 }
@@ -122,10 +125,9 @@ public class LeeServiceImpl implements LeeService {
                 LeeStoryImageDTO storyImageDTO = new LeeStoryImageDTO();
                 //storyImageDTO.setStoryImgId(storyImgId);
                 storyImageDTO.setStoryId(storyId);
-                storyImageDTO.setFileLocation(directoryPath + "/" + storedFileName);
+                storyImageDTO.setFileLocation("/uploads/" + datePath + "/story/" + storedFileName);
 
-
-                leeMapper.insertFile(storyImageVO.toEntity(storyImageDTO)); // 파일 정보 저장
+                leeMapper.insertFile(StoryImageVO.toEntity(storyImageDTO)); // 파일 정보 저장
             } catch (IOException e) {
                 e.printStackTrace();
             }

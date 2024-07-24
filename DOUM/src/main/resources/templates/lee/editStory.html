@@ -29,11 +29,11 @@
     <br>
 
 <!--    <form action="/Lee/updateStory" method="post">-->
-    <form method="post" th:action="@{Lee/editStory}"  enctype="multipart/form-data" th:object="${story}">
+    <form method="post" th:action="@{/Lee/editStory}"  enctype="multipart/form-data" th:object="${story}">
 <!--    <form method="post" th:action="@{Lee/editStory}"  enctype="multipart/form-data" th:object="*{story}">-->
 
 
-        <input type="hidden" name="storyId" value="1">
+        <input type="hidden" name="storyId" th:value="${story.storyId}">
         <input type="hidden" name="userId" value="1">
         <div>
             <label for="title">제목</label>
@@ -41,6 +41,7 @@
 <!--            <input id="title" name="title" th:field="${story.title}">-->
 
             <input id="title" name="title" th:field="*{title}">
+            <input type="file" name="files" multiple>
 
 
 
@@ -56,9 +57,11 @@
             <label for="content">내용</label>
 <!--            <textarea id="content" name="content">${story.content}</textarea>-->
 <!--            <textarea id="content" name="content" th:text="${story.content}"></textarea>-->
-            <textarea id="content" name="content" th:field="${story.content}"></textarea>
-<!--            <textarea id="content" name="content" th:field="*{content}"></textarea>-->
+<!--            <textarea id="content" name="content" th:field="${story.content}"></textarea>-->
+            <textarea id="content" name="content" th:field="*{content}"></textarea>
+        </div>
 <!---->
+        <button type="submit" class="btn" >수정</button>
     </form>
 <!--        <div class="selection-box">-->
 <!--            <label for="volunteer-type">봉사 선택</label>-->
@@ -81,14 +84,17 @@
 <!--            </div>-->
 <!--            <button class="fin_btn" type="button">작성 완료</button>-->
 <!--    </form>-->
-    <button type="submit" class="btn">수정</button>
+
+<!--    <button type="submit" class="btn" >수정</button>-->
+
 
 
 <!--</div>-->
 
-<footer style="left: 0;">
-    <img src="../img/도움로고.png" alt="">
-    <p>Ministry of the Interior and Safety.All Rights reserved.</p>
-</footer>
+    <footer style="left: 0;">
+        <img src="../img/도움로고.png" alt="">
+        <p>Ministry of the Interior and Safety.All Rights reserved.</p>
+    </footer>
+</div>
 </body>
 </html>

@@ -16,8 +16,11 @@
         <div class="modal-left">
             <div class="slider">
                 <div class="slides">
-                    <img th:each="image : ${storyImg}" th:src="@{${image.fileLocation}}" alt="게시물 이미지">
-
+                    <div th:if="${storyImg != null}">
+                        <div th:each="image : ${storyImg}">
+                            <img th:src="@{${image.fileLocation}}" alt="게시물 이미지">
+                        </div>
+                    </div>
                 </div>
 
 <!--                    <img src="https://cdn.hankyung.com/photo/201905/20190513180013_5cd9321ddf1ec_1.jpg" alt="게시물 이미지">-->
@@ -121,7 +124,7 @@
 
             </div>
             <input type="hidden" name="userId" value="1">
-            <input type="hidden" name="storyId" value="1">
+            <input type="hidden" name="storyId" th:value="${story.storyId}">
 
 
 
