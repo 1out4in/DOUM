@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>MyPage</title>
-    <link rel="stylesheet" th:href="@{/css/lee/myPage(user).css}" />
+    <link rel="stylesheet" th:href="@{/css/lee/myPage.css}" />
 </head>
 <body>
 <header class="common-width">
@@ -25,9 +25,11 @@
 
 <!--                                <img th:src="${user.profilePic}" alt="프로필 사진">-->
 <!--                <img th:src="*{profilePic}" alt="프로필 사진">-->
-                <img th:src="@{${user.profilePic}}" alt="프로필 사진"/>
+<!--                <img th:src="@{${user.profilePic}}" alt="프로필 사진"/>-->
 <!--                <img th:src="${user.profilePic}" alt="프로필 사진">-->
-<!--                <img src="https://img4.daumcdn.net/thumb/R658x0.q70/?fname=https://t1.daumcdn.net/news/202105/24/notepet/20210524031337477vmkh.jpg">-->
+                <img th:src="${user.profilePic}" alt="userImg">
+
+                <!--                <img src="https://img4.daumcdn.net/thumb/R658x0.q70/?fname=https://t1.daumcdn.net/news/202105/24/notepet/20210524031337477vmkh.jpg">-->
 
 <!--                                <img th:src="${user}" alt="Story Image">-->
 <!--                                <img th:each="image : ${user}" th:src="@{${image.profilePic}}" alt="게시물 이미지">-->
@@ -54,6 +56,13 @@
                         <button class="btn_tistory" id="edit-intro-btn">자기소개글 수정</button>
 <!--                        <button class="btn_tistory">봉사 글 작성하기</button>-->
                     <a href="/Lee/writingStoryT" class="btn_tistory">봉사 글 작성하기</a>
+<!--                    <a th:href="@{/Lee/writingStoryT/{userId}(userId=${user.id})}" class="btn_tistory">봉사 글 작성하기</a>-->
+
+                    <!--                    <a href="/Lee/writingStoryT/{userId}" class="btn_tistory">봉사 글 작성하기</a>-->
+<!--                    <a th:href="@{/Lee/writingStoryT/{userId}(userId=${user.id})}" class="btn_tistory">봉사 글 작성하기</a>-->
+
+
+
 
                     <button class="btn_tistory" id="profile-button-pic">프로필 사진 수정</button>
 <!--                    </div>-->

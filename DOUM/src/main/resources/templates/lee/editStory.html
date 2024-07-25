@@ -11,6 +11,19 @@
     <link rel="stylesheet" th:href="@{/css/lee/writingStory.css}" />
     <link rel="stylesheet" th:href="@{/css/lee/story.css}" />
 
+    <style>
+    .image-preview {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px; /* 이미지 사이의 간격을 설정합니다. */
+    }
+    .image-preview img {
+        max-width: 150px; /* 이미지의 최대 너비를 설정합니다. */
+        max-height: 150px; /* 이미지의 최대 높이를 설정합니다. */
+        object-fit: cover; /* 이미지의 비율을 유지하면서 지정된 영역을 채우도록 합니다. */
+    }
+    </style>
+
 </head>
 <body>
 
@@ -42,6 +55,15 @@
 
             <input id="title" name="title" th:field="*{title}">
             <input type="file" name="files" multiple>
+<!--            <input type="file" name="files" multiple th:src="@{${image.fileLocation}}" >-->
+
+            <div class="image-preview">
+                <div th:each="image : ${images}">
+                    <img th:src="@{${image.fileLocation}}" alt="이미지 미리보기">
+                </div>
+            </div>
+
+<!--            <input type="file" th:field="${img}" name="files" multiple>-->
 
 
 

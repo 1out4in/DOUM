@@ -138,7 +138,7 @@ function getComments(storyId) {
 function addStoryComment(){
     let storyId = $('input[name="storyId"]').val();
     let commentContent = $('#commentContent').val();
-    let userId = $('input[name="userId"]').val();
+    // let userId = $('input[name="userId"]').val();
 
 
     // textarea 비어 있으면 경고

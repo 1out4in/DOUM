@@ -4,110 +4,72 @@
     font-optical-sizing: auto;
     font-style: normal;
 }
-
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    /* background-color: #f4f4f4; */
     background-color: #F7F7F7;
-
 }
-
-
-/* 메인 css  */
-
-
 .main-container {
     width: 1200px;
     width: 90%;
-    margin: 0 auto; /* This centers the main element */
-    background-color:white ; /* Optional: to see the container better */
-    padding: 20px; /* Optional: some padding for better appearance */
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
     border: 1px solid #191818;
     margin-top: 20px;
-
 }
 h2 {
     color: #333;
 }
-
 .contest-list {
     display: flex;
     flex-wrap: wrap;
-    justify-content:center;
+    justify-content: center;
     gap: 30px;
 }
-
 .contest-item {
     background-color: white;
     border: 1px solid #ddd;
-    width: calc(33.33%);
-    /* padding: 10px; */
     width: 300px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-
-
 }
-
-
 .contest-item img {
     width: 300px;
     height: 300px;
     object-fit: cover;
 }
-
 .basic-info {
     padding: 20px;
     background-color: white;
     border-radius: 5px;
 }
-
 .basic-info img {
     max-width: 100%;
     height: auto;
     object-fit: cover;
     margin-bottom: 10px;
 }
-
-
-
 .info-wrapper {
     display: flex;
     align-items: center;
-    /* 전체 너비 사용 */
 }
-
 .photo {
-    flex:1;
+    flex: 1;
     margin-right: 20px;
-    /* 사진과 텍스트 사이 간격 */
-
 }
-
 .photo img {
     width: 100%;
     height: auto;
-
 }
-
 .text-info {
     flex: 3;
     margin-left: 10px;
-
-    /* 나머지 영역 차지 */
 }
-
 .text-info p {
-    margin-bottom: 20px; /* 문단 사이 간격 */
+    margin-bottom: 20px;
 }
 
-
-
-
-
-
-/* 기본 정보 css */
 
 header {
     /* 아래 두 줄 중앙으로 가게끔 한거임  */
@@ -155,22 +117,16 @@ button[type="submit"]:hover {
 .home-button {
     margin-left: 20px;
 }
-
 .btn_tistory {
     display: inline-block;
     height: 40px;
     padding: 0 14px;
-    /* border-radius: 4px; */
     background-color: #E0E0E0;
-
     color: #100f0f;
-    /* font-weight: 700; */
     text-align: center;
-    /* line-height: 40px; */
     font-size: 14px;
     border: none;
 }
-
 footer {
     background-color: gray;
     color: white;
@@ -179,38 +135,66 @@ footer {
     position: fixed;
     width: 100%;
     bottom: 0;
-    /* display: flex; */
     align-items: center;
     justify-content: flex-start;
     padding: 10px;
-
 }
-
 footer img {
-    max-width: 50px; /* Adjust the size as needed */
-    margin-right: 10px; /* Space between the image and the text */
+    max-width: 50px;
+    margin-right: 10px;
 }
-
 footer p {
     margin: 0;
 }
-.contest-list-text{
+.contest-list-text {
     padding: 10px;
 }
-.basic-info-long{
-    color:#000000 ;
+.basic-info-long {
+    color: #000000;
 }
-.basic-info-short{
+.basic-info-short {
     color: #000000;
 }
 .basic-info-short p {
-    margin: 0; /* 각 <p> 요소의 위아래 간격을 없앰 */
-    padding: 2px 0; /* 각 <p> 요소의 위아래에 약간의 패딩 추가 (원하는 경우) */
+    margin: 0;
+    padding: 2px 0;
+}
+/* 모달창 스타일 */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+    padding-top: 60px;
+}
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+}
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
 }
 
-
-
-
+/* 알림창 nav바에 추가 */
 h1 {
     font-size: 24px;
     margin: 0;
@@ -259,3 +243,77 @@ h1 {
 .icon {
     font-size: 20px;
 }
+
+
+
+.modal-profile {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content-profile {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+/* profile */
+
+.modal-profile-pic {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+.modal-content-profile-pic {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+}
+.close-profile-pic {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+.close-profile-pic:hover,
+.close-profile-pic:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+

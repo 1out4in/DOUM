@@ -95,6 +95,7 @@ public class LeeController {
 //
 //    }
 
+    //스토리 띄우느넉 이거 맞음 잠깐 주석
     @GetMapping("/story/{storyId}")
     public String story(@PathVariable("storyId") long storyId, Model model) {
         LeeMyPageStoryDTO story = leeService.getStoryById(storyId);
@@ -107,6 +108,19 @@ public class LeeController {
         return "lee/story";
 
     }
+
+//        @GetMapping("/storyy/{storyId}")
+//    public String story(@PathVariable("storyId") long storyId, Model model) {
+//        LeeMyPageStoryDTO story = leeService.getStoryById(storyId);
+//        List<LeeCommentListDTO> comments = leeService.getCommentById(storyId);
+//        List<LeeStoryImageDTO> storyImg = leeService.getStoryImgById(storyId);
+//
+//        model.addAttribute("story", story);
+//        model.addAttribute("comments", comments);
+//        model.addAttribute("storyImg", storyImg);
+//        return "lee/storyy";
+//
+//    }
 
 
 
@@ -156,22 +170,36 @@ public class LeeController {
 //    }
 
     //마이페이지 스토리 작성 폼으로 이동 ㅇㅇ
-    @GetMapping("/writingStoryT")
-    public String writingStory(Model model) {
+//    @GetMapping("/writingStoryT")
+//    public String writingStory(Model model) {
+////        System.out.println("writingStory 메소드가 호출되었습니다.");
+//        model.addAttribute("story", new LeeMyPageStoryDTO());
+//        return "lee/writingStoryT";
+//    }
+
+    @GetMapping("/writingStoryT/{userId}")
+    public String writingStory(@PathVariable Long userId,Model model) {
 //        System.out.println("writingStory 메소드가 호출되었습니다.");
+//        model.addAttribute("userId", userId);
         model.addAttribute("story", new LeeMyPageStoryDTO());
         return "lee/writingStoryT";
     }
 
+
+
+
+
     //스토리 작성 처리 로그인 처리 하고나서야 가능해질듯 ---? ? ?
     @PostMapping("/writingStoryT")
     public String write(LeeMyPageStoryDTO story,
-                        @RequestParam("userId")Long userId,
+//                        @RequestParam("userId")Long userId,
                         List<MultipartFile> files) {
 
-        story.setUserId(userId);
+//        story.setUserId(userId);
         leeService.saveStory(story,files);
-        return "redirect:/Lee/myPage/" + userId;
+//        return "redirect:/Lee/myPage/" + userId;
+        return "redirect:/Lee/story/" + story.getStoryId();
+
 //        return "redirect:/lee/myPage";
 //        return "redirect:/Lee/story/"+story.getStoryId();
 
@@ -264,7 +292,12 @@ public class LeeController {
     @GetMapping("/editStory/{storyId}")
     public String editStory(@PathVariable Long storyId,Model model){
         LeeMyPageStoryDTO story = leeService.getStoryById(storyId);
+
+        List<LeeStoryImageDTO> images = leeService.getStoryImgListByStoryId(storyId);
         model.addAttribute("story", story);
+        model.addAttribute("images", images);
+
+
         return "lee/editStory";
     }
 
@@ -316,39 +349,40 @@ public class LeeController {
 
 
 //    댓 글 !! (rest..?)
-
-    //댓글 조회
-    @GetMapping("/storyId")
-    public ResponseEntity<?> getStoryComment(@PathVariable Long storyId) {
-        return ResponseEntity.ok(leeService.getStoryById(storyId));
-    }
-
-    //댓글 추가
-    @PostMapping
-    public ResponseEntity<?> addStoryComment(@RequestBody LeeCommentDTO commentDTO) {
-        leeService.saveStoryComment(commentDTO);
-
-        return ResponseEntity.ok().build();
-    }
-
-    //댓글 삭제
-    @DeleteMapping("/{commentId}")
-    public ResponseEntity<?> deleteStoryComment(@PathVariable Long commentId) {
-
-        leeService.deleteStoryComment(commentId);
-
-        return ResponseEntity.ok().build();
-    }
-
-
-    //댓글 수정
-    @PutMapping("/{commentId}")
-    public ResponseEntity<?> updateStoryComment(@PathVariable Long commentId,@RequestBody LeeCommentDTO commentDTO) {
-
-        commentDTO.setStoryCommentId(commentId);
-        leeService.updateStoryComment(commentDTO);
-        return ResponseEntity.ok().build();
-    }
+//
+//    //댓글 조회
+//    @GetMapping("/{storyId}")
+//    public ResponseEntity<?> getStoryComment(@PathVariable Long storyId) {
+//        return ResponseEntity.ok(leeService.getStoryById(storyId));
+//    }
+//
+//    //댓글 추가
+//    @PostMapping
+//    public ResponseEntity<?> addStoryComment(@RequestBody LeeCommentDTO commentDTO) {
+//        leeService.saveStoryComment(commentDTO);
+//
+//        return ResponseEntity.ok().build();
+//    }
+//
+//    //댓글 삭제
+//    @DeleteMapping("/{commentId}")
+//    public ResponseEntity<?> deleteStoryComment(@PathVariable Long commentId) {
+//
+//        leeService.deleteStoryComment(commentId);
+//
+//        return ResponseEntity.ok().build();
+//    }
+//
+//
+//    //댓글 수정
+//
+//    @PutMapping("/{commentId}")
+//    public ResponseEntity<?> updateStoryComment(@PathVariable Long commentId,@RequestBody LeeCommentDTO commentDTO) {
+//
+//        commentDTO.setStoryCommentId(commentId);
+//        leeService.updateStoryComment(commentDTO);
+//        return ResponseEntity.ok().build();
+//    }
 
 //스토리 이미지 !! (파일.) ( rest..?) -"??
 

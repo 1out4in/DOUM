@@ -35,23 +35,37 @@
 <!--            <div th:each="user, userStat :${users}" class="contest-item"-->
 <!--                 th:data-name="${user.name}"-->
 <!--                th:data-pic="${user.userId}"></div>-->
+<!--        <div class="contest-list">-->
+<!--            <div th:each="user:${users}">-->
+<!--                <div class="contest-item">-->
+<!--                    <img th:src="@{${user.profilePic}}" alt="userImg">-->
+<!--&lt;!&ndash;                    <img src="@{*{image}}" alt="userImg">&ndash;&gt;-->
+
+<!--                    <div class="contest-list-text">-->
+<!--                        <h3 th:text="${user.name}">username<span style="font-size: x-small;">★4.3</span> </h3>-->
+<!--&lt;!&ndash;                        <p><span style="font-weight: bold;">주 봉사지역</span> </p>&ndash;&gt;-->
+<!--                        <p><span style="font-weight: bold;">email</span> <span th:text="${user.email}"></span></p>-->
+<!--&lt;!&ndash;                        <p><span th:text="${user.email}"></span></p>&ndash;&gt;-->
+
+
+<!--&lt;!&ndash;                        <h3>Ally <span style="font-size: x-small;">★4.3</span>   </h3>&ndash;&gt;-->
+
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
         <div class="contest-list">
             <div th:each="user:${users}">
-                <div class="contest-item">
-                    <img th:src="@{${user.profilePic}}" alt="userImg">
-<!--                    <img src="@{*{image}}" alt="userImg">-->
+                <a th:href="@{/Lee/myPage/{userId}(userId=${user.userId})}" class="contest-item">
+<!--                    <img th:src="@{${user.profilePic}}" alt="userImg">-->
+                    <img th:src="${user.profilePic}" alt="userImg">
+<!--                    <img src="https://img4.daumcdn.net/thumb/R658x0.q70/?fname=https://t1.daumcdn.net/news/202105/24/notepet/20210524031337477vmkh.jpg" alt="userImg">-->
+
 
                     <div class="contest-list-text">
                         <h3 th:text="${user.name}">username<span style="font-size: x-small;">★4.3</span> </h3>
-<!--                        <p><span style="font-weight: bold;">주 봉사지역</span> </p>-->
                         <p><span style="font-weight: bold;">email</span> <span th:text="${user.email}"></span></p>
-<!--                        <p><span th:text="${user.email}"></span></p>-->
-
-
-<!--                        <h3>Ally <span style="font-size: x-small;">★4.3</span>   </h3>-->
-
                     </div>
-                </div>
+                </a>
             </div>
 
 
