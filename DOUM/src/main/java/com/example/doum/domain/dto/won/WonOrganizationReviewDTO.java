@@ -10,7 +10,7 @@ public class WonOrganizationReviewDTO {
     private Long organizationReview;
     private Long organizationId;
     private Long userId;
-    private String content ;
+    private String content;
     private Long rating;
 }
 

@@ -3,7 +3,8 @@ package com.example.doum.controller.lee;
 
 import com.example.doum.domain.dto.lee.LeeMyPageDTO;
 import com.example.doum.domain.dto.lee.LeeMyPageStoryDTO;
-import com.example.doum.service.lee.LeeService;
+//지우기
+//import com.example.doum.service.lee.LeeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

@@ -13,8 +13,9 @@ public class LeeUsersDTO {
 //erd 에서 유저 테이블
 
     // 유저 아이디 pk
-    private String userId;
-
+    private Long userId;
+    //유저 이름
+    private String name;
 
     //유저의 이메일
     private String email;
@@ -23,7 +24,7 @@ public class LeeUsersDTO {
     //생성일
     private String createdDate;
     //유저 위치아이디
-    private String locationId;
+    private Long locationId;
     //유저 프로필사진
     private String profilePic;
 
@@ -31,6 +32,18 @@ public class LeeUsersDTO {
     private String phoneNumber;
     //유저 자기소개
     private String introduction;
+    //유저 비밀번호
+    private String password;
+    //승인여부
+    private Long emailApprove;
+    private Long phoneApprove;
+
+    private LocalDateTime birthDate;
+    private String gender;
+
+    private String providerId;
+    private String provider;
+    private String role;
 
 
 
