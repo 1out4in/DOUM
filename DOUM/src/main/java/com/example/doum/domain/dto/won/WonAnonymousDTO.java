@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 
 @Component
 @Data
-public class WonAnontmousDTO {
+public class WonAnonymousDTO {
     private Long anonymous;
     private Long userId;
     private String title;
