@@ -240,5 +240,23 @@ where STORY_ID = 4;
 select *
 from TBL_STORY;
 
+UPDATE TBL_USER
+SET profile_pic ='https://img.danawa.com/prod_img/500000/337/342/img/3342337_1.jpg?shrink=330:*&_v=20160311122708'
+WHERE USER_ID = 1;
+
+
+UPDATE TBL_USER
+SET introduction = '봉사를 열심히 합시다.'
+WHERE USER_ID = 1
+
+
+SELECT
+    ORGANIZATION_REVIEW_ID AS organizationReviewId,
+    ORGANIZATION_ID AS organizationId,
+    USER_ID AS userId,
+    CONTENT AS content,
+    RATING AS rating
+FROM TBL_ORGANIZATION_REVIEW
+WHERE USER_ID = 1;
 
 

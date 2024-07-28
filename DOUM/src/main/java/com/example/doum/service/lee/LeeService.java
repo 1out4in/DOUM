@@ -31,7 +31,7 @@ public interface LeeService {
    void saveStory(LeeMyPageStoryDTO myPageStory, List<MultipartFile> files);
 
     //마이 페이지 스토리 삭제 ㅇㅇ
-    public void deleteStory(Long storyId);
+    void deleteStory(Long storyId);
 
     // 스토리 업데이트
     // 수정하기를 누르면, 첨부파일은 초기화가 되게끔 구현.
@@ -62,5 +62,11 @@ public interface LeeService {
 
     public List<UserVO> searchUsers(String search);
 
-   // void updateProfilePic(Long userId, MultipartFile profilePic);
+    void updateProfilePic(Long userId, MultipartFile profilePic);
+
+
+    void updateIntroduction(Long userId, String introduction);
+
+
+   List<LeeOrgReviewDTO> getReviewsForUser(Long userId);
 }

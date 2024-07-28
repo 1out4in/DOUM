@@ -259,6 +259,11 @@
 
 
 
+    <update id="updateProfilePic" parameterType="map">
+        UPDATE TBL_USER
+        SET profile_pic = #{filePath}
+        WHERE USER_ID = #{userId}
+    </update>
 
 
 
@@ -266,6 +271,27 @@
 
 
 
+
+
+    <update id="updateIntroduction" parameterType="map">
+        UPDATE TBL_USER
+        SET introduction = #{introduction}
+        WHERE USER_ID = #{userId}
+    </update>
+
+
+
+    <!-- 리뷰를 사용자 ID로 조회하는 쿼리 -->
+    <select id="findReviewsByUserId" resultType="LeeOrgReviewDTO">
+        SELECT
+            ORGANIZATION_REVIEW_ID AS organizationReviewId,
+            ORGANIZATION_ID AS organizationId,
+            USER_ID AS userId,
+            CONTENT AS content,
+            RATING AS rating
+        FROM TBL_ORGANIZATION_REVIEW
+        WHERE USER_ID = #{userId}
+    </select>
 
 
 

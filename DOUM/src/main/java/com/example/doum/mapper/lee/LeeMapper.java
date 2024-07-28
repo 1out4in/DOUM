@@ -8,6 +8,7 @@ import com.example.doum.domain.vo.StoryImageVO;
 import com.example.doum.domain.vo.StoryVO;
 import com.example.doum.domain.vo.UserVO;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -117,13 +118,15 @@ public interface LeeMapper {
     //List<LeeCommentDTO> getComments(String storyId);
 
 
+//            leeMapper.updateProfilePic(userId, fileDbPath);
+    void updateProfilePic(@Param("userId") Long userId, @Param("filePath") String filePath);
 
 
 
+    void updateIntroduction(@Param("userId") Long userId, @Param("introduction") String introduction);
 
-
-
-
+// 마이페이지 기관이 쓴 유저의 리뷰상세보기
+    List<LeeOrgReviewDTO> findReviewsByUserId(Long userId);
 
 
 

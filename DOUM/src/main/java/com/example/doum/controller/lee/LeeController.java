@@ -5,19 +5,12 @@ import com.example.doum.domain.dto.lee.*;
 import com.example.doum.domain.vo.UserVO;
 import com.example.doum.mapper.lee.LeeMapper;
 import com.example.doum.service.lee.LeeService;
-import jakarta.annotation.Resource;
 import lombok.RequiredArgsConstructor;
-import org.apache.catalina.User;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.xml.stream.events.Comment;
-import java.util.Arrays;
 import java.util.List;
 
 
@@ -123,9 +116,29 @@ public class LeeController {
 //    }
 
 
+//마이페이지 프로필 수정
+// LeeController.java
 
+    @PostMapping("/updateProfilePic")
+    public String updateProfilePic(@RequestParam("profilePic") MultipartFile profilePic, @RequestParam("userId") Long userId) {
+        leeService.updateProfilePic(userId, profilePic);
+        return "redirect:/Lee/myPage/" + userId;
+    }
 
+//마이페이지 자기소개글 수정
 
+    @PostMapping("/updateIntroduction")
+    public String updateIntroduction(@RequestParam("introduction") String introduction, @RequestParam("userId") Long userId) {
+        leeService.updateIntroduction(userId, introduction);
+        return "redirect:/Lee/myPage/" + userId;
+    }
+
+//    마이페이지 리뷰 상세보기
+@GetMapping("/reviews")
+@ResponseBody
+public List<LeeOrgReviewDTO> getReviewsForUser(@RequestParam Long userId) {
+    return leeService.getReviewsForUser(userId);
+}
 
 
 
@@ -198,7 +211,9 @@ public class LeeController {
 //        story.setUserId(userId);
         leeService.saveStory(story,files);
 //        return "redirect:/Lee/myPage/" + userId;
-        return "redirect:/Lee/story/" + story.getStoryId();
+//        return "redirect:/Lee/story/" + story.getStoryId();
+        return "redirect:/Lee/myPage/" + story.getStoryId();
+
 
 //        return "redirect:/lee/myPage";
 //        return "redirect:/Lee/story/"+story.getStoryId();
@@ -317,7 +332,7 @@ public class LeeController {
     @PostMapping("/delete/{storyId}")
     public String deleteStory(@PathVariable Long storyId) {
         leeService.deleteStory(storyId);
-        return "redirect:/myPage";
+        return "redirect:/lee/myPage";
 
 
     }

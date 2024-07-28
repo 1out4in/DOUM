@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -184,6 +185,50 @@ public class LeeServiceImpl implements LeeService {
 
 //        return new ArrayList<LeeUsersDTO>(users.size());
         return users;
+    }
+
+    @Override
+    public void updateProfilePic(Long userId, MultipartFile profilePic) {
+        // 현재 날짜를 기준으로 폴더 경로 생성
+        LocalDate now = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+        String datePath = now.format(formatter);
+
+        // 파일이 저장될 디렉토리 경로 설정
+        Path directoryPath = Paths.get("src/main/resources/static/uploads/" + datePath + "/story/");
+        File directory = new File(directoryPath.toString());
+
+        // 디렉토리가 존재하지 않으면 생성
+        if (!directory.exists()) {
+            directory.mkdirs();
+        }
+
+        // 파일 이름 설정
+        String fileName = userId + "_" + profilePic.getOriginalFilename();
+        Path filePath = directoryPath.resolve(fileName);
+
+        try {
+            // 파일 저장
+            profilePic.transferTo(filePath.toFile());
+
+            // 저장된 파일 경로를 데이터베이스에 업데이트
+            String fileDbPath = "/static/uploads/" + datePath + "/story/" + fileName;
+            leeMapper.updateProfilePic(userId, fileDbPath);
+        } catch (IOException e) {
+            e.printStackTrace();
+            // 예외 처리 로직 추가
+            throw new RuntimeException("프로필 사진 저장에 실패했습니다.");
+        }
+    }
+
+    @Override
+    public void updateIntroduction(Long userId, String introduction) {
+        leeMapper.updateIntroduction(userId, introduction);
+    }
+
+    @Override
+    public List<LeeOrgReviewDTO> getReviewsForUser(Long userId) {
+        return leeMapper.findReviewsByUserId(userId);
     }
 
 //    @Override

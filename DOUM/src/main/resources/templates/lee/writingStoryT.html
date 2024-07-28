@@ -26,19 +26,20 @@
 
 <!--    <form method="post" id="myForm" th:action="@{/Lee/writingStoryT}" enctype="multipart/form-data">-->
     <form method="post" id="myForm" th:action="@{/Lee/writingStoryT}" enctype="multipart/form-data" th:object="${story}">
-
-
         <input type="hidden" name="storyId" th:value="${story.storyId}">
-<!--        <input type="hidden" name="userId" value="1">-->
         <input type="hidden" name="userId" th:value="${story.userId}">
+<!--        <input type="hidden" name="userId" value="1">-->
+
 
         <div>
             <label for="title">제목</label>
+            <input id="title" name="title" th:field="*{title}">
+            <input type="file" name="files" multiple>
+        </div>
             <!--            <input id="title" name="title" th:value="${story.title}">-->
             <!--            <input id="title" name="title" th:field="${story.title}">-->
 
-            <input id="title" name="title" th:field="*{title}">
-            <input type="file" name="files" multiple>
+
 
 <!--        <div class="selection-box">-->
 <!--            <label for="volunteer-type">봉사 선택</label>-->
