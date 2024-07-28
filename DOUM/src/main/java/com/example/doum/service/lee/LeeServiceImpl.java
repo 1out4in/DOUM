@@ -178,6 +178,14 @@ public class LeeServiceImpl implements LeeService {
         leeMapper.updateStoryComment(storyCommentVO.toEntity(leeCommentDTO));
     }
 
+    @Override
+    public List<UserVO> searchUsers(String search) {
+        List<UserVO> users = leeMapper.selectUser(search);
+
+//        return new ArrayList<LeeUsersDTO>(users.size());
+        return users;
+    }
+
 //    @Override
 //    public void updateProfilePic(Long userId, MultipartFile profilePic) {
 //

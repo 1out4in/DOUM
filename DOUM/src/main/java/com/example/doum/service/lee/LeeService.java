@@ -60,6 +60,7 @@ public interface LeeService {
     //마이페이지 스토리 댓글 수정 ㅇㅇ
     void updateStoryComment(LeeCommentDTO leeCommentDTO);
 
+    public List<UserVO> searchUsers(String search);
 
    // void updateProfilePic(Long userId, MultipartFile profilePic);
 }

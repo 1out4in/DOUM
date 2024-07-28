@@ -242,4 +242,34 @@
 
 
 
+    <!-- 동적 쿼리 -->
+    <select id="selectUser" resultType="LeeUsersDTO">
+        SELECT U.USER_ID,U.NAME,u.email,u.profile_pic
+        FROM TBL_USERS U
+        <where>
+            <if test="search != null">
+                <choose>
+                    <when test="searchType == 'user'">U.name LIKE '%' || #{search} || '%'</when>
+                </choose>
+            </if>
+        </where>
+    </select>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </mapper>
