@@ -164,8 +164,10 @@ public class LeeServiceImpl implements LeeService {
 
     @Override
     public void saveStoryComment(LeeCommentDTO leeCommentDTO) {
-        leeMapper.insertStoryComment(storyCommentVO.toEntity(leeCommentDTO));
+        leeMapper.insertStoryComment(StoryCommentVO.toEntity(leeCommentDTO));
     }
+
+
 
     @Override
     public void deleteStoryComment(Long storyCommentId) {
@@ -176,7 +178,7 @@ public class LeeServiceImpl implements LeeService {
 
     @Override
     public void updateStoryComment(LeeCommentDTO leeCommentDTO) {
-        leeMapper.updateStoryComment(storyCommentVO.toEntity(leeCommentDTO));
+        leeMapper.updateStoryComment(StoryCommentVO.toEntity(leeCommentDTO));
     }
 
     @Override
@@ -230,6 +232,11 @@ public class LeeServiceImpl implements LeeService {
     public List<LeeOrgReviewDTO> getReviewsForUser(Long userId) {
         return leeMapper.findReviewsByUserId(userId);
     }
+
+//    @Override
+//    public void LeeStoryLikeDTO(Long storyId, Long userId) {
+//        return leeMapper.
+//    }
 
 //    @Override
 //    public void updateProfilePic(Long userId, MultipartFile profilePic) {

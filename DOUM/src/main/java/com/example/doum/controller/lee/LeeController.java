@@ -94,6 +94,9 @@ public class LeeController {
         LeeMyPageStoryDTO story = leeService.getStoryById(storyId);
         List<LeeCommentListDTO> comments = leeService.getCommentById(storyId);
         List<LeeStoryImageDTO> storyImg = leeService.getStoryImgById(storyId);
+//        스토리 좋아요
+//        LeeStoryLikeDTO like = leeService.
+
 
         model.addAttribute("story", story);
         model.addAttribute("comments", comments);

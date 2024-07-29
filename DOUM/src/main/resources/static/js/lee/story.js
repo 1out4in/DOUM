@@ -13,10 +13,14 @@ function deletePost() {
     if (confirm('게시글을 삭제하시겠습니까?')) {
         // 사용자가 '확인'을 선택했을 경우, 삭제 절차 진행
         var storyId = document.querySelector('input[name="storyId"]').value;
+
+        // var userId = document.querySelector('input[name="userId"]').value; //
         // Form을 통해 POST 요청으로 서버에 삭제를 요청하도록 변경
         var form = document.createElement('form');
         form.method = 'post';
+        // form.action = '/story/delete/' + storyId;
         form.action = '/story/delete/' + storyId;
+
         document.body.appendChild(form);
         form.submit();
     }
@@ -28,39 +32,39 @@ function deletePost() {
 
 // 타임리프는 서버 사이드 템플릿 엔진이라서 서버에서 HTML에 랜더링 할 때 사용.
 // ajax 는 클라이언트 측에서 실행되는 친구이기 때문에 th 문법은 사용할 수 없다.
-const loginId = $('input[name="loginId"]').val();
+const loginId = $('input[name="userId"]').val();
 
 // 댓글 관련 ajax (jQuery 안에 있는 문법.)
 // 날짜 포맷
-function formatDate(dateString) {
-    const now = new Date();
-    const commentDate = new Date(dateString); // 문자열을 Date 객체로 변환
-
-    const nowYear = now.getFullYear();
-    const nowMonth = now.getMonth();
-    const nowDate = now.getDate();
-
-    const commentYear = commentDate.getFullYear();
-    const commentMonth = commentDate.getMonth();
-    const commentDateDate = commentDate.getDate();
-
-    let displayText = "";
+// function formatDate(dateString) {
+//     const now = new Date();
+//     const commentDate = new Date(dateString); // 문자열을 Date 객체로 변환
+//
+//     const nowYear = now.getFullYear();
+//     const nowMonth = now.getMonth();
+//     const nowDate = now.getDate();
+//
+//     const commentYear = commentDate.getFullYear();
+//     const commentMonth = commentDate.getMonth();
+//     const commentDateDate = commentDate.getDate();
+//
+//     let displayText = "";
 
     // 년, 월, 일이 모두 같은 경우 "오늘"로 표시
     // if (nowYear === commentYear && nowMonth === commentMonth && nowDate === commentDateDate) {
     //     displayText = "오늘";
     // } else {
     // 그 외의 경우, 정해진 포맷으로 표시
-    const yy = commentYear.toString().slice(-2); // 마지막 두 자리를 가지고 옴.
-    const M = commentMonth + 1; // 월은 0부터 시작하므로 1을 더해줍니다.
-    const d = commentDateDate;
-    const HH = commentDate.getHours().toString().padStart(2, '0');
-    const mm = commentDate.getMinutes().toString().padStart(2, '0'); // 두자리 수 일 때 앞에 0을 붙임.
-
-    displayText = `${yy}년 ${M}월 ${d}일 ${HH}시 ${mm}분`;
-    // }
-    return displayText;
-}
+//     const yy = commentYear.toString().slice(-2); // 마지막 두 자리를 가지고 옴.
+//     const M = commentMonth + 1; // 월은 0부터 시작하므로 1을 더해줍니다.
+//     const d = commentDateDate;
+//     const HH = commentDate.getHours().toString().padStart(2, '0');
+//     const mm = commentDate.getMinutes().toString().padStart(2, '0'); // 두자리 수 일 때 앞에 0을 붙임.
+//
+//     displayText = `${yy}년 ${M}월 ${d}일 ${HH}시 ${mm}분`;
+//     // }
+//     return displayText;
+// }
 
 // 페이지가 처음 로드 될 때 댓글 목록 조회 함수가 실행되도록 한다.
 $(document).ready(function () {
@@ -113,10 +117,10 @@ function getComments(storyId) {
 
                 // 종합적으로 뿌려줄 html
                 let commentElement = `
-                    <div class="comment-card" id="comment-${comment.commentId}">
+                    <div class="comment-card" id="comment-${comment.name}">
                         <div class="comment-body">
                             <div class="comment-title">${comment.name}</div>
-                            <div class="comment-subtitle">${commentDate}${editStr}</div>
+<!--                            <div class="comment-subtitle">${commentDate}${editStr}</div>-->
                             <p class="comment-text">${comment.commentContent}</p>
                             <!-- 수정, 삭제 버튼 -->
                             ${buttons}
@@ -135,10 +139,10 @@ function getComments(storyId) {
 }
 
 // 댓글 추가
-function addStoryComment(){
+function addStoryComment() {
     let storyId = $('input[name="storyId"]').val();
     let commentContent = $('#commentContent').val();
-    // let userId = $('input[name="userId"]').val();
+    let userId = $('input[name="userId"]').val();
 
 
     // textarea 비어 있으면 경고
@@ -184,7 +188,7 @@ function deleteComment(commentId){
         url : '/comments/' + commentId,
         success:function(data) {
             console.log(data,'삭제 성공') //걍 콘솔창에서확인용
-            getComments($('input[name="boardId"]').val());
+            getComments($('input[name="storyId"]').val());
         },
         error : function(data) {
             console.error(data,'삭제 실패');
