@@ -7,6 +7,7 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" th:href="@{/css/lee/story(others).css}" />
+<!--    <link rel="stylesheet" th:href="@{/css/lee/detail.css}" />-->
 
 </head>
 <body>
@@ -15,8 +16,11 @@
         <div class="modal-left">
             <div class="slider">
                 <div class="slides">
-                    <img th:each="image : ${storyImg}" th:src="@{${image.fileLocation}}" alt="게시물 이미지">
-
+                    <div th:if="${storyImg != null}">
+                        <div th:each="image : ${storyImg}">
+                            <img th:src="@{${image.fileLocation}}" alt="게시물 이미지">
+                        </div>
+                    </div>
                 </div>
 
 <!--                    <img src="https://cdn.hankyung.com/photo/201905/20190513180013_5cd9321ddf1ec_1.jpg" alt="게시물 이미지">-->
@@ -34,10 +38,12 @@
 
                 <a style="color: black; font-weight: bold;" th:text="${story.title}" href=""></a>
                 <span style="color: #a4a1a1; font-size: x-small;" th:text="'조회수' + ${story.views}"></span>
-                <p th:text="${story.content}"></p>
+<!--                <p th:text="${story.content}"></p>-->
+                <input type="text" name="boardId" class="form-control"  th:value="${story.content}" readonly/>
 
 
-<!--                <a style="color: black; font-weight: bold;" href="">[친환경체험교육 지구 그린데이] 기후위기와 지속가능한 사회</a>-->
+
+                <!--                <a style="color: black; font-weight: bold;" href="">[친환경체험교육 지구 그린데이] 기후위기와 지속가능한 사회</a>-->
 <!--                <span style="color: #a4a1a1; font-size: x-small;">조회수  150 </span>-->
 <!--                <p>제 경험 속에서 유기견 봉사활동은 정말 의미 있는 시간이었습니다. 처음으로 유기견 보호소를 방문했을 때부터 마음이 아프기도 했지만, 동시에 그들에게 제 손길을 전할 수 있는 기회가 너무나도 소중했습니다.-->
 
@@ -49,22 +55,24 @@
             <div class="likes-section">
                 <p><i class="like-icon far fa-heart"></i> <strong>50</strong></p>
             </div>
-            <h3>댓글</h3>
-            <div class="comments-section">
-                <ul class="comments-list">
-                    <li th:each="comment : ${comments}">
-                        <div class="comment">
-<!--                            <img th:src="@{${comment.profileImage}}" alt="프로필 사진">-->
-                            <div class="comment-content">
-                                <p><strong th:text="${comment.userId}"></strong> <span th:text="${comment.content}"></span></p>
-                                <div class="comment-options">
-                                    <i class="fas fa-ellipsis-v"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-               </div>
+<!--            <h3>댓글</h3>-->
+<!--            <div class="comments-section">-->
+<!--                <ul class="comments-list">-->
+<!--                    <li th:each="comment : ${comments}">-->
+<!--                        <div class="comment">-->
+<!--&lt;!&ndash;                            <img th:src="@{${comment.profileImage}}" alt="프로필 사진">&ndash;&gt;-->
+<!--                            <div class="comment-content">-->
+<!--                                <p><strong th:text="${comment.userId}"></strong> <span th:text="${comment.content}"></span></p>-->
+<!--                                <div class="comment-options">-->
+<!--                                    <i class="fas fa-ellipsis-v"></i>-->
+<!--                                </div>-->
+<!--                            </div>-->
+
+<!--                        </div>-->
+<!--                    </li>-->
+<!--                </ul>-->
+<!--               </div>-->
+
 <!--                    <li>-->
 <!--                        <div class="comment">-->
 <!--                            <img src="../img/girl.jpg" alt="프로필 사진">-->
@@ -112,13 +120,85 @@
 <!--                </ul>-->
 <!--            </div>-->
 
-            <div class="comment-form">
-                <textarea placeholder="댓글을 입력하세요..."></textarea>
-                <button>댓글 달기</button>
+<!--            <div class="comment-form">-->
+<!--                <textarea id="commentContent" placeholder="댓글을 입력하세요..."></textarea>-->
+<!--                <button type="button"  onclick="addStoryComment()" >댓글 달기</button>-->
+
+<!--            </div>-->
+<!--            <input type="hidden" name="userId" value="1">-->
+<!--            <input type="hidden" name="storyId" th:value="${story.storyId}">-->
+
+
+
+            <!-- Comments Section -->
+            <div class="comments-section mt-5">
+                <h3>댓글</h3>
+
+                <!--  로그인 되어 있을 때만 표시  -->
+<!--                <div sec:authorize="isAuthenticated()">-->
+                    <div class="comment-form mt-4 comments">
+                        <form id="commentForm" method="post">
+                            <div class="mb-3">
+                                <label for="commentContent" class="form-label">댓글 남기기</label>
+                                <textarea class="form-control" id="commentContent" rows="3"
+                                          placeholder="여기에 댓글을 입력하세요..."></textarea>
+                            </div>
+                            <button type="button" class="btn btn-primary" onclick="addStoryComment()"
+                                    style="margin-bottom: 20px">댓글작성</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="comment-list mt-4">
+                    <!-- 댓글 목록을 동적으로 추가. -->
+                    <div class="comment-card">
+                        <div class="comment-body">
+                            <div class="comment-title">작성자 이름</div>
+                            <div class="comment-subtitle">2024년 8월 29일</div>
+                            <p class="comment-text">댓글 본문</p>
+                            <!-- 수정, 삭제 버튼 -->
+                            <div class="comment-actions">
+                                <button onclick="" class="btn btn-primary">수정</button>
+                                <button onclick="" class="btn btn-danger">삭제</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="comment-card">
+                        <div class="comment-body">
+                            <div class="comment-title">작성자 이름</div>
+                            <div class="comment-subtitle">2024년 8월 29일</div>
+                            <p class="comment-text">댓글 본문</p>
+                            <!-- 수정, 삭제 버튼 -->
+                            <div class="comment-actions">
+                                <button onclick="" class="btn btn-primary">수정</button>
+                                <button onclick="" class="btn btn-danger">삭제</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div class="edit-delete-buttons">
+                <button onclick="editPost()">수정</button>
+                <button onclick="deletePost()">삭제</button>
             </div>
         </div>
     </div>
-</div>
+
 
 <div class="comment-options-modal" id="commentOptionsModal">
     <div class="comment-options-content">
@@ -133,7 +213,10 @@
         <button class="cancel-button">취소</button>
     </div>
 </div>
-</body>
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<script th:src="@{/js/lee/story.js}"></script>
 
 <script>
     let slideIndex = 0;
@@ -199,5 +282,12 @@
             }
         });
     });
+
+
+
 </script>
+
+</body>
+
+
 </html>
