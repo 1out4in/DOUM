@@ -42,6 +42,7 @@ INSERT INTO TBL_USER (
 
 -- Insert sample data into TBL_VOLUNTEER
 INSERT INTO TBL_VOLUNTEER (
+
     VOLUNTEER_ID, LOCATION_ID, ORGANIZATION_ID, TITLE, CONTENT, CATEGORY, TARGET,
     RECRUIT_START_DATE, RECRUIT_END_DATE, RECRUIT_NUMBER, VOLUNTEER_DATE,
     IS_ADULT_ALLOWED, IS_TEEN_ALLOWED, IS_ONLINE
@@ -132,3 +133,29 @@ INSERT INTO TBL_STORY_LIKE (STORY_LIKE_ID, STORY_ID, USER_ID)
 VALUES (1, 1, 2);
 INSERT INTO TBL_STORY_LIKE (STORY_LIKE_ID, STORY_ID, USER_ID)
 VALUES (2, 2, 1);
+
+
+
+--  volunteer 데이터 추가
+INSERT INTO TBL_VOLUNTEER (
+    VOLUNTEER_ID, LOCATION_ID, ORGANIZATION_ID, TITLE, CONTENT, CATEGORY, TARGET,
+    RECRUIT_START_DATE, RECRUIT_END_DATE, RECRUIT_NUMBER, VOLUNTEER_DATE,
+    IS_ADULT_ALLOWED, IS_TEEN_ALLOWED, IS_ONLINE
+) VALUES (
+             4,  -- VOLUNTEER_ID
+             4,  -- LOCATION_ID (가상의 다른 위치 ID)
+             3,  -- ORGANIZATION_ID (가상의 다른 조직 ID)
+             '어린이집 방문 봉사',  -- TITLE
+             '어린이들과 함께 놀이 시간을 가지고 이야기를 나누며 보내는 봉사 활동입니다.',  -- CONTENT
+             '사회복지',  -- CATEGORY
+             '어린이들',  -- TARGET
+             SYSDATE,  -- RECRUIT_START_DATE (현재 날짜와 시간)
+             TO_DATE('2024-08-01', 'YYYY-MM-DD'),  -- RECRUIT_END_DATE
+             20,  -- RECRUIT_NUMBER
+             TO_DATE('2024-08-10', 'YYYY-MM-DD'),  -- VOLUNTEER_DATE
+             1,  -- IS_ADULT_ALLOWED (성인 참여 가능 여부, 1은 가능)
+             0,  -- IS_TEEN_ALLOWED (10대 참여 가능 여부, 0은 불가능)
+             0   -- IS_ONLINE (온라인 봉사 여부, 0은 오프라인)
+         );
+
+
