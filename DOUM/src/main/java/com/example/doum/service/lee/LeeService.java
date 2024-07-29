@@ -69,4 +69,8 @@ public interface LeeService {
 
 
    List<LeeOrgReviewDTO> getReviewsForUser(Long userId);
+//   스토리 좋아요
+//    void LeeStoryLikeDTO(Long storyId, Long userId);
+
+
 }

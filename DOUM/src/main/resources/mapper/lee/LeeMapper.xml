@@ -244,7 +244,7 @@
 
     <!-- 동적 쿼리 -->
     <select id="selectUser" resultType="LeeUsersDTO">
-        SELECT U.USER_ID,U.NAME,u.email,u.profile_pic
+        SELECT U.USER_ID,U.NAME,U.EMAIL,U.PROFILE_PIC
         FROM TBL_USERS U
         <where>
             <if test="search != null">
