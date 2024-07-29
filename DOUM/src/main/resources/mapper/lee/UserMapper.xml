@@ -5,25 +5,25 @@
 
 
 
-<!--&lt;!&ndash;    사용자 정보 조회 부분 &ndash;&gt;-->
-<!--    <select id="selectUserById" >-->
-<!--        SELECT id, name, age, location, qualifications, available_days, bio, profile_image_url-->
-<!--        FROM users-->
-<!--        WHERE  id = #{id}-->
-<!--    </select>-->
+<!--    사용자 정보 조회 부분 -->
+    <select id="selectUserById" >
+        SELECT id, name, age, location, qualifications, available_days, bio, profile_image_url
+        FROM users
+        WHERE  id = #{id}
+    </select>
 
-<!--&lt;!&ndash;    사용자 정보 저장 &ndash;&gt;-->
-<!--    <insert id="saveUser">-->
-<!--        insert into-->
-<!--    </insert>-->
+<!--    사용자 정보 저장 -->
+    <insert id="saveUser">
+        insert into
+    </insert>
 
-<!--&lt;!&ndash;    봉사활동 이력 조회 부분 &ndash;&gt;-->
-<!--    <select id="selectStoryId" >-->
-<!--        SELECT v.id, v.title, v.date, v.organization, v.image_url-->
-<!--        FROM volunteer_activities v-->
-<!--        JOIN user_volunteer u ON v.id=u.volunteer_activity_id-->
-<!--        WHERE u.user_id = #{userId}-->
-<!--    </select>-->
+<!--    봉사활동 이력 조회 부분 -->
+    <select id="selectStoryId" >
+        SELECT v.id, v.title, v.date, v.organization, v.image_url
+        FROM volunteer_activities v
+        JOIN user_volunteer u ON v.id=u.volunteer_activity_id
+        WHERE u.user_id = #{userId}
+    </select>
 
 
 

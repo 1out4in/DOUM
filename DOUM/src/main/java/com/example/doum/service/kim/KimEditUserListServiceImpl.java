@@ -14,6 +14,7 @@ public class KimEditUserListServiceImpl implements KimEditUserListService {
 //        화면에 띄우는 목적
     @Override
     public KimEditUserListDTO updateUserList(long userId) {
+
         return kimMapper.updateEditUserList(userId);
     }
 //    private final kimMapper kimMapper;

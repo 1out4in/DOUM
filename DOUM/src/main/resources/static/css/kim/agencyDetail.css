@@ -78,6 +78,21 @@ h1{
     cursor: pointer;
 }
 
+.Edit_btn{
+    margin-left: 15px;
+}
+
+.Edit_btn span {
+    padding: 0 20px;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 35px;
+    color: #fff;
+    background: #f36200;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
 .review_border {
     position: relative;
 }

@@ -56,6 +56,17 @@
           where organization_id = #{organizationId}
         </select>
 
+<!--    <update id="updateEditOrtList">-->
+<!--        update tbl_organization-->
+<!--        set location_id = #{location_id},-->
+<!--            manager_phone_number = #{manager_phone_number},-->
+<!--            phone_number = #{phone_number},-->
+<!--            email = #{email},-->
+<!--            email_approve = #{email_approve},-->
+<!--            phone_approve = #{phone_approve}-->
+<!--        where organization_id = #{organizationId}-->
+<!--    </update>-->
+
     <!--    유저 정보 수정(일단 출력을 위해 select 로 만들어둠)-->
     <select id="updateEditUserList" resultType="KimEditUserListDTO">
         select
@@ -75,56 +86,63 @@
     </select>
 
 <!--    봉사글 등록하기-->
-<!--    <select id="selectRegistration" resultType="kimRegistrationDTO">-->
-<!--        select-->
-<!--            v.title,-->
-<!--            v.organization_id,-->
-<!--            v.content,-->
-<!--            v.recruit_start_date,-->
-<!--            v.recruit_end_date,-->
-<!--            v.location_id,-->
-<!--            v.recruit_number,-->
-<!--            v.volunteer_date,-->
-<!--            v.category,-->
-<!--            o.manager_name,-->
-<!--            o.manager_phone_number,-->
-<!--            v.is_adult_allowed,-->
-<!--            v.is_teen_allowed,-->
-<!--            v.file_location-->
-<!--        from tbl_volunteer v join tbl_organization o on v.organization_id = o.organization_id-->
-<!--            where v.organization_id = #{organizationId}-->
-<!--    </select>-->
+    <insert id="selectRegistration">
+    insert into (
+        select v.title,
+                v.organization_id,
+                v.content,
+                v.recruit_start_date,
+                v.recruit_end_date,
+                v.location_id,
+                v.recruit_number,
+                v.volunteer_date,
+                v.category,
+                o.manager_name,
+                o.manager_phone_number,
+                v.is_adult_allowed,
+                v.is_teen_allowed,
+                v.file_location
+            from tbl_volunteer v
+                join tbl_organization o on v.organization_id = o.organization_id
+            where v.organization_id = #{organizationId}
+                 )
+    </insert>
 
-
-<!--&lt;!&ndash;    봉사글 상세보기&ndash;&gt;-->
+<!--    봉사글 상세보기-->
 <!--    <select id="selectViewDetailVol" resultType="kimViewDetailVolDTO">-->
 <!--        select-->
-<!--            title,-->
-<!--            recruit_stert_date,-->
-<!--            recruit_end_date,-->
-<!--            volunteer_date,-->
-<!--            category,-->
-<!--            is_adult_allowen,-->
-<!--            is_teen_allowen,-->
-<!--            o.location_id,-->
-<!--            target,-->
-<!--            is_online,-->
-<!--            content-->
+<!--            v.title,-->
+<!--            v.recruit_stert_date,-->
+<!--            v.recruit_end_date,-->
+<!--            v.volunteer_date,-->
+<!--            v.recruit_number,-->
+<!--            v.volunteer_id,-->
+<!--            v.category,-->
+<!--            v.is_adult_allowed,-->
+<!--            v.is_teen_allowed,-->
+<!--            v.location_id,-->
+<!--            v.organization_id,-->
+<!--            v.target,-->
+<!--            v.is_online,-->
+<!--            v.content,-->
 <!--            o.manager_name,-->
 <!--            o.manager_phone_number-->
-<!--        from tbl_volunteer join tbl_organization-->
+<!--        from tbl_volunteer v-->
+<!--            join tbl_organization o on v.organization_id = o.organization_id-->
+<!--        where v.organization_id = #{organizationId}-->
 <!--    </select>-->
 
-<!--&lt;!&ndash;    익명 게시판 상세보기&ndash;&gt;-->
+<!--    익명 게시판 상세보기-->
 <!--    <select id="selectDetailAnonymous" resultType="kimDetailAnonymousDTO">-->
 <!--        select-->
-<!--            title,-->
-<!--            anonymous_comment_id,-->
-<!--            anonymous_id,-->
+<!--            a.title,-->
+<!--            y.anonymous_comment_id,-->
+<!--            a.anonymous_id,-->
 <!--            user_id,-->
 <!--            content,-->
-<!--            created_date,-->
+<!--            REGISTER_DATE,-->
 <!--            views-->
-<!--        from tbl_anonymous join tbl_anonymous_comment-->
+<!--        from tbl_anonymous a on y.anonymous_id = a.anonymous_id-->
+<!--        where a.anonymous_id = #{anonymous_id}-->
 <!--    </select>-->
 </mapper>

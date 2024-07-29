@@ -3,12 +3,12 @@
 
 <mapper namespace="com.example.doum.mapper.jung.JungMapper">
 
-    <select id="getTime">
-        select sysdate from tbl_anonymous
-    </select>
-    <select id="getDate">
-        select sysdate from tbl_user
-    </select>
+<!--    <select id="getTime">-->
+<!--        select sysdate from tbl_anonymous-->
+<!--    </select>-->
+<!--    <select id="getDate">-->
+<!--        select sysdate from tbl_user-->
+<!--    </select>-->
 
 
 </mapper>

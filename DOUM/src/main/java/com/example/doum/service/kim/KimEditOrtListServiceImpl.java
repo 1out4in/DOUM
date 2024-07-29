@@ -14,6 +14,7 @@ public class KimEditOrtListServiceImpl implements KimEditOrtListService{
 
     @Override
     public KimEditOrtListDTO updateOrtList(long organizationId) {
+
         return kimMapper.updateEditOrtList(organizationId);
     }
 

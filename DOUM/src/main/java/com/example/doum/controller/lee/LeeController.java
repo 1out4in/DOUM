@@ -3,7 +3,6 @@ package com.example.doum.controller.lee;
 
 import com.example.doum.domain.dto.lee.LeeMyPageDTO;
 import com.example.doum.domain.dto.lee.LeeMyPageStoryDTO;
-import com.example.doum.service.lee.LeeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,9 +19,9 @@ import java.util.List;
 @RequiredArgsConstructor
 public class LeeController {
 
-    //마이페이지
+//    마이페이지
 
-    //마이페이지 스토리 작성 폼으로 이동
+//    마이페이지 스토리 작성 폼으로 이동
     @GetMapping("/writingStory")
     public String writingStory(Model model) {
         model.addAttribute("story", new LeeMyPageStoryDTO());

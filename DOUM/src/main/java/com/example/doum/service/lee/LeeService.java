@@ -8,7 +8,7 @@ import java.util.List;
 public class LeeService {
 
 
-    //게시물(story) 작성
+//    게시물(story) 작성
     void saveStory(LeeMyPageStoryDTO myPageStoryDTO, List<MultipartFile> files) {
 
     }

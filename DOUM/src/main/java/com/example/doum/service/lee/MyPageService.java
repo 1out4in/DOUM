@@ -20,7 +20,7 @@ public interface MyPageService {
 
 
     //게시글 상세보기
-   // LeeMyPageStoryDTO getStoryById(Long storyId, CustomOAuth2User customOAuth2User);
+//    LeeMyPageStoryDTO getStoryById(Long storyId, CustomOAuth2User customOAuth2User);
 
 
 

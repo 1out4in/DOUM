@@ -14,8 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequiredArgsConstructor
 public class kimController {
 
-
-
     private final KimOrtDetailService kimOrtDetailService;
 
 
@@ -27,6 +25,7 @@ public class kimController {
         model.addAttribute("detail", ortDetail);
         return "kim/agencyDetail";
     }
+
 
     // --------------------------------------------------------
 

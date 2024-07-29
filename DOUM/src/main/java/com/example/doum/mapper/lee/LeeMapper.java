@@ -5,7 +5,6 @@ import com.example.doum.domain.dto.lee.LeeCommentDTO;
 import com.example.doum.domain.dto.lee.LeeFileDTO;
 import com.example.doum.domain.dto.lee.LeeMyPageStoryDTO;
 import com.example.doum.domain.dto.lee.UserReviewDTO;
-import org.apache.catalina.User;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -13,8 +12,8 @@ import java.util.List;
 @Mapper
 public interface LeeMapper {
 
-    //마이페이지 유저 프로필 정보
-    User getUser(String id);
+//    마이페이지 유저 프로필 정보
+//    User getUser(String id);
 
     //마이페이지 유저가 작성한 게시물 목록
     List<LeeMyPageStoryDTO> getStories(String userId);

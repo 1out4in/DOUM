@@ -15,6 +15,7 @@ public class KimOrtDetailServiceImpl implements KimOrtDetailService {
     @Override
     @Transactional
     public KimOrtDetailDTO getDetailById(long organizationId) {
+
         return kimMapper.selectOrtDetail(organizationId);
     }
 }

@@ -1,4 +1,3 @@
-
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.doum.mapper.won.WonMapper">
@@ -29,7 +28,7 @@
 
 
 
-    <!--&lt;!&ndash;    모집인원,모집기간,봉사기간,제목 조회하기&ndash;&gt;-->
+<!--    &lt;!&ndash;    모집인원,모집기간,봉사기간,제목 조회하기&ndash;&gt;-->
 <!--    <select id="volunteer">-->
 <!--        SELECT-->
 <!--            VOLUNTEER_ID,-->
