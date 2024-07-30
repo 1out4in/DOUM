@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -29,14 +30,33 @@ public class LeeController {
 //마이페이지 띄우기 ㅇㅇ
     @GetMapping("/myPage/{userId}")
     public String myPage(@PathVariable long userId, Model model) {
+        boolean flag = false;
         LeeUsersDTO user= leeService.getUserById(userId);
         //게시물 리스트가 필요함
         List<LeeMyPageStoryDTO> stories = leeService.getStoriesByUserId(userId);
-        List<LeeStoryImageDTO> storyImg = leeService.getStoryImgListByStoryId(userId);
+//        List<LeeStoryImageDTO> storyImg = leeService.getStoryImgListByStoryId(userId);
+
+        List<LeeStoryImageDTO> storyImg = new ArrayList<>();
+
+        for (LeeMyPageStoryDTO story : stories){
+            Long storyId = story.getStoryId();
+            List<LeeStoryImageDTO> imgs = leeService.getStoryImgListByStoryId(storyId);
+
+            if(!imgs.isEmpty()) {
+                LeeStoryImageDTO dto = imgs.get(0);
+                storyImg.add(dto);
+            }
+            else {
+                LeeStoryImageDTO dto = new LeeStoryImageDTO();
+                dto.setStoryId(storyId);
+                storyImg.add(dto);
+            }
+        }
 
         model.addAttribute("user", user);
         model.addAttribute("stories", stories);
         model.addAttribute("storyImg", storyImg);
+
 
         return "lee/myPage";
     }
@@ -206,16 +226,35 @@ public List<LeeOrgReviewDTO> getReviewsForUser(@RequestParam Long userId) {
 
 
     //스토리 작성 처리 로그인 처리 하고나서야 가능해질듯 ---? ? ?
+//    @PostMapping("/writingStoryT")
+//    public String write(LeeMyPageStoryDTO story,
+////                        @RequestParam("userId")Long userId,
+//                        List<MultipartFile> files) {
+//
+////        story.setUserId(userId);
+//        leeService.saveStory(story,files);
+////        return "redirect:/Lee/myPage/" + userId;
+////        return "redirect:/Lee/story/" + story.getStoryId();
+//        return "redirect:/Lee/myPage/" + story.getStoryId();
+//
+//
+////        return "redirect:/lee/myPage";
+////        return "redirect:/Lee/story/"+story.getStoryId();
+//
+//    }
+
     @PostMapping("/writingStoryT")
     public String write(LeeMyPageStoryDTO story,
-//                        @RequestParam("userId")Long userId,
                         List<MultipartFile> files) {
 
 //        story.setUserId(userId);
+        Long userId = leeService.getStoryById(story.getStoryId()).getUserId();
         leeService.saveStory(story,files);
 //        return "redirect:/Lee/myPage/" + userId;
 //        return "redirect:/Lee/story/" + story.getStoryId();
-        return "redirect:/Lee/myPage/" + story.getStoryId();
+//        return "redirect:/Lee/myPage/" + story.getStoryId();
+        return "redirect:/Lee/myPage/" + userId;
+
 
 
 //        return "redirect:/lee/myPage";
@@ -223,6 +262,27 @@ public List<LeeOrgReviewDTO> getReviewsForUser(@RequestParam Long userId) {
 
     }
 
+
+//    @PostMapping("/editStory")
+//    public String editStory(LeeMyPageStoryDTO story,List<MultipartFile> files){
+//        System.out.println("들어옴");
+//        leeService.updateStory(story,files);
+//
+//        return "redirect:/Lee/story/"+story.getStoryId();
+////        return "redirect:/Lee/story/"+story.getStoryId();
+//
+//    }
+
+
+
+//    @PostMapping("/delete/{storyId}")
+//    public String deleteStory(@PathVariable Long storyId) {
+//        Long userId = leeService.getStoryById(storyId).getUserId();
+//        leeService.deleteStory(storyId);
+//        return "redirect:/Lee/myPage/" + userId;
+//
+//
+//    }
 
 
 //스토리 작성 처리 로그인 처리 하고나서야 가능해질듯 ---? ? ?
@@ -334,8 +394,9 @@ public List<LeeOrgReviewDTO> getReviewsForUser(@RequestParam Long userId) {
 
     @PostMapping("/delete/{storyId}")
     public String deleteStory(@PathVariable Long storyId) {
+        Long userId = leeService.getStoryById(storyId).getUserId();
         leeService.deleteStory(storyId);
-        return "redirect:/lee/myPage";
+        return "redirect:/Lee/myPage/" + userId;
 
 
     }

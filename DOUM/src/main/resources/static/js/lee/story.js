@@ -19,7 +19,7 @@ function deletePost() {
         var form = document.createElement('form');
         form.method = 'post';
         // form.action = '/story/delete/' + storyId;
-        form.action = '/story/delete/' + storyId;
+        form.action = '/Lee/delete/' + storyId;
 
         document.body.appendChild(form);
         form.submit();
@@ -120,7 +120,7 @@ function getComments(storyId) {
                     <div class="comment-card" id="comment-${comment.name}">
                         <div class="comment-body">
                             <div class="comment-title">${comment.name}</div>
-<!--                            <div class="comment-subtitle">${commentDate}${editStr}</div>-->
+
                             <p class="comment-text">${comment.commentContent}</p>
                             <!-- 수정, 삭제 버튼 -->
                             ${buttons}
@@ -148,7 +148,7 @@ function addStoryComment() {
     // textarea 비어 있으면 경고
     if(!commentContent){
         alert('내용을 입력하세요!');
-        return
+        return;
     }
 
     $.ajax({
@@ -242,7 +242,6 @@ function editComment(commentId){
 }
 //취소 버튼 누른 경우
 function cancelEdit(){
-
     getComments($('input[name="storyId"]').val());
 
 }
