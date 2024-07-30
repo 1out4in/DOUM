@@ -56,22 +56,35 @@
 
             </div>
             <h3>댓글</h3>
-            <div class="comments-section">
-                <ul class="comments-list">
-                    <li th:each="comment : ${comments}">
-                        <div class="comment">
-<!--                            <img th:src="@{${comment.profileImage}}" alt="프로필 사진">-->
-                            <div class="comment-content">
-                                <p><strong th:text="${comment.userId}"></strong> <span th:text="${comment.content}"></span></p>
-                                <div class="comment-options">
-                                    <i class="fas fa-ellipsis-v"></i>
-                                </div>
-                            </div>
 
-                        </div>
-                    </li>
-                </ul>
-               </div>
+            <div class="comment-form">
+                <textarea id="commentContent" placeholder="댓글을 입력하세요..."></textarea>
+                <button type="button"  onclick="addStoryComment()" >댓글 달기</button>
+
+            </div>
+
+
+
+
+
+<!--동적 아닌 부분 -->
+
+<!--            <div class="comments-section">-->
+<!--                <ul class="comments-list">-->
+<!--                    <li th:each="comment : ${comments}">-->
+<!--                        <div class="comment">-->
+<!--&lt;!&ndash;                            <img th:src="@{${comment.profileImage}}" alt="프로필 사진">&ndash;&gt;-->
+<!--                            <div class="comment-content">-->
+<!--                                <p class="comment-user"><strong th:text="${comment.userId}"></strong> <span th:text="${comment.content}"></span></p>-->
+<!--                                <div class="comment-options">-->
+<!--                                    <i class="fas fa-ellipsis-v"></i>-->
+<!--                                </div>-->
+<!--                            </div>-->
+
+<!--                        </div>-->
+<!--                    </li>-->
+<!--                </ul>-->
+<!--               </div>-->
 
 <!--                    <li>-->
 <!--                        <div class="comment">-->
@@ -120,11 +133,11 @@
 <!--                </ul>-->
 <!--            </div>-->
 
-            <div class="comment-form">
-                <textarea id="commentContent" placeholder="댓글을 입력하세요..."></textarea>
-                <button type="button"  onclick="addStoryComment()" >댓글 달기</button>
+<!--            <div class="comment-form">-->
+<!--                <textarea id="commentContent" placeholder="댓글을 입력하세요..."></textarea>-->
+<!--                <button type="button"  onclick="addStoryComment()" >댓글 달기</button>-->
 
-            </div>
+<!--            </div>-->
             <input type="hidden" name="userId" value="1">
             <input type="hidden" name="storyId" th:value="${story.storyId}">
 
@@ -161,7 +174,9 @@
 
 
 
+            <input type="hidden" name="userId" value="1">
 
+<!--            <input type="hidden" name="userId" th:value="${}">-->
 
             <div class="edit-delete-buttons">
                 <button onclick="editPost()">수정</button>
