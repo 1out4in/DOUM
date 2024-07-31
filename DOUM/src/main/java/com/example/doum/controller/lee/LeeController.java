@@ -108,19 +108,21 @@ public class LeeController {
 //
 //    }
 
-    //스토리 띄우느넉 이거 맞음 잠깐 주석
+    //스토리 띄우는거 이거 맞음 잠깐 주석
     @GetMapping("/story/{storyId}")
     public String story(@PathVariable("storyId") long storyId, Model model) {
         LeeMyPageStoryDTO story = leeService.getStoryById(storyId);
         List<LeeCommentListDTO> comments = leeService.getCommentById(storyId);
         List<LeeStoryImageDTO> storyImg = leeService.getStoryImgById(storyId);
 //        스토리 좋아요
-//        LeeStoryLikeDTO like = leeService.
+        LeeStoryLikeDTO like = leeService.plusStoryLike(storyId);
+
 
 
         model.addAttribute("story", story);
         model.addAttribute("comments", comments);
         model.addAttribute("storyImg", storyImg);
+        model.addAttribute("like", like);
         return "lee/story";
 
     }
@@ -248,7 +250,9 @@ public List<LeeOrgReviewDTO> getReviewsForUser(@RequestParam Long userId) {
                         List<MultipartFile> files) {
 
 //        story.setUserId(userId);
-        Long userId = leeService.getStoryById(story.getStoryId()).getUserId();
+        Long userId = 1L; // 로그인 구현 시 현재 로그인 되어있는 객체에서 가져오기
+        story.setUserId(userId);
+        story.setAppliedVolunteerId(1L);
         leeService.saveStory(story,files);
 //        return "redirect:/Lee/myPage/" + userId;
 //        return "redirect:/Lee/story/" + story.getStoryId();

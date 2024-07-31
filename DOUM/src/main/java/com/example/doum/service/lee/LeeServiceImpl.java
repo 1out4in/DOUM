@@ -72,11 +72,11 @@ public class LeeServiceImpl implements LeeService {
 
         Long storyId = leeMapper.getSeq();
         myPageStory.setStoryId(storyId);
-        leeMapper.saveStory(myPageStory); // 스토리 정보 저장
+        System.out.println(myPageStory);
+        leeMapper.saveStory(StoryVO.toEntity(myPageStory)); // 스토리 정보 저장
+
 
         saveFile(storyId, files);
-
-
     }
 
     //마이 페이지 스토리 삭제 ㅇㅇ
@@ -234,10 +234,16 @@ public class LeeServiceImpl implements LeeService {
         return leeMapper.findReviewsByUserId(userId);
     }
 
-//    @Override
-//    public void LeeStoryLikeDTO(Long storyId, Long userId) {
-//        return leeMapper.
-//    }
+
+//    좋아요 업데이트
+    @Override
+    public LeeStoryLikeDTO plusStoryLike(Long storyId) {
+        leeMapper.plusStoryLike(storyId);
+        return null;
+    }
+
+
+
 
 //    @Override
 //    public void updateProfilePic(Long userId, MultipartFile profilePic) {

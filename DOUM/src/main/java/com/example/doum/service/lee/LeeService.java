@@ -69,8 +69,8 @@ public interface LeeService {
 
 
    List<LeeOrgReviewDTO> getReviewsForUser(Long userId);
-//   스토리 좋아요
-//    void LeeStoryLikeDTO(Long storyId, Long userId);
+//   스토리 좋아요 로그인 후에는 userId 추가해야할듯
+    LeeStoryLikeDTO plusStoryLike(Long storyId);
 
 
 }

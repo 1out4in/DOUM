@@ -29,7 +29,7 @@ public interface LeeMapper {
 
 
     // 게시글 작성
-    void saveStory(LeeMyPageStoryDTO story);
+    void saveStory(StoryVO story);
 
 
     // 게시판 총 갯수
@@ -94,7 +94,13 @@ public interface LeeMapper {
 
 
     //마이페이지 게시물에 달린 공감 수
-    //Long getLikes(String storyId);
+//    Long getLikes(Long storyId);
+//
+    void plusStoryLike(Long storyId);
+
+
+
+
 
     //마이페이지 유저가 받은 리뷰 가져오기
     //List<UserReviewDTO> getReviews(String userId);

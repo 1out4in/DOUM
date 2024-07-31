@@ -1,0 +1,150 @@
+
+.comments-section{
+    overflow: hidden;
+}
+
+.comment-list{
+    overflow: hidden;
+}
+
+
+.comments-list{
+    overflow: hidden;
+
+}
+
+/* 전체 댓글 섹션 */
+.comments-section {
+    /* 필요한 경우 섹션 전체의 여백과 패딩 조절 */
+    padding: 10px;
+}
+
+/* 각 댓글 항목 */
+.comments-list {
+    /* 댓글 항목 간의 간격 조절 */
+    margin-bottom: 10px; /* 하단 여백 조절 */
+    padding: 10px; /* 패딩 조절 */
+    border-bottom: 1px solid #ddd; /* 구분선을 추가하여 시각적으로 구분할 수 있게 */
+}
+
+/* 댓글 내용 */
+.comment-content {
+    /* 댓글 내용의 패딩 및 여백 조절 */
+    margin: 5px 0;
+    padding: 5px;
+}
+
+/* 댓글 사용자 정보 */
+.comment-user {
+    /* 사용자 정보의 여백 조절 */
+    margin-bottom: 5px;
+}
+
+/* 댓글 옵션 아이콘 */
+.comment-options {
+    /* 아이콘의 여백 및 정렬 조절 */
+    margin-top: 5px;
+    text-align: right;
+}
+
+
+.modal {
+    overflow: scroll; /* 필요에 따라 scroll 또는 hidden으로 변경 가능 */
+    max-height: 100vh; /* 화면의 90% 높이만큼 사용 */
+}
+
+
+
+/* 모달 내부의 댓글 섹션 */
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    height: 90vh; /* 모달의 높이 조절 */
+    max-height: 90vh; /* 모달의 최대 높이 설정 */
+}
+
+/* 스토리 설명 및 콘텐츠 섹션 */
+.post-description {
+    flex: 1; /* 가변 높이 */
+    overflow: auto; /* 내용이 넘칠 경우 스크롤 */
+}
+
+/* 댓글 목록과 댓글 작성 폼 */
+.comment-list {
+    max-height: 300px; /* 댓글 목록의 최대 높이 설정 */
+    overflow-y: auto; /* 세로 스크롤 추가 */
+}
+
+/* 댓글 작성 폼 */
+.comment-form {
+    /*display: block;*/
+    margin-top: 20px;
+}
+
+/* 댓글 섹션을 페이지 하단에 고정 */
+.modal-right {
+    position: relative; /* 상대 위치 설정 */
+    margin-top: 20px; /* 위쪽 여백 설정 */
+    max-height: 100%; /* 전체 높이의 최대값 설정 */
+    overflow: hidden; /* 넘치는 내용 숨기기 */
+}
+
+/* 댓글 작성 버튼 및 텍스트 영역 */
+.comment-form textarea {
+    width: 100%;
+    height: 60px; /* 댓글 입력창 높이 설정 */
+}
+
+.comment-form button {
+    width: 100%;
+    padding: 5px;
+    background-color:darkgrey;
+    color: black;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.comment-form button:hover {
+    background-color: green;
+}
+
+
+
+
+
+
+
+
+.input-hidden {
+    border: none; /* 테두리 제거 */
+    background: none; /* 배경 제거 */
+    color: inherit; /* 부모 요소의 색상 상속 */
+    font: inherit; /* 부모 요소의 폰트 상속 */
+
+    width: auto; /* 자동 너비 조정 */
+    pointer-events: none; /* 클릭 이벤트 무시 */
+}
+
+
+.comment-actions button {
+    /* 원하는 스타일을 여기에 작성 */
+
+    color: black; /* 예: 글자색 흰색 */
+    border: none;
+}
+
+.edit-delete-buttons{
+    margin-top: 10px;
+}
+
+.model-right {
+    overflow: scroll; /* 컨테이너의 내용이 넘치면 스크롤바가 나타납니다. */
+}
+
+
+
+
+
+
+

@@ -87,9 +87,10 @@ function getComments(storyId) {
                 let commentElement = `
                     <div class="comments-section">
                         <div class="comments-list">
-                            <div class="comment-user">${comment.userId}</div>
+                             <div class="comment-user">${comment.userId}  <p class="comment-content">${comment.content}</p>   </div>
+                            
 
-                            <p class="comment-content">${comment.content}</p>
+<!--                            // <p class="comment-content">${comment.content}</p>-->
 
                             <div class="comment-options"> <i class="fas fa-ellipsis-v"></i></div>
                             <!-- 수정, 삭제 버튼 -->

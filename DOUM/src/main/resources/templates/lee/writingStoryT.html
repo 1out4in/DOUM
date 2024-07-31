@@ -30,7 +30,6 @@
         <input type="hidden" name="userId" th:value="${story.userId}">
 <!--        <input type="hidden" name="userId" value="1">-->
 
-
         <div>
             <label for="title">제목</label>
             <input id="title" name="title" th:field="*{title}">
@@ -41,22 +40,6 @@
 
 
 
-<!--        <div class="selection-box">-->
-<!--            <label for="volunteer-type">봉사 선택</label>-->
-<!--            <select id="volunteer-type" name="volunteerType">-->
-<!--                <option value="environment">[친환경체험교육 지구 그린데이] 기후위기와 지속가능한 사회</option>-->
-<!--                <option value="education">[친환경체험교육 지구 그린데이] 기후위기와 지속가능한 사회</option>-->
-<!--                <option value="community">[친환경체험교육 지구 그린데이] 기후위기와 지속가능한 사회</option>-->
-<!--                <option value="health">[친환경체험교육 지구 그린데이] 기후위기와 지속가능한 사회</option>-->
-<!--            </select>-->
-<!--&lt;!&ndash;            <select id="volunteer-type"></select>&ndash;&gt;-->
-<!--        </div>-->
-<!--        <div class="form-group">-->
-<!--&lt;!&ndash;            <label for="attachment">사진 첨부</label>&ndash;&gt;-->
-<!--&lt;!&ndash;            <input type="file" id="attachment" name="attachment">&ndash;&gt;-->
-<!--            <input type="file" name="files" multiple>-->
-
-<!--        </div>-->
         <div class="form-group">
             <label for="content">글 내용</label>
             <textarea id="content" name="content" th:field="*{content}"></textarea>

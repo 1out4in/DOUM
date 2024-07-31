@@ -89,6 +89,45 @@
 
 
     <!--    게시물 상세보기  select -->
+<!--    <select id="selectMyPageStory" resultType="LeeMyPageStoryDTO">-->
+<!--        SELECT-->
+<!--            S.STORY_ID,-->
+<!--            S.TITLE,-->
+<!--            S.CONTENT,-->
+<!--            U.NAME,-->
+<!--            S.VIEWS,-->
+<!--            S.CREATED_DATE,-->
+<!--            U.USER_ID-->
+<!--&#45;&#45;             (SELECT COUNT(*) FROM TBL_STORY_IMG SI WHERE SI.STORY_ID = S.STORY_ID) AS IMG_COUNT-->
+<!--        FROM-->
+<!--            TBL_STORY S JOIN TBL_USER U ON U.USER_ID = S.USER_ID-->
+<!--        where S.STORY_ID = #{storyId}-->
+<!--    </select>-->
+<!--    좋아요 까지 불러옴 -->
+<!--    <select id="selectMyPageStory" resultType="LeeMyPageStoryDTO">-->
+<!--        SELECT-->
+<!--            S.STORY_ID,-->
+<!--            S.TITLE,-->
+<!--            S.CONTENT,-->
+<!--            U.NAME,-->
+<!--            S.VIEWS,-->
+<!--            S.CREATED_DATE,-->
+<!--            U.USER_ID,-->
+<!--            (SELECT COUNT(*) FROM TBL_STORY_IMG SI WHERE SI.STORY_ID = S.STORY_ID) AS IMG_COUNT,-->
+<!--            (SELECT SL.STORY_LIKE_ID-->
+<!--             FROM TBL_STORY_LIKE SL-->
+<!--             WHERE SL.STORY_ID = S.STORY_ID-->
+<!--               AND SL.USER_ID = #{userId}-->
+<!--            ) AS STORY_LIKE_ID-->
+<!--        FROM-->
+<!--            TBL_STORY S-->
+<!--                JOIN-->
+<!--            TBL_USER U ON U.USER_ID = S.USER_ID-->
+<!--        WHERE-->
+<!--            S.STORY_ID = #{storyId}-->
+<!--    </select>-->
+
+
     <select id="selectMyPageStory" resultType="LeeMyPageStoryDTO">
         SELECT
             S.STORY_ID,
@@ -97,17 +136,19 @@
             U.NAME,
             S.VIEWS,
             S.CREATED_DATE,
-            U.USER_ID,
-            (SELECT COUNT(*) FROM TBL_STORY_IMG SI WHERE SI.STORY_ID = S.STORY_ID) AS IMG_COUNT
+            U.USER_ID
         FROM
-            TBL_STORY S JOIN TBL_USER U ON U.USER_ID = S.USER_ID
-        where S.STORY_ID = #{storyId}
+            TBL_STORY S
+                JOIN
+            TBL_USER U ON U.USER_ID = S.USER_ID
+        WHERE
+            S.STORY_ID = #{storyId}
     </select>
 
 
 
 
-<!--    스 토 리 첨 부 파 일 !! (이미지)-->
+    <!--    스 토 리 첨 부 파 일 !! (이미지)-->
     <!--  게시글 첨부파일 추가  -->
     <insert id="insertFile">
         insert into tbl_story_img
@@ -171,12 +212,12 @@
     </delete>
 
     <!--  댓글  수정 (시간은 어떻게 할건지. ..?) -->
-    <update id="updateStoryComment">
-        update TBL_STORY_COMMENT
-        set
-            CONTENT = #{content}
-        where STORY_COMMENT_ID = #{storyCommentId}
-    </update>
+<!--    <update id="updateStoryComment">-->
+<!--        update TBL_STORY_COMMENT-->
+<!--        set-->
+<!--            CONTENT = #{content}-->
+<!--        where STORY_COMMENT_ID = #{storyCommentId}-->
+<!--    </update>-->
 
 
 
@@ -203,7 +244,7 @@
 
 <!--    &lt;!&ndash;  마이페이지 게시물에 달린 공감 수 가져오기&ndash;&gt;-->
 <!--    <select id="getLikes">-->
-<!--        SELECT COUNT(*) AS LIKE_COUNT-->
+<!--        SELECT STORY_LIKE_ID AS LIKE_COUNT-->
 <!--        FROM TBL_STORY_LIKE-->
 <!--        WHERE STORY_ID =#{storyId}-->
 <!--    </select>-->
@@ -294,7 +335,12 @@
     </select>
 
 
-
+<!--    좋아요 업데이트-->
+    <update id="plusStoryLike">
+        update TBL_STORY_LIKE
+        set STORY_LIKE_ID = STORY_LIKE_ID + 1
+        where STORY_ID = #{storyId}
+    </update>
 
 
 
