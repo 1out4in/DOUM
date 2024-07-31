@@ -46,7 +46,7 @@ public interface LeeMapper {
     //마이페이지 스토리 삭제 ㅇㅇ
     void deleteStory(Long storyId);
     // 조회 수 +1
-//    void plusStoryView(Long storyId);
+    void plusStoryView(Long storyId);
 
 
  // 게시글 수정하기

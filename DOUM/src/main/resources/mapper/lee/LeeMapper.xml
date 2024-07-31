@@ -51,11 +51,11 @@
 
 
     <!--  마이페이지 스토리 조회 수 +1  -->
-<!--    <update id="plusStoryView">-->
-<!--        update TBL_STORY-->
-<!--        set VIEWS = VIEWS + 1-->
-<!--        where STORY_ID = #{storyId}-->
-<!--    </update>-->
+    <update id="plusStoryView">
+        update TBL_STORY
+        set VIEWS = VIEWS + 1
+        where STORY_ID = #{storyId}
+    </update>
 
 
 

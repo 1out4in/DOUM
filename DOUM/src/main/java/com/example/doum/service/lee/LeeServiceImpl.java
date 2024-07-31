@@ -140,7 +140,8 @@ public class LeeServiceImpl implements LeeService {
     public LeeMyPageStoryDTO getStoryById(Long storyId) {
         LeeMyPageStoryDTO story = leeMapper.selectMyPageStory(storyId);
 
-        //조회수 상승 결정할 if 추가해야함 customOAuth2User 추가 후
+        //조회수 상승 결정할 if 추가해야함 customOAuth2User 로그인 후에는 본인 아닌경우에만 가능하도록 설정
+        leeMapper.plusStoryView(storyId);
     return leeMapper.selectMyPageStory(storyId);
 //        return story;
     }
