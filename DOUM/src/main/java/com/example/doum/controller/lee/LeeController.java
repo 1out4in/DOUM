@@ -70,6 +70,26 @@ public class LeeController {
 
     }
 
+    @GetMapping("/search")
+    public String search(@RequestParam("search") String search,
+                         @RequestParam("userId") long userId, Model model) {
+        LeeUsersDTO user= leeService.getUserById(userId);
+        // 검색어로 사용자 목록을 검색
+        List<LeeUsersDTO> users = leeService.searchUsers(search);
+
+        // 모델에 결과 추가
+        model.addAttribute("user", user);
+        model.addAttribute("users", users);
+        model.addAttribute("search", search);
+
+        // 검색 결과를 보여줄 뷰로 이동
+        return "lee/searchUser";
+    }
+
+
+
+
+
 
 //마이페이지 스토리 띄우기 ㅇㅇ
 //    @GetMapping("/story(others)/{storyId}")

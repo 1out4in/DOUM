@@ -183,8 +183,8 @@ public class LeeServiceImpl implements LeeService {
     }
 
     @Override
-    public List<UserVO> searchUsers(String search) {
-        List<UserVO> users = leeMapper.selectUser(search);
+    public List<LeeUsersDTO> searchUsers(String search) {
+        List<LeeUsersDTO> users = leeMapper.searchUser(search);
 
 //        return new ArrayList<LeeUsersDTO>(users.size());
         return users;

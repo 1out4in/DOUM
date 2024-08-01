@@ -88,7 +88,7 @@ public interface LeeMapper {
     void updateStoryComment(StoryCommentVO storyCommentVO);
 
 
-    List<UserVO> selectUser(String search);
+    List<LeeUsersDTO> searchUser(String search);
 
 //    List<LeeUsersDTO> selectUser(String search);
 

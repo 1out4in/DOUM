@@ -284,16 +284,25 @@
 
 
     <!-- 동적 쿼리 -->
-    <select id="selectUser" resultType="LeeUsersDTO">
+<!--    <select id="selectUser" resultType="LeeUsersDTO">-->
+<!--        SELECT U.USER_ID,U.NAME,U.EMAIL,U.PROFILE_PIC-->
+<!--        FROM TBL_USERS U-->
+<!--        <where>-->
+<!--            <if test="search != null and searchType != null">-->
+<!--                <choose>-->
+<!--                    <when test="searchType == 'user'">U.name LIKE '%' || #{search} || '%'</when>-->
+<!--                </choose>-->
+<!--            </if>-->
+<!--        </where>-->
+<!--    </select>-->
+<!--    -->
+
+
+
+    <select id="searchUser">
         SELECT U.USER_ID,U.NAME,U.EMAIL,U.PROFILE_PIC
-        FROM TBL_USERS U
-        <where>
-            <if test="search != null and searchType != null">
-                <choose>
-                    <when test="searchType == 'user'">U.name LIKE '%' || #{search} || '%'</when>
-                </choose>
-            </if>
-        </where>
+        FROM TBL_USER U
+        WHERE NAME LIKE '%' || #{search} ||'%'
     </select>
 
 
