@@ -79,7 +79,7 @@ function getComments(storyId) {
                 buttons = `
                     <div class="comment-actions">
                         <!-- <button onclick="updateComment(${comment.userId})" class="btn btn-primary">수정</button> -->
-                        <button onclick="deleteComment(${comment.userId})" class="btn btn-danger">삭제</button>
+                        <button onclick="deleteComment(${comment.storyCommentId})" class="btn btn-danger">삭제</button>
                     </div>
                 `;
 
@@ -113,7 +113,7 @@ function addStoryComment() {
     let storyId = $('input[name="storyId"]').val();
     let commentContent = $('#commentContent').val();
     // let userId = $('input[name="userId"]').val();
-
+    //
     // textarea 비어 있으면 경고
     if (!commentContent) {
         alert('내용을 입력하세요!');
@@ -126,8 +126,8 @@ function addStoryComment() {
         contentType: 'application/json',
         data: JSON.stringify({
             storyId: storyId,
-            commentContent: commentContent
-            // providerId: userId
+            content: commentContent,
+            userId: 1
         }),
         success: function(data) {
             $('#commentContent').val('');

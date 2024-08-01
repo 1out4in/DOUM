@@ -255,6 +255,8 @@ CREATE TABLE TBL_STORY_LIKE
 
 
 
+SELECT seq_story_comment.currval, seq_story_comment.nextval
+FROM dual;
 
 
 

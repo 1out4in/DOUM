@@ -201,7 +201,7 @@
     <!--  특정 게시글에 댓글 추가  -->
     <insert id="insertStoryComment">
         insert into TBL_STORY_COMMENT (STORY_COMMENT_ID, STORY_ID, USER_ID, CONTENT, CREATED_DATE)
-        values (seq_story_comment.nextval, #{storyId}, #{userId}, #{content}, sysdate);
+        values (seq_story_comment.nextval, #{storyId}, #{userId}, #{content}, sysdate)
     </insert>
 
 

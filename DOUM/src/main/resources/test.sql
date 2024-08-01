@@ -359,5 +359,7 @@ FROM
     TBL_USER U ON U.USER_ID = S.USER_ID
 WHERE
     S.STORY_ID = 1;
+insert into TBL_STORY_COMMENT (STORY_COMMENT_ID, STORY_ID, USER_ID, CONTENT, CREATED_DATE)
+values (seq_story_comment.nextval, 5, 1, '아오', sysdate);
 
 
