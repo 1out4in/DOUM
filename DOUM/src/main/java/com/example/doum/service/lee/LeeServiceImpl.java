@@ -217,12 +217,58 @@ public class LeeServiceImpl implements LeeService {
             // 저장된 파일 경로를 데이터베이스에 업데이트
             String fileDbPath = "/static/uploads/" + datePath + "/story/" + fileName;
             leeMapper.updateProfilePic(userId, fileDbPath);
+
         } catch (IOException e) {
             e.printStackTrace();
             // 예외 처리 로직 추가
             throw new RuntimeException("프로필 사진 저장에 실패했습니다.");
         }
     }
+
+//    @Override
+//    public void updateProfilePic(Long userId, MultipartFile file) {
+//
+//        // 현재 날짜를 기반으로 폴더 경로 생성
+//        LocalDate now = LocalDate.now();
+//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+//        String datePath = now.format(formatter);
+//
+//        if (file.isEmpty()) {
+//            continue;
+//        }
+//
+//        String originalFileName = file.getOriginalFilename();
+//        String storedFileName = UUID.randomUUID().toString().replaceAll("-", "") + "_" + originalFileName;
+//        Long fileSize = file.getSize();
+//
+//        try {
+//            // 파일 저장 경로 설정
+//            Path directoryPath = Paths.get("src/main/resources/static/uploads/" + datePath + "/story/");
+//            if (!Files.exists(directoryPath)) {
+//                Files.createDirectories(directoryPath); // 폴더가 없으면 생성
+//            }
+//            Path filePath = directoryPath.resolve(storedFileName);
+//            // 파일 저장
+//            Files.copy(file.getInputStream(), filePath);
+//
+////            LeeStoryImageDTO storyImageDTO = new LeeStoryImageDTO();
+//            LeeUsersDTO leeUsersDTO = new LeeUsersDTO();
+//            leeUsersDTO.setProfilePic(datePath);
+//            leeUsersDTO.setUserId(userId);
+//
+////            storyImageDTO.setFileLocation("/uploads/" + datePath + "/story/" + storedFileName);
+//            leeMapper.updateProfilePic(UserVO.toEntity(leeUsersDTO));
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//
+//
+//
+//
+//
+//
+//
+//    }
 
     @Override
     public void updateIntroduction(Long userId, String introduction) {

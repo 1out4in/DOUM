@@ -143,7 +143,7 @@
                 <a th:href="@{/Lee/story/{id}(id=${story.storyId})}">
                     <div class="thumbnail-container">
                         <!-- 첫 번째 이미지를 썸네일로 표시 -->
-                        <img th:src="@{${storyImg[1].fileLocation}}" alt="게시물 이미지" class="thumbnail">
+                        <img th:src="@{${story.fileLocation}}" alt="게시물 이미지" class="thumbnail">
 <!--                        <img th:src="@{${storyImg[story.storyId].fileLocation}}" alt="게시물 이미지" class="thumbnail">-->
 
 

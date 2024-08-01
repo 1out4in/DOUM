@@ -36,27 +36,22 @@ public class LeeController {
         List<LeeMyPageStoryDTO> stories = leeService.getStoriesByUserId(userId);
 //        List<LeeStoryImageDTO> storyImg = leeService.getStoryImgListByStoryId(userId);
 
-        List<LeeStoryImageDTO> storyImg = new ArrayList<>();
-
         for (LeeMyPageStoryDTO story : stories){
             Long storyId = story.getStoryId();
             List<LeeStoryImageDTO> imgs = leeService.getStoryImgListByStoryId(storyId);
 
             if(!imgs.isEmpty()) {
                 LeeStoryImageDTO dto = imgs.get(0);
-                storyImg.add(dto);
+                story.setFileLocation(dto.getFileLocation());
             }
             else {
                 LeeStoryImageDTO dto = new LeeStoryImageDTO();
                 dto.setStoryId(storyId);
-                storyImg.add(dto);
             }
         }
 
         model.addAttribute("user", user);
         model.addAttribute("stories", stories);
-        model.addAttribute("storyImg", storyImg);
-
 
         return "lee/myPage";
     }

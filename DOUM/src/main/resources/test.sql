@@ -362,4 +362,6 @@ WHERE
 insert into TBL_STORY_COMMENT (STORY_COMMENT_ID, STORY_ID, USER_ID, CONTENT, CREATED_DATE)
 values (seq_story_comment.nextval, 5, 1, '아오', sysdate);
 
-
+UPDATE TBL_USER
+SET profile_pic = 'https://i.namu.wiki/i/gpp9WETiXnjw8EPScOTJ_1aojlVnNwHKqX2YPKxLJj31GPSH9ocj5Owp4C9fs_x6bQods4AY9IMoRLmih2zNIA.webp'
+WHERE USER_ID = 4;

@@ -35,6 +35,7 @@ public class LeeMyPageStoryDTO {
 
     private LocalDateTime createdDate;
 
+    private String fileLocation;
 
 
 

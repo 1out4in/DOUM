@@ -90,7 +90,7 @@ public interface LeeMapper {
 
     List<UserVO> selectUser(String search);
 
-
+//    List<LeeUsersDTO> selectUser(String search);
 
 
     //마이페이지 게시물에 달린 공감 수
@@ -126,7 +126,8 @@ public interface LeeMapper {
 
 //            leeMapper.updateProfilePic(userId, fileDbPath);
     void updateProfilePic(@Param("userId") Long userId, @Param("filePath") String filePath);
-
+//void updateProfilePic(UserVO userVO);
+//    void insertFile(StoryImageVO storyImageVO);
 
 
     void updateIntroduction(@Param("userId") Long userId, @Param("introduction") String introduction);

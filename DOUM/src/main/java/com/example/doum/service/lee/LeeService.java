@@ -62,8 +62,8 @@ public interface LeeService {
 
     public List<UserVO> searchUsers(String search);
 
-    void updateProfilePic(Long userId, MultipartFile profilePic);
-
+    void updateProfilePic(Long userId, MultipartFile file);
+//void updateProfilePic(Long userId, MultipartFile file);
 
     void updateIntroduction(Long userId, String introduction);
 

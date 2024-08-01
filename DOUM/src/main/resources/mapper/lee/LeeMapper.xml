@@ -288,7 +288,7 @@
         SELECT U.USER_ID,U.NAME,U.EMAIL,U.PROFILE_PIC
         FROM TBL_USERS U
         <where>
-            <if test="search != null">
+            <if test="search != null and searchType != null">
                 <choose>
                     <when test="searchType == 'user'">U.name LIKE '%' || #{search} || '%'</when>
                 </choose>
