@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 public class StoryVO {
     private Long storyId;
     private Long userId;
-    private Long anonymousId;
+//    private Long anonymousId;
     private Long appliedVolunteerId;
     private String title;
     private String content;
@@ -27,7 +27,7 @@ public class StoryVO {
     public StoryVO(Long storyId, Long userId, Long anonymousId, Long appliedVolunteerId, String title, String content, LocalDateTime createdDate, Long views) {
         this.storyId = storyId;
         this.userId = userId;
-        this.anonymousId = anonymousId;
+//        this.anonymousId = anonymousId;
         this.appliedVolunteerId = appliedVolunteerId;
         this.title = title;
         this.content = content;
@@ -39,12 +39,12 @@ public class StoryVO {
     public static StoryVO toEntity(LeeMyPageStoryDTO storyDTO) {
         return StoryVO.builder().storyId(storyDTO.getStoryId())
                 .userId(storyDTO.getUserId())
-                .anonymousId(storyDTO.getAnonymousId())
+//                .anonymousId(storyDTO.getAnonymousId())
                 .appliedVolunteerId(storyDTO.getAppliedVolunteerId())
                 .title(storyDTO.getTitle())
                 .content(storyDTO.getContent())
                 .createdDate(storyDTO.getCreatedDate())
-                .views((long) storyDTO.getView())
+                .views(storyDTO.getViews())
                 .build();
 
     }

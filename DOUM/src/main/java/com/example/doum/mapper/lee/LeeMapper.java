@@ -29,7 +29,7 @@ public interface LeeMapper {
 
 
     // 게시글 작성
-    void saveStory(LeeMyPageStoryDTO story);
+    void saveStory(StoryVO story);
 
 
     // 게시판 총 갯수
@@ -46,7 +46,7 @@ public interface LeeMapper {
     //마이페이지 스토리 삭제 ㅇㅇ
     void deleteStory(Long storyId);
     // 조회 수 +1
-//    void plusStoryView(Long storyId);
+    void plusStoryView(Long storyId);
 
 
  // 게시글 수정하기
@@ -88,13 +88,19 @@ public interface LeeMapper {
     void updateStoryComment(StoryCommentVO storyCommentVO);
 
 
-    List<UserVO> selectUser(String search);
+    List<LeeUsersDTO> searchUser(String search);
 
-
+//    List<LeeUsersDTO> selectUser(String search);
 
 
     //마이페이지 게시물에 달린 공감 수
-    //Long getLikes(String storyId);
+//    Long getLikes(Long storyId);
+//
+    void plusStoryLike(Long storyId);
+
+
+
+
 
     //마이페이지 유저가 받은 리뷰 가져오기
     //List<UserReviewDTO> getReviews(String userId);
@@ -120,7 +126,8 @@ public interface LeeMapper {
 
 //            leeMapper.updateProfilePic(userId, fileDbPath);
     void updateProfilePic(@Param("userId") Long userId, @Param("filePath") String filePath);
-
+//void updateProfilePic(UserVO userVO);
+//    void insertFile(StoryImageVO storyImageVO);
 
 
     void updateIntroduction(@Param("userId") Long userId, @Param("introduction") String introduction);

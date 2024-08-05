@@ -1,6 +1,7 @@
 package com.example.doum.domain.dto.lee;
 
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.stereotype.Component;
 
@@ -18,12 +19,5 @@ public class LeeStoryImageDTO {
     private Long storyId;
     // 올린 파일 경로
     private String fileLocation;
-
-
-
-
-
-
-
 
 }
