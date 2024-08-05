@@ -54,6 +54,30 @@ CREATE TABLE TBL_USER
         REFERENCES TBL_LOCATION (LOCATION_ID) ON DELETE CASCADE
 );
 
+-- 수정
+
+DROP TABLE TBL_USER CASCADE CONSTRAINTS;
+CREATE TABLE TBL_USER (
+                          USER_ID            NUMBER PRIMARY KEY,
+                          EMAIL              VARCHAR2(100) NOT NULL,
+                          PASSWORD           VARCHAR2(100) NOT NULL,
+                          NAME               VARCHAR2(100) NOT NULL,
+                          PHONE_NUMBER       VARCHAR2(100) NOT NULL,
+                          BIRTH_DATE         DATE NOT NULL,
+                          LOCATION_ID        VARCHAR2(100) NOT NULL,
+                          ADDRESS_DETAIL     VARCHAR2(1000) DEFAULT '',
+                          INTRODUCTION       VARCHAR2(1000) DEFAULT '',
+                          REGISTER_DATE      DATE DEFAULT SYSDATE,
+                          EMAIL_APPROVE      NUMBER(1) DEFAULT 0,
+                          PHONE_APPROVE      NUMBER(1) DEFAULT 0,
+                          PROFILE_PIC        VARCHAR2(1000) DEFAULT ''
+
+);
+
+
+
+
+
 
 
 
