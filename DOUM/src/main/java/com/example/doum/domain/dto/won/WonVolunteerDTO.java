@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
 public class WonVolunteerDTO {
     private Long volunteerId;
     private Long locationId;
+    private Long rganizationId;
     private String title;
     private String content;
     private String category;
@@ -19,10 +20,8 @@ public class WonVolunteerDTO {
     private LocalDateTime recruitEndDate;
     private Long recruitNumber;
     private LocalDateTime volunteerDate;
-    private Long isAdultAllowed;
+    private  Long isAdultAllowed;
     private Long isTeenAllowed;
     private Long isOnline;
-
 }
-
 

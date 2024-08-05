@@ -20,9 +20,11 @@ public class LeeCommentDTO {
     //댓글 내용
     private String content;
     //댓글 작성 날짜
-    private LocalDateTime createdTime;
+    private LocalDateTime createdDate;
     //댓글 수정 날짜
     private LocalDateTime updatedTime;
+
+
 
 
 }
