@@ -56,6 +56,47 @@ CREATE TABLE TBL_USER
         REFERENCES TBL_LOCATION (LOCATION_ID) ON DELETE CASCADE
 );
 
+-- 수정
+
+DROP TABLE TBL_USER CASCADE CONSTRAINTS;
+CREATE TABLE TBL_USER (
+                          USER_ID            NUMBER PRIMARY KEY,
+                          EMAIL              VARCHAR2(100) NOT NULL,
+                          PASSWORD           VARCHAR2(100) NOT NULL,
+                          NAME               VARCHAR2(100) NOT NULL,
+                          PHONE_NUMBER       VARCHAR2(100) NOT NULL,
+                          BIRTH_DATE         DATE NOT NULL,
+                          LOCATION_ID        VARCHAR2(100) NOT NULL,
+                          ADDRESS_DETAIL     VARCHAR2(1000) DEFAULT '',
+                          INTRODUCTION       VARCHAR2(1000) DEFAULT '',
+                          REGISTER_DATE      DATE DEFAULT SYSDATE,
+                          EMAIL_APPROVE      NUMBER(1) DEFAULT 0,
+                          PHONE_APPROVE      NUMBER(1) DEFAULT 0,
+                          PROFILE_PIC        VARCHAR2(1000) DEFAULT ''
+
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 CREATE TABLE TBL_VOLUNTEER
 (
     VOLUNTEER_ID            NUMBER PRIMARY KEY,
@@ -214,6 +255,19 @@ CREATE TABLE TBL_STORY_COMMENT
 
 DROP TABLE TBL_STORY_COMMENT;
 
+-- CREATE TABLE TBL_STORY_LIKE
+-- (
+--     STORY_LIKE_ID  NUMBER PRIMARY KEY,
+--     STORY_ID NUMBER    NOT NULL,
+--     USER_ID          NUMBER    NOT NULL,
+--     CONSTRAINT FK_STORY_LIKE_TO_STORY FOREIGN KEY (STORY_ID)
+--         REFERENCES TBL_ANONYMOUS (ANONYMOUS_ID) ON DELETE CASCADE,
+--     CONSTRAINT FK_STORY_LIKE_TO_USER FOREIGN KEY (USER_ID)
+--         REFERENCES TBL_USER (USER_ID) ON DELETE CASCADE
+-- );
+
+DROP TABLE TBL_STORY_COMMENT;
+
 CREATE TABLE TBL_STORY_LIKE
 (
     STORY_LIKE_ID  NUMBER PRIMARY KEY,
@@ -227,6 +281,8 @@ CREATE TABLE TBL_STORY_LIKE
 
 
 
+SELECT seq_story_comment.currval, seq_story_comment.nextval
+FROM dual;
 
 
 

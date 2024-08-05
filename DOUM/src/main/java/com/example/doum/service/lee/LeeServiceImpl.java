@@ -72,11 +72,11 @@ public class LeeServiceImpl implements LeeService {
 
         Long storyId = leeMapper.getSeq();
         myPageStory.setStoryId(storyId);
-        leeMapper.saveStory(myPageStory); // 스토리 정보 저장
+        System.out.println(myPageStory);
+        leeMapper.saveStory(StoryVO.toEntity(myPageStory)); // 스토리 정보 저장
+
 
         saveFile(storyId, files);
-
-
     }
 
     //마이 페이지 스토리 삭제 ㅇㅇ
@@ -140,7 +140,8 @@ public class LeeServiceImpl implements LeeService {
     public LeeMyPageStoryDTO getStoryById(Long storyId) {
         LeeMyPageStoryDTO story = leeMapper.selectMyPageStory(storyId);
 
-        //조회수 상승 결정할 if 추가해야함 customOAuth2User 추가 후
+        //조회수 상승 결정할 if 추가해야함 customOAuth2User 로그인 후에는 본인 아닌경우에만 가능하도록 설정
+        leeMapper.plusStoryView(storyId);
     return leeMapper.selectMyPageStory(storyId);
 //        return story;
     }
@@ -182,8 +183,8 @@ public class LeeServiceImpl implements LeeService {
     }
 
     @Override
-    public List<UserVO> searchUsers(String search) {
-        List<UserVO> users = leeMapper.selectUser(search);
+    public List<LeeUsersDTO> searchUsers(String search) {
+        List<LeeUsersDTO> users = leeMapper.searchUser(search);
 
 //        return new ArrayList<LeeUsersDTO>(users.size());
         return users;
@@ -191,31 +192,50 @@ public class LeeServiceImpl implements LeeService {
 
     @Override
     public void updateProfilePic(Long userId, MultipartFile profilePic) {
-        // 현재 날짜를 기준으로 폴더 경로 생성
-        LocalDate now = LocalDate.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
-        String datePath = now.format(formatter);
-
-        // 파일이 저장될 디렉토리 경로 설정
-        Path directoryPath = Paths.get("src/main/resources/static/uploads/" + datePath + "/story/");
-        File directory = new File(directoryPath.toString());
-
-        // 디렉토리가 존재하지 않으면 생성
-        if (!directory.exists()) {
-            directory.mkdirs();
-        }
-
-        // 파일 이름 설정
-        String fileName = userId + "_" + profilePic.getOriginalFilename();
-        Path filePath = directoryPath.resolve(fileName);
-
         try {
+
+            // 현재 날짜를 기준으로 폴더 경로 생성
+            LocalDate now = LocalDate.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+            String datePath = now.format(formatter);
+
+//            // 파일이 저장될 디렉토리 경로 설정
+//            Path directoryPath = Paths.get("src/main/resources/static/uploads/" + datePath + "/story/");
+//            File directory = new File(directoryPath.toString());
+//
+//            // 디렉토리가 존재하지 않으면 생성
+//            if (!directory.exists()) {
+//                directory.mkdirs();
+//            }
+//        //        if (!directory.exists()) {
+//        //            if (!directory.mkdirs()) {
+//        //                throw new RuntimeException("디렉토리 생성에 실패했습니다.");
+//        //            }
+//        //        }
+//
+//
+//            // 파일 이름 설정
+//            String fileName = userId + "_" + profilePic.getOriginalFilename();
+//            Path filePath = directoryPath.resolve(fileName);
+//
+//            // 파일 저장
+//            profilePic.transferTo(filePath.toFile());
+            String originalFileName = profilePic.getOriginalFilename();
+            String storedFileName = UUID.randomUUID().toString().replaceAll("-", "") + "_" + originalFileName;
+
+            // 파일 저장 경로 설정 (프로젝트의 정적 자원 경로에 저장)
+            Path directoryPath = Paths.get("src/main/resources/static/uploads/" + datePath + "/story/");
+            if (!Files.exists(directoryPath)) {
+                Files.createDirectories(directoryPath); // 폴더가 없으면 생성
+            }
+            Path filePath = directoryPath.resolve(storedFileName);
             // 파일 저장
-            profilePic.transferTo(filePath.toFile());
+            Files.copy(profilePic.getInputStream(), filePath);
 
             // 저장된 파일 경로를 데이터베이스에 업데이트
-            String fileDbPath = "/static/uploads/" + datePath + "/story/" + fileName;
+            String fileDbPath = "/uploads/" + datePath + "/story/" + storedFileName;
             leeMapper.updateProfilePic(userId, fileDbPath);
+
         } catch (IOException e) {
             e.printStackTrace();
             // 예외 처리 로직 추가
@@ -223,20 +243,75 @@ public class LeeServiceImpl implements LeeService {
         }
     }
 
+//    @Override
+//    public void updateProfilePic(Long userId, MultipartFile file) {
+//
+//        // 현재 날짜를 기반으로 폴더 경로 생성
+//        LocalDate now = LocalDate.now();
+//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+//        String datePath = now.format(formatter);
+//
+//        if (file.isEmpty()) {
+//            continue;
+//        }
+//
+//        String originalFileName = file.getOriginalFilename();
+//        String storedFileName = UUID.randomUUID().toString().replaceAll("-", "") + "_" + originalFileName;
+//        Long fileSize = file.getSize();
+//
+//        try {
+//            // 파일 저장 경로 설정
+//            Path directoryPath = Paths.get("src/main/resources/static/uploads/" + datePath + "/story/");
+//            if (!Files.exists(directoryPath)) {
+//                Files.createDirectories(directoryPath); // 폴더가 없으면 생성
+//            }
+//            Path filePath = directoryPath.resolve(storedFileName);
+//            // 파일 저장
+//            Files.copy(file.getInputStream(), filePath);
+//
+////            LeeStoryImageDTO storyImageDTO = new LeeStoryImageDTO();
+//            LeeUsersDTO leeUsersDTO = new LeeUsersDTO();
+//            leeUsersDTO.setProfilePic(datePath);
+//            leeUsersDTO.setUserId(userId);
+//
+////            storyImageDTO.setFileLocation("/uploads/" + datePath + "/story/" + storedFileName);
+//            leeMapper.updateProfilePic(UserVO.toEntity(leeUsersDTO));
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//
+//
+//
+//
+//
+//
+//
+//    }
+
     @Override
     public void updateIntroduction(Long userId, String introduction) {
         leeMapper.updateIntroduction(userId, introduction);
     }
+
+
+
+
 
     @Override
     public List<LeeOrgReviewDTO> getReviewsForUser(Long userId) {
         return leeMapper.findReviewsByUserId(userId);
     }
 
-//    @Override
-//    public void LeeStoryLikeDTO(Long storyId, Long userId) {
-//        return leeMapper.
-//    }
+
+//    좋아요 업데이트
+    @Override
+    public LeeStoryLikeDTO plusStoryLike(Long storyId) {
+        leeMapper.plusStoryLike(storyId);
+        return null;
+    }
+
+
+
 
 //    @Override
 //    public void updateProfilePic(Long userId, MultipartFile profilePic) {
