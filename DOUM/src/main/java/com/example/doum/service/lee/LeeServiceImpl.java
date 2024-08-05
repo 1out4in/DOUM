@@ -192,30 +192,48 @@ public class LeeServiceImpl implements LeeService {
 
     @Override
     public void updateProfilePic(Long userId, MultipartFile profilePic) {
-        // 현재 날짜를 기준으로 폴더 경로 생성
-        LocalDate now = LocalDate.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
-        String datePath = now.format(formatter);
-
-        // 파일이 저장될 디렉토리 경로 설정
-        Path directoryPath = Paths.get("src/main/resources/static/uploads/" + datePath + "/story/");
-        File directory = new File(directoryPath.toString());
-
-        // 디렉토리가 존재하지 않으면 생성
-        if (!directory.exists()) {
-            directory.mkdirs();
-        }
-
-        // 파일 이름 설정
-        String fileName = userId + "_" + profilePic.getOriginalFilename();
-        Path filePath = directoryPath.resolve(fileName);
-
         try {
+
+            // 현재 날짜를 기준으로 폴더 경로 생성
+            LocalDate now = LocalDate.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+            String datePath = now.format(formatter);
+
+//            // 파일이 저장될 디렉토리 경로 설정
+//            Path directoryPath = Paths.get("src/main/resources/static/uploads/" + datePath + "/story/");
+//            File directory = new File(directoryPath.toString());
+//
+//            // 디렉토리가 존재하지 않으면 생성
+//            if (!directory.exists()) {
+//                directory.mkdirs();
+//            }
+//        //        if (!directory.exists()) {
+//        //            if (!directory.mkdirs()) {
+//        //                throw new RuntimeException("디렉토리 생성에 실패했습니다.");
+//        //            }
+//        //        }
+//
+//
+//            // 파일 이름 설정
+//            String fileName = userId + "_" + profilePic.getOriginalFilename();
+//            Path filePath = directoryPath.resolve(fileName);
+//
+//            // 파일 저장
+//            profilePic.transferTo(filePath.toFile());
+            String originalFileName = profilePic.getOriginalFilename();
+            String storedFileName = UUID.randomUUID().toString().replaceAll("-", "") + "_" + originalFileName;
+
+            // 파일 저장 경로 설정 (프로젝트의 정적 자원 경로에 저장)
+            Path directoryPath = Paths.get("src/main/resources/static/uploads/" + datePath + "/story/");
+            if (!Files.exists(directoryPath)) {
+                Files.createDirectories(directoryPath); // 폴더가 없으면 생성
+            }
+            Path filePath = directoryPath.resolve(storedFileName);
             // 파일 저장
-            profilePic.transferTo(filePath.toFile());
+            Files.copy(profilePic.getInputStream(), filePath);
 
             // 저장된 파일 경로를 데이터베이스에 업데이트
-            String fileDbPath = "/static/uploads/" + datePath + "/story/" + fileName;
+            String fileDbPath = "/uploads/" + datePath + "/story/" + storedFileName;
             leeMapper.updateProfilePic(userId, fileDbPath);
 
         } catch (IOException e) {
