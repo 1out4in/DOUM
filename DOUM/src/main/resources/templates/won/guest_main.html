@@ -24,7 +24,7 @@
         <span><a href="registered-volunteer.html">내가 등록한 봉사</a></span>
         <span id="toggleButton" class="menu-item">전체메뉴</span>
         <span id="bell"><a href="#">🛎</a></span>
-        <span id="login"><a th:href="@{/Won/login}">로그인</a></span>
+        <span id="login"><a th:href="@{/Won/login_test}">로그인</a></span>
         <span id="join"><a th:href="@{/Won/org_join1}">회원가입</a></span>
     </div>
 
@@ -207,12 +207,12 @@
                 </p>
                 <div>
 
-                    <div th:each="post : ${anonymousPosts}" class="post">
-                        <p>제목: <span th:text=" *{post.title}"></span></p>
-                        <p>조회수: <span th:text=" *{post.views}"></span></p>
-                        <p>내용: <span th:text=" *{post.content}"></span></p>
-                        <p>최신순: <span th:text=" *{post.createdDate}"></span></p>
-                    </div>
+                    <div class="post" th:if="${anonymousPosts.size() > 0}">
+                        <p>제목: <span th:text="${anonymousPosts[0].title}"></span></p>
+                        <p>조회수: <span th:text="${anonymousPosts[0].views}"></span></p>
+                        <p>내용: <span th:text="${anonymousPosts[0].content}"></span></p>
+                        <p>최신순: <span th:text="${anonymousPosts[0].createdDate}"></span></p>
+                        </div>
                 </div>
             </div>
         </div>
