@@ -315,7 +315,7 @@ button {
 
 }
 
-.btn_submit span {
+.btn_submit a {
     display: inline-block;
     height: 40px;
     padding: 0 33px;

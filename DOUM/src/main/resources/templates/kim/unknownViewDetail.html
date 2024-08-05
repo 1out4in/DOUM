@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>익명게시판 상세보기</title>
-    <link rel="stylesheet" href="unknwon-view-detail.css">
+    <link rel="stylesheet" th:href="@{/css/kim/unknownViewDetail.css}">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet" />
 </head>
 <body>
@@ -19,9 +19,9 @@
             </div>
             <!-- 등록글 제목 -->
             <div class="content_view">
-                <div class="customer_center">
+                <div class="customer_center" th:object="${anonymous}">
                     <div class="board_view type2">
-                        <h3 class="top_title_header">
+                        <h3 class="top_title_header" th:text="*{title}">
                             구3캠프 환경정화"우리마을 환경정화는 우리손으로 <- 여기 어떤가요??
                         </h3>
                     </div>
@@ -30,10 +30,11 @@
                         <h3 class="top_title_header2">
                             <div class="manager_bar">
 
-                                <div class="name_bar">작성자: 익명
-                                    <div>작성일: 2024.06.28</div>
-                                    <div>조회수: 197</div>
+                                <div class="name_bar" th:text="*{userId}">작성자: 익명
+
                                 </div>
+                                <div th:text="*{#temporals.format(createdDate, 'yy년 M월 d일')}">작성일: 2024.06.28</div>
+                                <div th:value="*{views}">조회수: 197</div>
                             </div>
                         </h3>
                     </div>
@@ -100,7 +101,7 @@
                     <div class="border_bot">
                         <div class="btn_sec btn_sec_center">
                             <button type="button" class="btn_submit" id="btnList">
-                                <span>목록</span>
+                                <a>목록</a>
                             </button>
                         </div>
                     </div>

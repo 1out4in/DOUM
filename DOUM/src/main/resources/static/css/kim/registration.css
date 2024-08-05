@@ -23,7 +23,7 @@ h1{
 #contents{
     width: 1100px;
     min-height: 1080px;
-    margin: 0 auto;
+    margin: auto;
 }
 
 .content{
@@ -337,7 +337,7 @@ dl .dd_file{
 }
 
 .DT{
-    height: 370px;
+    height: 320px;
 }
 
 .text_area{
