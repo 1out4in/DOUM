@@ -24,7 +24,6 @@ public class UserVO {
     private Long emailApprove;
     private Long phoneApprove;
     private LocalDateTime birthDate;
-    private String gender;
     private String introduction;
     private String providerId;
     private String provider;
@@ -32,8 +31,7 @@ public class UserVO {
 
     @Builder
     public UserVO(Long userId, Long locationId, String email, String password, String name, String phoneNumber, LocalDateTime registerDate,
-                Long emailApprove, Long phoneApprove, LocalDateTime birthDate, String gender, String introduction, String providerId,
-                String provider, String role) {
+                Long emailApprove, Long phoneApprove, LocalDateTime birthDate, String introduction) {
         this.userId = userId;
         this.locationId = locationId;
         this.email = email;
@@ -44,11 +42,7 @@ public class UserVO {
         this.emailApprove = emailApprove;
         this.phoneApprove = phoneApprove;
         this.birthDate = birthDate;
-        this.gender = gender;
         this.introduction = introduction;
-        this.providerId = providerId;
-        this.provider = provider;
-        this.role = role;
     }
     //entity 추가 0722 이현수
     public static UserVO toEntity(LeeUsersDTO usersDTO) {
@@ -63,10 +57,8 @@ public class UserVO {
                 .emailApprove(usersDTO.getEmailApprove())
                 .phoneApprove(usersDTO.getPhoneApprove())
                 .birthDate(usersDTO.getBirthDate())
-                .gender(usersDTO.getGender())
-                .providerId(usersDTO.getProviderId())
-                .provider(usersDTO.getProvider())
-                .role(usersDTO.getRole())
+
+
                 .build();
 
     }
