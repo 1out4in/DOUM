@@ -77,18 +77,49 @@
             display: block;
         }
 
+        label {
+            display: flex;
+        }
+
+
+
+
+
+
 
     </style>
 </head>
 <body>
+<!--<header class="common-width">-->
+<!--    <h1>MyPage | DOUM</h1>-->
+<!--    <div class="nav-right">-->
+<!--        <form action="/search" method="get">-->
+<!--            <input type="text" name="query" placeholder="Search users...">-->
+<!--            <button type="submit"><i class="fas fa-search"></i></button>-->
+<!--        </form>-->
+<!--        <button type="button"><i class="fas fa-bell icon"></i></button>-->
+<!--    </div>-->
+<!--</header>-->
+
 <header class="common-width">
     <h1>MyPage | DOUM</h1>
     <div class="nav-right">
-        <form action="/search" method="get">
-            <input type="text" name="query" placeholder="Search users...">
-            <button type="submit"><i class="fas fa-search"></i></button>
+        <!--        <form action="/search" method="get">-->
+        <!--            <input type="text" name="query" placeholder="Search users...">-->
+        <!--            <button type="submit"><i class="fas fa-search"></i></button>-->
+        <!--        </form>-->
+
+        <form th:action="@{/Lee/search}" th:method="get">
+            <label>
+                <input type="text" id="searchInput" name="search" placeholder="search user...">
+                <input type="hidden" id="userId" name="userId" th:value="${user.userId}">
+                <button class="search-btn" type="submit" ><i class="fas fa-search"></i></button>
+
+
+            </label>
         </form>
-        <button type="button"><i class="fas fa-bell icon"></i></button>
+
+<!--        <button type="button"><i class="fas fa-bell icon"></i></button>-->
     </div>
 </header>
 <main style="width: 1200px;" class="main-container common-width">
