@@ -6,6 +6,7 @@ VALUES (2, 'San Francisco', '456 Market St', 'Downtown');
 INSERT INTO TBL_LOCATION (LOCATION_ID, CITY, ADDRESS, DETAIL)
 VALUES (3, 'Chicago', '789 Lake Shore Dr', 'Near the lake');
 
+
 -- Insert data into TBL_ORGANIZATION
 INSERT INTO TBL_ORGANIZATION (
     ORGANIZATION_ID, LOCATION_ID, EMAIL, PASSWORD, NAME, PHONE_NUMBER, REGISTER_DATE,
@@ -24,24 +25,10 @@ INSERT INTO TBL_ORGANIZATION (
          );
 
 -- Insert sample data into TBL_USER
-INSERT INTO TBL_USER (
-    USER_ID, LOCATION_ID, EMAIL, PASSWORD, NAME, PHONE_NUMBER, REGISTER_DATE,
-    EMAIL_APPROVE, PHONE_APPROVE, BIRTH_DATE, GENDER, INTRODUCTION
-) VALUES (
-             1, 1, 'user1@example.com', 'password123', 'User One', '123-456-7890', SYSDATE,
-             1, 1, TO_DATE('1985-01-01', 'YYYY-MM-DD'), 'Male', 'Introduction of User One'
-         );
-
-INSERT INTO TBL_USER (
-    USER_ID, LOCATION_ID, EMAIL, PASSWORD, NAME, PHONE_NUMBER, REGISTER_DATE,
-    EMAIL_APPROVE, PHONE_APPROVE, BIRTH_DATE, GENDER, INTRODUCTION
-) VALUES (
-             2, 2, 'user2@example.com', 'password456', 'User Two', '987-654-3210', SYSDATE,
-             0, 1, TO_DATE('1990-02-02', 'YYYY-MM-DD'), 'Female', 'Introduction of User Two'
-         );
 
 -- Insert sample data into TBL_VOLUNTEER
 INSERT INTO TBL_VOLUNTEER (
+
     VOLUNTEER_ID, LOCATION_ID, ORGANIZATION_ID, TITLE, CONTENT, CATEGORY, TARGET,
     RECRUIT_START_DATE, RECRUIT_END_DATE, RECRUIT_NUMBER, VOLUNTEER_DATE,
     IS_ADULT_ALLOWED, IS_TEEN_ALLOWED, IS_ONLINE
@@ -92,14 +79,11 @@ INSERT INTO TBL_ORGANIZATION_REVIEW (ORGANIZATION_REVIEW_ID, ORGANIZATION_ID, US
 VALUES (2, 2, 2, 'Very dedicated!', 4);
 
 -- Insert data into TBL_ANONYMOUS
-INSERT INTO TBL_ANONYMOUS (ANONYMOUS_ID, USER_ID, TITLE, CONTENT)
-VALUES (1, 1, 'Anonymous Post 1', 'This is an anonymous post.');
-INSERT INTO TBL_ANONYMOUS (ANONYMOUS_ID, USER_ID, TITLE, CONTENT)
-VALUES (2, 2, 'Anonymous Post 2', 'This is another anonymous post.');
+
 
 -- Insert data into TBL_ANONYMOUS_COMMENT
 INSERT INTO TBL_ANONYMOUS_COMMENT (ANONYMOUS_COMMENT_ID, ANONYMOUS_ID, USER_ID, CONTENT)
-VALUES (1, 1, 2, 'This is a comment.');
+VALUES (1, 1, 1, 'This is a comment.');
 INSERT INTO TBL_ANONYMOUS_COMMENT (ANONYMOUS_COMMENT_ID, ANONYMOUS_ID, USER_ID, CONTENT)
 VALUES (2, 2, 1, 'This is another comment.');
 
@@ -132,3 +116,29 @@ INSERT INTO TBL_STORY_LIKE (STORY_LIKE_ID, STORY_ID, USER_ID)
 VALUES (1, 1, 2);
 INSERT INTO TBL_STORY_LIKE (STORY_LIKE_ID, STORY_ID, USER_ID)
 VALUES (2, 2, 1);
+
+
+
+--  volunteer 데이터 추가
+INSERT INTO TBL_VOLUNTEER (
+    VOLUNTEER_ID, LOCATION_ID, ORGANIZATION_ID, TITLE, CONTENT, CATEGORY, TARGET,
+    RECRUIT_START_DATE, RECRUIT_END_DATE, RECRUIT_NUMBER, VOLUNTEER_DATE,
+    IS_ADULT_ALLOWED, IS_TEEN_ALLOWED, IS_ONLINE
+) VALUES (
+             4,  -- VOLUNTEER_ID
+             4,  -- LOCATION_ID (가상의 다른 위치 ID)
+             3,  -- ORGANIZATION_ID (가상의 다른 조직 ID)
+             '어린이집 방문 봉사',  -- TITLE
+             '어린이들과 함께 놀이 시간을 가지고 이야기를 나누며 보내는 봉사 활동입니다.',  -- CONTENT
+             '사회복지',  -- CATEGORY
+             '어린이들',  -- TARGET
+             SYSDATE,  -- RECRUIT_START_DATE (현재 날짜와 시간)
+             TO_DATE('2024-08-01', 'YYYY-MM-DD'),  -- RECRUIT_END_DATE
+             20,  -- RECRUIT_NUMBER
+             TO_DATE('2024-08-10', 'YYYY-MM-DD'),  -- VOLUNTEER_DATE
+             1,  -- IS_ADULT_ALLOWED (성인 참여 가능 여부, 1은 가능)
+             0,  -- IS_TEEN_ALLOWED (10대 참여 가능 여부, 0은 불가능)
+             0   -- IS_ONLINE (온라인 봉사 여부, 0은 오프라인)
+         );
+
+
