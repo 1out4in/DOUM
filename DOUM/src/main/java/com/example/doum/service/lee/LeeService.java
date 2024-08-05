@@ -60,17 +60,18 @@ public interface LeeService {
     //마이페이지 스토리 댓글 수정 ㅇㅇ
     void updateStoryComment(LeeCommentDTO leeCommentDTO);
 
-    public List<UserVO> searchUsers(String search);
+    List<LeeUsersDTO> searchUsers(String search);
 
-    void updateProfilePic(Long userId, MultipartFile profilePic);
-
+    void updateProfilePic(Long userId, MultipartFile file);
+//void updateProfilePic(Long userId, MultipartFile file);
 
     void updateIntroduction(Long userId, String introduction);
 
 
    List<LeeOrgReviewDTO> getReviewsForUser(Long userId);
-//   스토리 좋아요
-//    void LeeStoryLikeDTO(Long storyId, Long userId);
+//   스토리 좋아요 로그인 후에는 userId 추가해야할듯
+    LeeStoryLikeDTO plusStoryLike(Long storyId);
 
+//    List<UserVO> searchUsers(String sera)
 
 }

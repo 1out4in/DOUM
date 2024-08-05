@@ -34,6 +34,7 @@ public class CommentRestController {
     // 삭제 추가
     @DeleteMapping("/{storyCommentId}")
     public ResponseEntity<?> deleteComment(@PathVariable Long storyCommentId) {
+        System.out.println("삭제 들어옴.");
         leeService.deleteStoryComment(storyCommentId);
 
         return ResponseEntity.ok().build();

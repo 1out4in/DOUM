@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
@@ -19,8 +20,12 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
         // 전체 요청에 접근할 수 있도록 하는 코드.
-        return http.authorizeHttpRequests(auth -> auth.anyRequest().permitAll())
-                .build();
+        return http
+                .csrf(AbstractHttpConfigurer::disable)
+                // 요청에 대한 인증 및 인가를 설정.
+                .authorizeHttpRequests(auth -> auth
+                        .anyRequest().permitAll()
+                ).build();
 
 //        return http
 //                .csrf(AbstractHttpConfigurer::disable)

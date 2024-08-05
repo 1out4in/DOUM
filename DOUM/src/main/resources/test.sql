@@ -191,39 +191,10 @@ from TBL_USER U join TBL_STORY_COMMENT SC
 order by CREATED_DATE desc;
 
 
-select *
-    from TBL_ORGANIZATION;
-
-
-
--- INSERT INTO tbl_organization (
---     organization_id, location_id, email, password, name,
---     phone_number, register_date, email_approve, phone_approve, manager_name,
---     manager_phone_number, file_location, status, provider_id, provider, role
--- )
--- VALUES (
---            8,7, '#{email}', '1234' ,
---            '#{name}', '1111',to_date('2024-07-12'),11, 94, '#{managerName}',
---            '1234', '/files/org1/}','Inactive', '123','2', '#{role}'
---        );
---
 
 
 
 
-select organization_id,password
-from tbl_organization;
-
-INSERT INTO tbl_organization (
-    organization_id, location_id, email, password, name,
-    phone_number, register_date, email_approve, phone_approve, manager_name,
-    manager_phone_number, file_location, status, provider_id, provider, role
-)
-VALUES (
-           'your_organization_id_value', 'your_location_id_value', 'your_email_value', 'your_password_value',
-           'your_name_value', 'your_phone_number_value', 'your_register_date_value', 'your_email_approve_value', 'your_phone_approve_value', 'your_manager_name_value',
-           'your_manager_phone_number_value', 'your_file_location_value', 'your_status_value', 'your_provider_id_value', 'your_provider_value', 'your_role_value'
-       );
 
 insert into TBL_STORY_COMMENT (STORY_COMMENT_ID, STORY_ID, USER_ID, CONTENT, CREATED_DATE)
 values (seq_story_comment.nextval, 2, 2, '너무 좋아보여요', sysdate);
@@ -276,57 +247,18 @@ WHERE USER_ID = 1;
 
 UPDATE TBL_USER
 SET introduction = '봉사를 열심히 합시다.'
+WHERE USER_ID = 1
+
+
+SELECT
+    ORGANIZATION_REVIEW_ID AS organizationReviewId,
+    ORGANIZATION_ID AS organizationId,
+    USER_ID AS userId,
+    CONTENT AS content,
+    RATING AS rating
+FROM TBL_ORGANIZATION_REVIEW
 WHERE USER_ID = 1;
 
-
-
-
-
-
-
-
-
-GRANT SELECT, ALTER ON SEQ_USER TO your_application_user;
-
-
-
-
-DROP TABLE TBL_USER CASCADE CONSTRAINTS;
-
--- TBL_USER 테이블을 다시 생성합니다.
-CREATE TABLE TBL_USER (
-                          USER_ID            NUMBER PRIMARY KEY,
-                          EMAIL              VARCHAR2(100) NOT NULL,
-                          PASSWORD           VARCHAR2(100) NOT NULL,
-                          NAME               VARCHAR2(100) NOT NULL,
-                          PHONE_NUMBER       VARCHAR2(100) NOT NULL,
-                          BIRTH_DATE         DATE NOT NULL,
-                          LOCATION_ID        VARCHAR2(100) NOT NULL,
-                          ADDRESS_DETAIL     VARCHAR2(1000) DEFAULT '',
-                          INTRODUCTION       VARCHAR2(1000) DEFAULT '',
-                          REGISTER_DATE      DATE DEFAULT SYSDATE,
-                          EMAIL_APPROVE      NUMBER(1) DEFAULT 0,
-                          PHONE_APPROVE      NUMBER(1) DEFAULT 0,
-                          PROFILE_PIC        VARCHAR2(1000) DEFAULT ''
-
-);
-
-
-
-select * from TBL_LOCATION;
-drop table TBL_ANNOUNCEMENT cascade constraints;
-
--- Example 1
-INSERT INTO TBL_ANONYMOUS (ANONYMOUS_ID, USER_ID, TITLE, CONTENT)
-VALUES (1, 1001, 'First Title', 'This is the content of the first post.');
-
--- Example 2
-INSERT INTO TBL_ANONYMOUS (ANONYMOUS_ID, USER_ID, TITLE, CONTENT, CREATED_DATE, VIEWS)
-VALUES (1, 1002, 'Second Title', 'This is the content of the second post.', SYSDATE, 1);
-
--- Example 3
-INSERT INTO TBL_ANONYMOUS (ANONYMOUS_ID, USER_ID, TITLE, CONTENT)
-VALUES (3, 1003, 'Third Title', 'This is the content of the third post.');
 
 
 
