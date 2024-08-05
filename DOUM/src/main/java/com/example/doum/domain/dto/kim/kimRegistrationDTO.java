@@ -3,17 +3,17 @@ package com.example.doum.domain.dto.kim;
 import lombok.Data;
 import org.springframework.stereotype.Component;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Component
 @Data
 public class kimRegistrationDTO {
 
     // pk
-    private long organization_id;
+    private long organizationId;
 
     // 주소
-    private long location_id;
+    private long locationId;
 
     // 제목
     private String title;
@@ -22,33 +22,33 @@ public class kimRegistrationDTO {
     private String content;
 
     // 모집일
-    private LocalDate recruit_start_date;
+    private LocalDateTime recruitStartDate;
 
     // 종료일
-    private LocalDate recruit_end_date;
+    private LocalDateTime recruitEndDate;
 
     // 모집인원
-    private long recruit_number;
+    private long recruitNumber;
 
     // 봉사시작일
-    private LocalDate volunteer_date;
+    private LocalDateTime volunteerDate;
 
     // 봉사 분류
     private String category;
 
     // 담당자 이름
-    private String manager_name;
+    private String managerName;
 
     // 담당자 연락처
-    private String manager_phone_number;
+    private String managerPhoneNumber;
 
     // 나이 (성인)
-    private long is_adult_allowed;
+    private long isAdultAllowed;
 
     // 나이(청소년)
-    private long is_teen_allowed;
+    private long isTeenAllowed;
 
     // 첨부파일
-    private String file_location;
+    private String fileLocation;
 
 }

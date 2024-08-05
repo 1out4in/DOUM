@@ -4,15 +4,15 @@
 <mapper namespace="com.example.doum.mapper.kim.kimMapper">
 
 <!--    공지사항 상세보기-->
-<!--    <select id="selectDetailAnnouncement" resultType="kimDetailAnnouncementDTO">-->
-<!--        select-->
-<!--            announcement_id,-->
-<!--            title,-->
-<!--            created_date,-->
-<!--            views,-->
-<!--            content-->
-<!--        from tbl_announcement-->
-<!--    </select>-->
+    <select id="selectDetailAnnouncement" resultType="kimDetailAnnouncementDTO">
+        select
+            announcement_id,
+            title,
+            created_date,
+            content
+        from tbl_announcement
+        where announcement_id = #{announcementId}
+    </select>
 
 <!--    기관 상세보기-->
     <select id="selectOrtDetail" resultType="KimOrtDetailDTO">
@@ -58,12 +58,12 @@
 
 <!--    <update id="updateEditOrtList">-->
 <!--        update tbl_organization-->
-<!--        set location_id = #{location_id},-->
-<!--            manager_phone_number = #{manager_phone_number},-->
-<!--            phone_number = #{phone_number},-->
+<!--        set location_id = #{locationId},-->
+<!--            manager_phone_number = #{managerPhoneNumber},-->
+<!--            phone_number = #{phoneNumber},-->
 <!--            email = #{email},-->
-<!--            email_approve = #{email_approve},-->
-<!--            phone_approve = #{phone_approve}-->
+<!--            email_approve = #{emailApprove},-->
+<!--            phone_approve = #{phoneApprove}-->
 <!--        where organization_id = #{organizationId}-->
 <!--    </update>-->
 
@@ -71,23 +71,23 @@
     <select id="updateEditUserList" resultType="KimEditUserListDTO">
         select
             user_id,
-            provider_id,
             location_id,
+            address_detail,
             register_date,
             name,
             birth_date,
-            gender,
             phone_number,
             email,
             email_approve,
-            phone_approve
+            phone_approve,
+            profile_pic
         from tbl_user
         where user_id = #{userId}
     </select>
 
 <!--    봉사글 등록하기-->
     <insert id="selectRegistration">
-    insert into (
+    insert into(
         select v.title,
                 v.organization_id,
                 v.content,
@@ -106,43 +106,46 @@
                 join tbl_organization o on v.organization_id = o.organization_id
             where v.organization_id = #{organizationId}
                  )
+--     values(#{title}, 0, #{content}, sysdate, sysdate, 0, 0, sysdate,#{category},
+--         #{manager_name}, #{manager_phone_number},0,0,0)
     </insert>
 
 <!--    봉사글 상세보기-->
-<!--    <select id="selectViewDetailVol" resultType="kimViewDetailVolDTO">-->
-<!--        select-->
-<!--            v.title,-->
-<!--            v.recruit_stert_date,-->
-<!--            v.recruit_end_date,-->
-<!--            v.volunteer_date,-->
-<!--            v.recruit_number,-->
-<!--            v.volunteer_id,-->
-<!--            v.category,-->
-<!--            v.is_adult_allowed,-->
-<!--            v.is_teen_allowed,-->
-<!--            v.location_id,-->
-<!--            v.organization_id,-->
-<!--            v.target,-->
-<!--            v.is_online,-->
-<!--            v.content,-->
-<!--            o.manager_name,-->
-<!--            o.manager_phone_number-->
-<!--        from tbl_volunteer v-->
-<!--            join tbl_organization o on v.organization_id = o.organization_id-->
-<!--        where v.organization_id = #{organizationId}-->
-<!--    </select>-->
+    <select id="selectViewDetailVol" resultType="kimViewDetailVolDTO">
+        select
+            v.title,
+            v.recruit_start_date,
+            v.recruit_end_date,
+            v.volunteer_date,
+            v.recruit_number,
+            v.volunteer_id,
+            v.category,
+            v.is_adult_allowed,
+            v.is_teen_allowed,
+            v.location_id,
+            v.organization_id,
+            v.target,
+            v.is_online,
+            v.content,
+            o.manager_name,
+            o.manager_phone_number
+        from tbl_volunteer v
+            join tbl_organization o on v.organization_id = o.organization_id
+        where v.organization_id = #{organizationId}
+    </select>
 
 <!--    익명 게시판 상세보기-->
-<!--    <select id="selectDetailAnonymous" resultType="kimDetailAnonymousDTO">-->
-<!--        select-->
-<!--            a.title,-->
-<!--            y.anonymous_comment_id,-->
-<!--            a.anonymous_id,-->
-<!--            user_id,-->
-<!--            content,-->
-<!--            REGISTER_DATE,-->
-<!--            views-->
-<!--        from tbl_anonymous a on y.anonymous_id = a.anonymous_id-->
-<!--        where a.anonymous_id = #{anonymous_id}-->
-<!--    </select>-->
+    <select id="selectDetailAnonymous" resultType="kimDetailAnonymousDTO">
+        select
+            a.title,
+            c.anonymous_comment_id,
+            a.anonymous_id,
+            a.user_id,
+            a.content,
+            a.created_date,
+            a.views
+        from tbl_anonymous a
+        join tbl_anonymous_comment c on a.anonymous_id = c.anonymous_id
+        where a.anonymous_id = #{anonymousId}
+    </select>
 </mapper>

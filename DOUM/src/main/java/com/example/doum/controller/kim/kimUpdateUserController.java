@@ -17,7 +17,7 @@ public class kimUpdateUserController {
     private final KimEditUserListService kimEditUserListService;
 
     // 유저 정보 수정(화면에 띄우는 목적)
-    @GetMapping("/User/{userId}")
+    @GetMapping("/update/{userId}")
     public String update(@PathVariable long userId, Model model) {
         KimEditUserListDTO updateUserList = kimEditUserListService.updateUserList(userId);
         model.addAttribute("updateUserList", updateUserList);

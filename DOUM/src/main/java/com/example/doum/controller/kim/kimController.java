@@ -1,13 +1,12 @@
 package com.example.doum.controller.kim;
 
+import com.example.doum.domain.dto.kim.KimEditOrtListDTO;
 import com.example.doum.domain.dto.kim.KimOrtDetailDTO;
 import com.example.doum.service.kim.KimOrtDetailService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/OrtDetail")
@@ -15,8 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class kimController {
 
     private final KimOrtDetailService kimOrtDetailService;
-
-
 
     // 기관 상세보기
     @GetMapping("/detail/{organizationId}")
@@ -26,10 +23,7 @@ public class kimController {
         return "kim/agencyDetail";
     }
 
-
     // --------------------------------------------------------
-
-
 
 //     기관 정보 수정
 //    @GetMapping("/edit/{organizationId}")
@@ -38,11 +32,7 @@ public class kimController {
 //        return "kim/editAgencyList";
 //    }
 //
-//    @PostMapping("/edit")
-//    public String edit(KimEditOrtListDTO editOrtList, @RequestParam("editOrtList") ) {
-//        KimEditOrtListService.updateEditOrtList(editOrtList);
-//        return "redirect:/OrtDetail/detail/" + editOrtList.getOrganizationId();
-//    }
+
 
     // --------------------------------------------------------
 

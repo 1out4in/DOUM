@@ -3,7 +3,7 @@ package com.example.doum.domain.dto.kim;
 import lombok.Data;
 import org.springframework.stereotype.Component;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Component
 @Data
@@ -11,34 +11,50 @@ public class kimViewDetailVolDTO {
 
     // 제목
     private String title;
+
     // 봉사 모집일
-    private LocalDate recruit_start_date;
+    private LocalDateTime recruitStartDate;
+
     // 봉사 모집 종료일
-    private LocalDate recruit_end_date;
+    private LocalDateTime recruitEndDate;
+
     // 봉사 시작일
-    private LocalDate volunteer_date;
+    private LocalDateTime volunteerDate;
+
     // 모집인원
-    private long recruit_number;
+    private Long recruitNumber;
+
     // 봉사자
-    private long volunteer_id;
+    private Long volunteerId;
+
     // 주소
-    private long location_id;
+    private Long locationId;
+
     // 기관
-    private long organization_id;
+    private Long organizationId;
+
     // 봉사 내용
     private String content;
+
     // 봉사 분야
     private String category;
+
     // 봉사 대상
     private String target;
+
     // 활동구분
-    private long is_online;
+    private Long isOnline;
+
     // 봉사자유형(성인)
-    private long is_adult_allowed;
+    private Long isAdultAllowed;
+
     // 봉사자유형(청소년)
-    private long is_teen_allowed;
+    private Long isTeenAllowed;
+
+    // 오가니제이션 테이블에 있는 담당자 이름, 연락처
     //담당자 이름
-    private String manager_name;
+    private String managerName;
+
     //담당자 전화번호
-    private String manager_phone_number;
+    private String managerPhoneNumber;
 }

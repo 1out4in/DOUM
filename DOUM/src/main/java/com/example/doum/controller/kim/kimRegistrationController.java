@@ -20,19 +20,21 @@ public class kimRegistrationController {
 
     private final KimRegistrationService kimRegistrationService;
 
+    // 봉사글 등록 폼으로 이동
     @GetMapping("/write")
     public String writeForm(Model model) {
         model.addAttribute("write", new kimRegistrationDTO());
         return "kim/registration";
     }
 
+    // 봉사글 등록하기
     @PostMapping("/write")
     public String write(kimRegistrationDTO registration, @RequestParam("organizationId") long organizationId,
                         @RequestParam("file") List<MultipartFile> files) {
 
-            registration.setOrganization_id(organizationId);
+            registration.setOrganizationId(organizationId);
             kimRegistrationService.selectRegistration(registration, files);
-        return "redirect:/agencyDetail/registration";
+        return "redirect:/kim/write" + registration.getOrganizationId();
     }
 
 }

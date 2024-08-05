@@ -12,12 +12,15 @@ public class KimEditOrtListServiceImpl implements KimEditOrtListService{
 
     private final kimMapper kimMapper;
 
+//    @Override
+//    public void updateEditOrtList(KimEditOrtListDTO editOrtList) {
+//
+//    }
+
     @Override
     public KimEditOrtListDTO updateOrtList(long organizationId) {
-
         return kimMapper.updateEditOrtList(organizationId);
     }
-
 
 //    private final kimMapper kimMapper;
 //

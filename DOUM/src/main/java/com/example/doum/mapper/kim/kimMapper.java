@@ -8,6 +8,8 @@ public interface kimMapper {
 
     // 공지사항 상세보기
 
+    kimDetailAnnouncementDTO selectDetailAnnouncement(Long announcementId);
+
     // 기관 상세보기
     KimOrtDetailDTO selectOrtDetail(long organizationId);
 
@@ -29,8 +31,9 @@ public interface kimMapper {
     void selectRegistration(kimRegistrationDTO registration);
 
     // 봉사글 상세보기
-//    kimViewDetailVolDTO selectViewDetailVol(long organizationId);
+    kimViewDetailVolDTO selectViewDetailVol(long organizationId);
 
     // 익명 게시판 상세보기
+    kimDetailAnonymousDTO selectDetailAnonymous(Long anonymousId);
 
 }

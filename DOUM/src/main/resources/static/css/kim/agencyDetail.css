@@ -82,8 +82,8 @@ h1{
     margin-left: 15px;
 }
 
-.Edit_btn span {
-    padding: 0 20px;
+.Edit_btn a {
+    padding: 9px 20px;
     font-size: 15px;
     font-weight: 500;
     line-height: 35px;
@@ -527,7 +527,7 @@ button {
     background: none;
 }
 
-.btn_submit span {
+.btn_submit a {
     display: inline-block;
     height: 40px;
     padding: 0 33px;

@@ -39,7 +39,7 @@
                     <div>
                         <p class="import">※ 필수 입력 항목입니다.</p>
                     </div>
-                <form method="post" th:action="@{/kim/agencyDetail}" enctype="multipart/form-data" th:object="${write}">
+<!--                <form method="post" th:action="@{/kim/agencyDetail}" enctype="multipart/form-data" th:object="${write}">-->
                     <div class="board_data type2">
                         <div class="group">
                             <dl>
@@ -129,14 +129,20 @@
                                             </div>
 
                                             <div class="group">
-                                                <dl>
-                                                    <dt class="select_detail">전화번호</dt>
-                                                    <dd><input type="text" class="main_tag" placeholder="02-111-111"></dd>
-                                                </dl>
-                                                <dl>
-                                                    <dt class="select_detail">팩스번호</dt>
-                                                    <dd><input type="text" class="main_tag" placeholder="02-222-222"></dd>
-                                                </dl>
+                                            <dl>
+                                                <dt class="select_detail">주소</dt>
+                                                <dd>
+                                                    <input type="text" class="main_tag" placeholder="전국 8도 어딘가">
+                                                </dd>
+                                            </dl>
+                                            <dl>
+                                                <dt class="select_detail">전화번호</dt>
+                                                <dd><input type="text" class="main_tag" placeholder="02-111-111"></dd>
+                                            </dl>
+<!--                                                <dl>-->
+<!--                                                    <dt class="select_detail">팩스번호</dt>-->
+<!--                                                    <dd><input type="text" class="main_tag" placeholder="02-222-222"></dd>-->
+<!--                                                </dl>-->
                                             </div>
 
                                             <div class="group">
@@ -171,14 +177,9 @@
                                                 </dl>
                                             </div> -->
 
-                                            <div class="group group_dl1">
-                                                <dl>
-                                                    <dt class="select_detail">주소</dt>
-                                                    <dd>
-                                                        <input type="text" class="main_tag" placeholder="전국 8도 어딘가">
-                                                    </dd>
-                                                </dl>
-                                            </div>
+<!--                                            <div class="group group_dl1">-->
+<!--                                               -->
+<!--                                            </div>-->
                                         </div>
 
                                     </div>
@@ -220,7 +221,7 @@
                             <button class="btn list">목록</button>
                         </div>
                     </div>
-                </form>
+<!--                </form>-->
                 </div>
             </div>
         </div>

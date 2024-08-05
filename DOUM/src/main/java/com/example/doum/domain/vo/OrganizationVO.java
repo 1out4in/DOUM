@@ -50,17 +50,17 @@ public class OrganizationVO {
 ////    }
 //
 ////  내가 한 부분
-//    private Long organization_id;
-//    private Long location_id;
+//    private Long organizationId;
+//    private Long locationId;
 //    private String email;
 //    private String managerPhoneNumber;
 //    private Long emailApprove;
 //    private Long phoneApprove;
 //
 //    @Builder
-//    public OrganizationVO(long organization_id,long location_id, String email, String managerPhoneNumber, Long emailApprove, Long phoneApprove) {
-//        this.organization_id = organization_id;
-//        this.location_id = location_id;
+//    public OrganizationVO(long organizationId,long locationId, String email, String managerPhoneNumber, Long emailApprove, Long phoneApprove) {
+//        this.organizationId = organizationId;
+//        this.locationId = locationId;
 //        this.email = email;
 //        this.managerPhoneNumber = managerPhoneNumber;
 //        this.emailApprove = emailApprove;
@@ -68,13 +68,13 @@ public class OrganizationVO {
 //    }
 //
 //    public static OrganizationVO toEntity(KimEditOrtListDTO kimEditOrtListDTO) {
-//        return OrganizationVO.builder().organization_id(kimEditOrtListDTO.getOrganization_id())
-//                .organization_id(kimEditOrtListDTO.getOrganization_id())
-//                .location_id(kimEditOrtListDTO.getLocation_id())
+//        return OrganizationVO.builder().organizationId(kimEditOrtListDTO.getOrganizationId())
+//                .organizationId(kimEditOrtListDTO.getOrganizationId())
+//                .locationId(kimEditOrtListDTO.getLocationId())
 //                .email(kimEditOrtListDTO.getEmail())
-//                .managerPhoneNumber(kimEditOrtListDTO.getManager_phone_number())
-//                .emailApprove(kimEditOrtListDTO.getEmail_approve())
-//                .phoneApprove(kimEditOrtListDTO.getPhone_approve())
+//                .managerPhoneNumber(kimEditOrtListDTO.getManagerPhoneNumber())
+//                .emailApprove(kimEditOrtListDTO.getEmailApprove())
+//                .phoneApprove(kimEditOrtListDTO.getPhoneApprove())
 //                .build();
 //    }
 }

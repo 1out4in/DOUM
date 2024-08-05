@@ -19,7 +19,7 @@ public class KimRegistrationServiceImpl implements KimRegistrationService {
     @Transactional
     public void selectRegistration(kimRegistrationDTO registration, List<MultipartFile> files) {
         long organizationId = kimMapper.Edit();
-        registration.setOrganization_id(organizationId);
+        registration.setOrganizationId(organizationId);
         kimMapper.selectRegistration(registration);
     }
 }

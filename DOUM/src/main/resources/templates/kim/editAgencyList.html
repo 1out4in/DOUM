@@ -33,16 +33,16 @@
                                 <div class="group group_dl1" th:object="${updateOrtList}">
                                     <dl>
                                         <dt>아이디</dt>
-                                        <dd th:text="*{organization_id}"></dd>
+                                        <dd th:text="*{organizationId}"></dd>
 
                                         <dt>회원번호</dt>
-                                        <dd th:text="*{organization_id}"></dd>
+                                        <dd th:text="*{organizationId}"></dd>
 
                                         <dt class="name">기관이름</dt>
                                         <dd th:text="*{name}"></dd>
 
                                         <dt>계정생성일</dt>
-                                        <dd th:value="*{#temporals.format(register_date, 'yy년 M월 d일')}"></dd>
+                                        <dd th:text="*{#temporals.format(registerDate, 'yy년 M월 d일')}"></dd>
 
                                         <dt class="location">※주소</dt>
                                         <!-- <dd>
@@ -75,66 +75,69 @@
                                         </dd>
 
                                         <dt class="cell_phone">휴대폰 번호</dt>
-                                        <dd>
-                                            <select class="select-field inline">
-                                                <option value="010">010</option>
-                                                <option>011</option>
-                                                <option>016</option>
-                                                <option>017</option>
-                                                <option>018</option>
-                                                <option>019</option>
-                                            </select>
-                                            -
-                                            <input type="text" class="input-field short-width inline" placeholder="1234" maxlength="4">
-                                            -
-                                            <input type="text" class="input-field short-width inline" placeholder="5678" maxlength="4">
+                                        <dd th:text="*{phoneNumber}">
+<!--                                            <select class="select-field inline">-->
+<!--                                                <option value="010">010</option>-->
+<!--                                                <option>011</option>-->
+<!--                                                <option>016</option>-->
+<!--                                                <option>017</option>-->
+<!--                                                <option>018</option>-->
+<!--                                                <option>019</option>-->
+<!--                                            </select>-->
+<!--                                            - -->
+<!--                                            <input type="text" class="input-field short-width inline" placeholder="1234" maxlength="4">-->
+<!--                                            - -->
+<!--                                            <input type="text" class="input-field short-width inline" placeholder="5678" maxlength="4">-->
+                                                <input type="text" class="input-field short-width inline" placeholder="01012345678" maxlength="11">
                                             <input type="checkbox" class="margin-left"> 없음
                                         </dd>
 
                                         <dt class="phone">유선전화 번호</dt>
-                                        <dd>
-                                            <select class="select-field inline">
-                                                <option value="선택">선택</option>
-                                                <option>02</option>
-                                                <option>02</option>
-                                                <option>064</option>
-                                                <option>063</option>
-                                                <option>062</option>
-                                                <option>061</option>
-                                                <option>055</option>
-                                                <option>054</option>
-                                                <option>053</option>
-                                                <option>052</option>
-                                                <option>051</option>
-                                                <option>043</option>
-                                                <option>042</option>
-                                                <option>032</option>
-                                                <option>041</option>
-                                                <option>033</option>
-                                                <option>031</option>
-                                            </select>
-                                            -
-                                            <input type="text" class="input-field short-width inline" placeholder="123" maxlength="3">
-                                            -
-                                            <input type="text" class="input-field short-width inline" placeholder="4567" maxlength="4">
+                                        <dd th:text="*{managerPhoneNumber}">
+<!--                                            <select class="select-field inline">-->
+<!--                                                <option value="선택">선택</option>-->
+<!--                                                <option>02</option>-->
+<!--                                                <option>02</option>-->
+<!--                                                <option>064</option>-->
+<!--                                                <option>063</option>-->
+<!--                                                <option>062</option>-->
+<!--                                                <option>061</option>-->
+<!--                                                <option>055</option>-->
+<!--                                                <option>054</option>-->
+<!--                                                <option>053</option>-->
+<!--                                                <option>052</option>-->
+<!--                                                <option>051</option>-->
+<!--                                                <option>043</option>-->
+<!--                                                <option>042</option>-->
+<!--                                                <option>032</option>-->
+<!--                                                <option>041</option>-->
+<!--                                                <option>033</option>-->
+<!--                                                <option>031</option>-->
+<!--                                            </select>-->
+<!--                                            - -->
+<!--                                            <input type="text" class="input-field short-width inline" placeholder="123" maxlength="3">-->
+<!--                                            - -->
+<!--                                            <input type="text" class="input-field short-width inline" placeholder="4567" maxlength="4">-->
+                                            <input type="text" class="input-field short-width inline" placeholder="01012345678" maxlength="11">
                                             <input type="checkbox" class="margin-left" checked> 없음
                                         </dd>
 
                                         <dt class="Email">이메일 주소</dt>
-                                        <dd class="email-container">
-                                            <input type="text" class="input-field email-input" placeholder="DOUM01">
-                                            <span class="email-at">@</span>
-                                            <input type="text" class="input-field email-input" placeholder="gmail.com">
-                                            <select class="select-field email-select margin-left">
-                                                <option value="직접입력">직접입력</option>
-                                                <option>naver.com</option>
-                                                <option>gmail.com</option>
-                                                <option>daum.net</option>
-                                                <option>yahoo.co.kr</option>
-                                                <option>nate.com</option>
-                                                <option>dreamwiz.com</option>
-                                                <option>hanmail.net</option>
-                                            </select>
+                                        <dd class="email-container" th:text="*{email}">
+                                            <input type="text" class="input-field email-input" placeholder="DOUM01@gmail.com">
+<!--                                            <input type="text" class="input-field email-input" placeholder="DOUM01">-->
+<!--                                            <span class="email-at">@</span>-->
+<!--                                            <input type="text" class="input-field email-input" placeholder="gmail.com">-->
+<!--                                            <select class="select-field email-select margin-left">-->
+<!--                                                <option value="직접입력">직접입력</option>-->
+<!--                                                <option>naver.com</option>-->
+<!--                                                <option>gmail.com</option>-->
+<!--                                                <option>daum.net</option>-->
+<!--                                                <option>yahoo.co.kr</option>-->
+<!--                                                <option>nate.com</option>-->
+<!--                                                <option>dreamwiz.com</option>-->
+<!--                                                <option>hanmail.net</option>-->
+<!--                                            </select>-->
                                             <input type="checkbox" class="email-checkbox"> 없음
                                         </dd>
 
@@ -158,13 +161,14 @@
                             정보제공 및 수신동의 하신 것으로 처리됩니다.</p>
                     </form>
                     <div class="button-container">
-                        <button class="btn save">저장</button>
-                        <button class="btn cancel">취소</button>
+                        <button type="button" class="btn save">저장</button>
+                        <button type="button" class="btn cancel">취소</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 </body>
 </html>
