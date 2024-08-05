@@ -6,6 +6,7 @@ VALUES (2, 'San Francisco', '456 Market St', 'Downtown');
 INSERT INTO TBL_LOCATION (LOCATION_ID, CITY, ADDRESS, DETAIL)
 VALUES (3, 'Chicago', '789 Lake Shore Dr', 'Near the lake');
 
+
 -- Insert data into TBL_ORGANIZATION
 INSERT INTO TBL_ORGANIZATION (
     ORGANIZATION_ID, LOCATION_ID, EMAIL, PASSWORD, NAME, PHONE_NUMBER, REGISTER_DATE,
@@ -24,21 +25,6 @@ INSERT INTO TBL_ORGANIZATION (
          );
 
 -- Insert sample data into TBL_USER
-INSERT INTO TBL_USER (
-    USER_ID, LOCATION_ID, EMAIL, PASSWORD, NAME, PHONE_NUMBER, REGISTER_DATE,
-    EMAIL_APPROVE, PHONE_APPROVE, BIRTH_DATE, GENDER, INTRODUCTION
-) VALUES (
-             1, 1, 'user1@example.com', 'password123', 'User One', '123-456-7890', SYSDATE,
-             1, 1, TO_DATE('1985-01-01', 'YYYY-MM-DD'), 'Male', 'Introduction of User One'
-         );
-
-INSERT INTO TBL_USER (
-    USER_ID, LOCATION_ID, EMAIL, PASSWORD, NAME, PHONE_NUMBER, REGISTER_DATE,
-    EMAIL_APPROVE, PHONE_APPROVE, BIRTH_DATE, GENDER, INTRODUCTION
-) VALUES (
-             2, 2, 'user2@example.com', 'password456', 'User Two', '987-654-3210', SYSDATE,
-             0, 1, TO_DATE('1990-02-02', 'YYYY-MM-DD'), 'Female', 'Introduction of User Two'
-         );
 
 -- Insert sample data into TBL_VOLUNTEER
 INSERT INTO TBL_VOLUNTEER (
@@ -93,14 +79,11 @@ INSERT INTO TBL_ORGANIZATION_REVIEW (ORGANIZATION_REVIEW_ID, ORGANIZATION_ID, US
 VALUES (2, 2, 2, 'Very dedicated!', 4);
 
 -- Insert data into TBL_ANONYMOUS
-INSERT INTO TBL_ANONYMOUS (ANONYMOUS_ID, USER_ID, TITLE, CONTENT)
-VALUES (1, 1, 'Anonymous Post 1', 'This is an anonymous post.');
-INSERT INTO TBL_ANONYMOUS (ANONYMOUS_ID, USER_ID, TITLE, CONTENT)
-VALUES (2, 2, 'Anonymous Post 2', 'This is another anonymous post.');
+
 
 -- Insert data into TBL_ANONYMOUS_COMMENT
 INSERT INTO TBL_ANONYMOUS_COMMENT (ANONYMOUS_COMMENT_ID, ANONYMOUS_ID, USER_ID, CONTENT)
-VALUES (1, 1, 2, 'This is a comment.');
+VALUES (1, 1, 1, 'This is a comment.');
 INSERT INTO TBL_ANONYMOUS_COMMENT (ANONYMOUS_COMMENT_ID, ANONYMOUS_ID, USER_ID, CONTENT)
 VALUES (2, 2, 1, 'This is another comment.');
 
