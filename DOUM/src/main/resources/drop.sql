@@ -34,4 +34,4 @@ DROP TABLE TBL_STORY_IMG cascade constraints;
 DROP TABLE TBL_STORY_COMMENT cascade constraints;
 DROP TABLE TBL_STORY_LIKE cascade constraints;
 
-
+select * from TBL_APPLIED_VOLUNTEER;

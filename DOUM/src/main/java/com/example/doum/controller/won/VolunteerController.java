@@ -35,6 +35,9 @@ public class VolunteerController {
         List<WonAnonymousDTO> anonymousPosts = wonAnonymousService.getAllAnonymousPosts();
         model.addAttribute("anonymousPosts", anonymousPosts);
         model.addAttribute("volunteers", volunteerList);
+
+        System.out.println(volunteerList);
+
         return "won/guest_main";
     }
     // 회원 가입 html 로 가는 경로
@@ -85,6 +88,8 @@ public class VolunteerController {
         redirectAttributes.addFlashAttribute("message", "회원 가입이 완료되었습니다.");
         return "redirect:/Won/login_test";
     }
+
+
 
 
 

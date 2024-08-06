@@ -247,7 +247,7 @@ WHERE USER_ID = 1;
 
 UPDATE TBL_USER
 SET introduction = '봉사를 열심히 합시다.'
-WHERE USER_ID = 1
+WHERE USER_ID = 1;
 
 
 SELECT
