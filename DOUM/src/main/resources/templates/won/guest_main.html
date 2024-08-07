@@ -18,14 +18,14 @@
 
     <div class="menu">
         <span>DOUM</span>
-        <span><a href="">봉사안내</a></span>
-        <span><a href="volunteer-search.html">봉사찾기</a></span>
-        <span><a href="">고객센터</a></span>
-        <span><a href="registered-volunteer.html">내가 등록한 봉사</a></span>
+<!--        <span><a href="">봉사안내</a></span>-->
+        <span><a th:href="@{/jung/volunteer-search}">봉사찾기</a></span>
+<!--        <span><a href="">고객센터</a></span>-->
+        <span><a th:href="@{/jung/applied-volunteer-a}">내가 등록한 봉사</a></span>
         <span id="toggleButton" class="menu-item">전체메뉴</span>
         <span id="bell"><a href="#">🛎</a></span>
         <span id="login"><a th:href="@{/Won/login_test}">로그인</a></span>
-        <span id="join"><a th:href="@{/Won/org_join1}">회원가입</a></span>
+        <span id="join"><a th:href="@{/Won/user_join}">회원가입</a></span>
     </div>
 
 
@@ -35,24 +35,31 @@
 <div>
     <nav class="list">
         <div id="volunteerInfo" class="hidden">
-            <h2><a href="organization-search.html">기관검색</a></h2>
+            <h2><a th:href="@{/jung/organization-search}">기관검색</a></h2>
             <p>봉사 시간 날짜 등등.</p>
         </div>
         <div id="volunteerJoin" class="hidden">
-            <h2>봉사검색</h2>
+            <h2><a th:href="@{/jung/volunteer-search}">봉사검색</a></h2>
             <p>봉사 참여 관련된 정보와 절차.</p>
         </div>
         <div id="volunteerCenter" class="hidden">
-            <h2><a href="announcement.html"> 공지사항</a></h2>
+            <h2><a th:href="@{/jung/announcement}"> 공지사항</a></h2>
             <p>공지사항 관련 정보와 연락처.</p>
         </div>
         <div id="myVolunteer" class="hidden">
-            <h2>나의 자원봉사</h2>
+            <h2><a th:href="@{/jung/applied-volunteer}">나의 자원봉사</a></h2>
             <p>자신의 자원봉사 이력이나 정보.</p>
         </div>
-        <div>
-            <h2><a href="anonymous.html">My page</a></h2>
+
+        <div id="myPage" class="hidden">
+            <h2><a th:href="@{/Lee/myPage/1}">My page</a></h2>
+
         </div>
+
+<!--        <div>-->
+<!--            <h2><a th:href="@{/Lee/myPage/1}">My page</a></h2>-->
+
+<!--        </div>-->
     </nav>
 
 
@@ -104,7 +111,7 @@
     <div class="mozip" style="display: flex;">
         <div>모집중인 자원봉사</div>
     </div>
-    <div style="text-align: right; padding-right: 320px;"><a href="" style="color: #ffffff;">+더보기</a></div>
+    <div style="text-align: right; padding-right: 320px;"><a th:href="@{/jung/volunteer-search} "style="color: #ffffff;">+더보기</a></div>
 
 
     <div class="bongsalist-1" style="display: flex;">
@@ -176,10 +183,10 @@
 <!-- 공지사항 -->
 <!-- 인재님이 만들어주신 공지사항페이지 이동하게 만들기  -->
 <div class="board">
-    <div style="justify-content: center; margin-left: 130px">
+    <div style="justify-content: center; margin-left: 500px">
 
 
-        <div class="div" style="margin-right:40px;">
+        <div class="div" style="margin-right:145px;">
             <p class="p">알림판
 
                 <span class="span">더보기</span>
@@ -203,7 +210,7 @@
         <div class="container">
             <div class="board-items2">
                 <p class="p">익명 게시판
-                    <span class="plus1">더보기</span>
+                    <span class="plus1"><a th:href="@{/jung/anonymous}">더보기</span>
                 </p>
                 <div>
 
@@ -217,140 +224,142 @@
             </div>
         </div>
     </div>
-    <!-- 큰 틀 -->
+</div>
+
+<!-- 큰 틀 -->
 
 
-    <div class="line"></div>
+<div class="line"></div>
 
-    <!-- 하단 배너 -->
-    <div class="banner">
-        <img src=" https://www.1365.go.kr/upload/attachments/aef2c78e-b79c-460c-b27e-ec4501126509.jpg" alt="">
+<!-- 하단 배너 -->
+<div class="banner">
+    <img src=" https://www.1365.go.kr/upload/attachments/aef2c78e-b79c-460c-b27e-ec4501126509.jpg" alt="">
 
-        <!--  -->
-        <!-- 온도계 -->
-        <div class="thermometer">
-            <div><img src="img/온도계 2024-07-02 191313.png" alt="온도계"></div>
-            <div style="width: 100%; height: 100%;"><h5 style="text-align: right;  color: #333;
+    <!--  -->
+    <!-- 온도계 -->
+    <div class="thermometer">
+        <div><img src="img/온도계 2024-07-02 191313.png" alt="온도계"></div>
+        <div style="width: 100%; height: 100%;"><h5 style="text-align: right;  color: #333;
         font-size: 23px;
         font-weight: 500;">자원봉사로 이어진 사랑의 온도 누적현황</h5>
-                <div style="justify-content:space-between ;">
-                    <table>
-                        <tr>
-                            <th style="color: #f36200;
+            <div style="justify-content:space-between ;">
+                <table>
+                    <tr>
+                        <th style="color: #f36200;
             font-size: 26px;
             font-weight: bold;">77,914
-                            </th>
-                            <th style="text-align: right;">오늘 접속자</th>
-                        </tr>
-                        <tr>
-                            <th style="color: #f36200;
+                        </th>
+                        <th style="text-align: right;">오늘 접속자</th>
+                    </tr>
+                    <tr>
+                        <th style="color: #f36200;
             font-size: 26px;
             font-weight: bold;">17,049,844
-                            </th>
-                            <th style="text-align: right;">2024년 접속자</th>
-                        </tr>
-                        <tr>
-                            <th style="color: #f36200;
+                        </th>
+                        <th style="text-align: right;">2024년 접속자</th>
+                    </tr>
+                    <tr>
+                        <th style="color: #f36200;
             font-size: 26px;
             font-weight: bold;">8,289,278
-                            </th>
-                            <th style="text-align: right;">활동자 수(전일기준)</th>
-                        </tr>
-                    </table>
-                </div>
-
-                <p style="margin-top: 30px;">⨳사랑의 온도가 높아질수록 행복도 커져갑니다.</p>
+                        </th>
+                        <th style="text-align: right;">활동자 수(전일기준)</th>
+                    </tr>
+                </table>
             </div>
 
+            <p style="margin-top: 30px;">⨳사랑의 온도가 높아질수록 행복도 커져갑니다.</p>
+        </div>
+
+    </div>
+</div>
+
+<!-- footer -->
+<footer class="footer">
+    <div class="footer__addr">
+        <h1 class="footer__logo"><img src="./img/logo.png" width="100px"></h1>
+
+        <h2>Contact</h2>
+
+        <address>
+            서울특별시 강남구 테헤란로 26길 12 제일비전타워 13층<br>
+        </address>
+    </div>
+
+    <ul class="footer__nav">
+        <li class="nav__item">
+            <h2 class="nav__title">DOUM</h2>
+
+            <ul class="nav__ul">
+                <li>
+                    <a href="#">메인</a>
+                </li>
+
+                <li>
+                    <a href="#">기관검색</a>
+                </li>
+
+                <li>
+                    <a href="#">봉사검색</a>
+                </li>
+                <li>
+                    <a href="#">익명게시판</a>
+                </li>
+                <li>
+                    <a href="#">공지사항</a>
+                </li>
+            </ul>
+        </li>
+        <li class="nav__item">
+            <h2 class="nav__title">마이페이지</h2>
+
+            <ul class="nav__ul">
+                <li>
+                    <a href="#">내정보</a>
+                </li>
+
+                <li>
+                    <a href="#">내봉사</a>
+                </li>
+            </ul>
+        </li>
+        <li class="nav__item">
+            <h2 class="nav__title">스토리</h2>
+
+            <ul class="nav__ul">
+                <li>
+                    <a href="#">유저찾기</a>
+                </li>
+
+                <li>
+                    <a href="#">내프로필</a>
+                </li>
+            </ul>
+        </li>
+        <li class="nav__item">
+            <h2 class="nav__title"></h2>
+
+            <ul class="nav__ul">
+                <li>
+                    <a href="#"></a>
+                </li>
+
+                <li>
+                    <a href="#"></a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <div class="legal">
+        <p>&copy; 2019 Something. All rights reserved.</p>
+
+        <div class="legal__links">
+            <span>Made with <span class="heart">♥</span> remotely from Anywhere</span>
         </div>
     </div>
 
-    <!-- footer -->
-    <footer class="footer">
-        <div class="footer__addr">
-            <h1 class="footer__logo"><img src="./img/logo.png" width="100px"></h1>
-
-            <h2>Contact</h2>
-
-            <address>
-                서울특별시 강남구 테헤란로 26길 12 제일비전타워 13층<br>
-            </address>
-        </div>
-
-        <ul class="footer__nav">
-            <li class="nav__item">
-                <h2 class="nav__title">DOUM</h2>
-
-                <ul class="nav__ul">
-                    <li>
-                        <a href="#">메인</a>
-                    </li>
-
-                    <li>
-                        <a href="#">기관검색</a>
-                    </li>
-
-                    <li>
-                        <a href="#">봉사검색</a>
-                    </li>
-                    <li>
-                        <a href="#">익명게시판</a>
-                    </li>
-                    <li>
-                        <a href="#">공지사항</a>
-                    </li>
-                </ul>
-            </li>
-            <li class="nav__item">
-                <h2 class="nav__title">마이페이지</h2>
-
-                <ul class="nav__ul">
-                    <li>
-                        <a href="#">내정보</a>
-                    </li>
-
-                    <li>
-                        <a href="#">내봉사</a>
-                    </li>
-                </ul>
-            </li>
-            <li class="nav__item">
-                <h2 class="nav__title">스토리</h2>
-
-                <ul class="nav__ul">
-                    <li>
-                        <a href="#">유저찾기</a>
-                    </li>
-
-                    <li>
-                        <a href="#">내프로필</a>
-                    </li>
-                </ul>
-            </li>
-            <li class="nav__item">
-                <h2 class="nav__title"></h2>
-
-                <ul class="nav__ul">
-                    <li>
-                        <a href="#"></a>
-                    </li>
-
-                    <li>
-                        <a href="#"></a>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-
-        <div class="legal">
-            <p>&copy; 2019 Something. All rights reserved.</p>
-
-            <div class="legal__links">
-                <span>Made with <span class="heart">♥</span> remotely from Anywhere</span>
-            </div>
-        </div>
-
-        <!--  -->
+    <!--  -->
 
 </body>
 </html>
@@ -421,6 +430,7 @@
         var volunteerJoin = document.getElementById('volunteerJoin');
         var volunteerCenter = document.getElementById('volunteerCenter');
         var myVolunteer = document.getElementById('myVolunteer');
+        var myPage = document.getElementById('myPage');
 
         document.getElementById('toggleButton').addEventListener('click', function () {
             if (volunteerInfo.style.display === 'none') {
@@ -428,11 +438,13 @@
                 volunteerJoin.style.display = 'block';
                 volunteerCenter.style.display = 'block';
                 myVolunteer.style.display = 'block';
+                myPage.style.display = 'block';
             } else {
                 volunteerInfo.style.display = 'none';
                 volunteerJoin.style.display = 'none';
                 volunteerCenter.style.display = 'none';
                 myVolunteer.style.display = 'none';
+                myPage.style.display = 'none';
             }
         });
     });
